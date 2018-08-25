@@ -1,0 +1,352 @@
+/*
+Dna animado com apenas uma cor e efeito de sombra. Compatível com todos os navegadores modernos (Utiliza CSS3 standard).
+*/
+@-webkit-keyframes fade-in {     
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} 
+@keyframes fade-in {     
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes  fade-out {     
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}                   
+@keyframes fade-out {     
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}        
+
+@-webkit-keyframes translate-front {     
+    0%{
+        left: 0;
+    }
+    100%{
+        left: 15em;
+    }
+}
+@keyframes translate-front {     
+    0%{
+        left: 0;
+    }
+    100%{
+        left: 15em;
+    }
+}
+
+@-webkit-keyframes translate-back {     
+    0%{
+        left:15em;
+    }
+    100%{
+        left:0;
+    }
+}
+@keyframes translate-back {     
+    0%{
+        left:15em;
+    }
+    100%{
+        left:0;
+    }
+}
+
+@-webkit-keyframes scale-front {  
+    0%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35);   
+    }
+    15%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 
+    }
+    85%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 
+    }
+    100%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35);  
+    }
+}
+@keyframes scale-front {  
+    0%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    85%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+}
+
+@-webkit-keyframes scale-back {  
+    0%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35);   
+    }
+    15%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 
+    }           
+    85%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);   
+    }
+    100%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        transform: scale(1.35); 
+    }
+}
+@keyframes scale-back {  
+    0%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 
+    }        		
+    85%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        transform: scale(1.35); 
+    }
+}
+
+@-webkit-keyframes color1 {  
+    0%{
+        background-color:  rgb(170, 68, 0);/*escuro*/
+    }
+    15%{
+        background-color: rgb(255, 127, 39);/*claro*/
+    }  
+    100%{
+        background-color: rgb(255, 127, 39);/*claro*/
+    }
+}
+@keyframes color1 {  
+    0%{
+        background-color:  rgb(170, 68, 0);/*escuro*/
+    }
+    15%{
+        background-color: rgb(255, 127, 39);/*claro*/
+    }  
+    100%{
+        background-color: rgb(255, 127, 39);/*claro*/
+    }
+}
+
+@-webkit-keyframes color2 {  
+    0%{
+        background-color: rgb(255, 127, 39);/*claro*/
+    }
+    15%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }  
+    100%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }
+}
+@keyframes color2 {  
+    0%{
+        background-color: rgb(255, 127, 39);/*claro*/
+    }
+    15%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }  
+    100%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }
+}
+
+
+@-webkit-keyframes rotate{  
+    0%{
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        transform: rotateY(0);  
+
+        background-image: -webkit-linear-gradient(left, rgb(170, 68, 0),  rgb(255, 127, 39));
+        background-image: linear-gradient(to right, rgb(170, 68, 0) ,  rgb(255, 127, 39));
+    }
+    100%{
+        -webkit-transform: rotateY(180deg); 
+        -ms-transform: rotateY(180deg); 
+        transform: rotateY(180deg);   
+
+        background-image: -webkit-linear-gradient(left, rgb(255, 127, 39) ,   rgb(170, 68, 0));
+        background-image: linear-gradient(to right, rgb(255, 127, 39) ,  rgb(170, 68, 0));
+    }
+}
+@keyframes rotate{  
+    0%{
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        transform: rotateY(0);  
+
+        background-image: -webkit-linear-gradient(left, rgb(170, 68, 0),  rgb(255, 127, 39));
+        background-image: linear-gradient(to right, rgb(170, 68, 0) ,  rgb(255, 127, 39));
+    }
+    100%{
+        -webkit-transform: rotateY(180deg); 
+        -ms-transform: rotateY(180deg); 
+        transform: rotateY(180deg);   
+
+        background-image: -webkit-linear-gradient(left, rgb(255, 127, 39) ,   rgb(170, 68, 0));
+        background-image: linear-gradient(to right, rgb(255, 127, 39) ,  rgb(170, 68, 0));
+    }
+}
+
+.paused, .paused *{
+    -webkit-animation-play-state: paused !important;
+    animation-play-state: paused !important;
+}
+.dna{
+    width: 17em;
+    margin: 0 auto;
+
+    font-size: .75em;/*somente tamanhos multiplos de 5*/
+}
+.dna.pequeno{
+    font-size: .5em;
+}
+.dna.grande{
+    font-size: 1.5em;
+}
+
+.helice{
+    position: relative;
+    width: 17em;
+    height: 2em;
+    margin-top:2em;
+
+    -webkit-animation: fade-in 1s ease-in 2s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-play-state: running;
+
+    animation: fade-in 1s ease-in 2s;
+    animation-fill-mode: both;
+    animation-play-state: running;
+}
+.helice:nth-child(5n+0) *{
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+.helice:nth-child(5n+1) *{
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+.helice:nth-child(5n+2) *{
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+.helice:nth-child(5n+3) *{
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+}
+.helice:nth-child(5n+4) *{
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+
+
+.esfera1 {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 100;
+
+    background-color: rgb(255, 127, 39);/*claro*/
+
+    -webkit-animation: translate-front 2.5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 2.5s linear 0s infinite normal, color1 2.5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 2.5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 2.5s linear 0s infinite normal, color1 2.5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+
+.esfera2 {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    z-index: 50;
+
+    background-color: rgb(170, 68, 0);/*escuro*/
+
+    -webkit-animation: translate-back 2.5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 2.5s linear 0s infinite normal, color2 2.5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 2.5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 2.5s linear 0s infinite normal, color2 2.5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+
+.haste{
+    position: absolute;
+    width: 12.5em;
+    height: .3em;
+    top:0;
+    bottom: 0;
+    margin: .85em 2.25em;
+
+    background-color: red;
+    z-index: 0;
+
+    background-image: -webkit-linear-gradient(left, rgb(255, 127, 39), rgb(170, 68, 0));
+    background-image: linear-gradient(to right, rgb(255, 127, 39), rgb(170, 68, 0));
+
+
+    -webkit-animation: rotate 2.5s cubic-bezier(.5, 0, .5, 1) 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: rotate 2.5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal;
+    animation-play-state: running;
+}

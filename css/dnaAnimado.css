@@ -1,0 +1,381 @@
+/*
+Dna animado com apenas uma cor. Compatível com todos os navegadores modernos (Utiliza CSS3 standard).
+*/
+
+html, body{
+    margin:0;
+    padding:0;
+}
+
+@-webkit-keyframes fade-in {     
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} 
+@keyframes fade-in {     
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes fade-out {     
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}        
+@keyframes fade-out {     
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}        
+
+@-webkit-keyframes translate1 {     
+    0%{
+        left: 0;
+    }
+    50%{
+        left: 15em;
+    }
+    100%{
+        left: 0;
+    }
+}
+@keyframes translate1 {     
+    0%{
+        left: 0;
+    }
+    50%{
+        left: 15em;
+    }
+    100%{
+        left: 0;
+    }
+}
+
+@-webkit-keyframes translate2 {     
+    0%{
+        left:15em;
+    }
+    50%{
+        left:0em;
+    }
+    100%{
+        left:15em;
+    }
+}
+@keyframes translate2 {     
+    0%{
+        left:15em;
+    }
+    50%{
+        left:0em;
+    }
+    100%{
+        left:15em;
+    }
+}
+
+@-webkit-keyframes scale1 {  
+    0%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    35%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    65%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);	
+    }
+    85%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+}
+@keyframes scale1 {  
+    0%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    35%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    65%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);	
+    }
+    85%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+}
+
+@-webkit-keyframes scale2 {  
+    0%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    35%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);	
+    }
+    65%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }         		
+    85%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        transform: scale(1.35); 	
+    }
+}
+@keyframes scale2 {  
+    0%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    35%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);	
+    }
+    65%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }         		
+    85%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        transform: scale(1.35); 	
+    }
+}
+
+@-webkit-keyframes rotate{  
+    0%{
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        transform: rotateY(0); 	
+    }
+    50%{
+        -webkit-transform: rotateY(180deg); 
+        -ms-transform: rotateY(180deg); 
+        transform: rotateY(180deg); 	
+    }
+    100%{
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg); 	
+    }
+}
+@keyframes rotate{  
+    0%{
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        transform: rotateY(0); 	
+    }
+    50%{
+        -webkit-transform: rotateY(180deg); 
+        -ms-transform: rotateY(180deg); 
+        transform: rotateY(180deg); 	
+    }
+    100%{
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg); 	
+    }
+}
+
+.paused, .paused *{
+    -webkit-animation-play-state: paused !important;
+    animation-play-state: paused !important;
+}
+#container-dna{
+    background-color: white;
+    position: fixed;
+    width: 100%;
+}
+#container-eventos{
+    position: absolute;
+    width: 100%;
+}
+#dna{
+    width: 17em;
+    margin: 0px auto;
+    background: green;
+    position: relative;
+    font-size: .75em;/*somente tamanhos multiplos de 5*/
+}
+.sequencia{
+    position: absolute;
+    top:0px;  
+}
+.zoom0{
+    font-size: .25em;
+}
+.zoom1{
+    font-size: .5em;
+}
+.zoom2{
+    font-size: .75em;
+}
+.zoom3{
+    font-size: 1em;
+}
+.zoom4{
+    font-size: 1.25em;
+}
+
+.helice{
+    position: relative;
+    width: 17em;
+    height: 2em;
+    padding-top:2em;
+
+   -webkit-animation: fade-in 1s ease-in 0s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-play-state: running;
+
+    animation: fade-in 1s ease-in 0s;
+    animation-fill-mode: both;
+    animation-play-state: running;
+}
+ .helice:nth-child(5n+0) *{
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+ .helice:nth-child(5n+1) *{
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+ .helice:nth-child(5n+2) *{
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+ .helice:nth-child(5n+3) *{
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+}
+ .helice:nth-child(5n+4) *{
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+
+
+.esfera1 {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: absolute;
+    background-color: orange;
+
+    -webkit-animation: translate1 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal, scale1 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate1 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal, scale1 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+
+.esfera2 {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    background-color: orange;
+
+    -webkit-animation: translate2 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal, scale2 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate2 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal, scale2 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+
+.haste{
+    position: absolute;
+    width: 12.5em;
+    height: .3em;
+    bottom: .85em;
+    margin-left: 2.25em;
+    margin-right: 2.25em;
+    background-color: orange;
+
+    -webkit-animation: rotate 5s cubic-bezier(.58, .13, .38, .95) 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: rotate 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal;
+    animation-play-state: running;
+}
+
+.botoes-fixed{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 1000;
+}

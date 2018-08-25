@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                overflow-y: scroll;
+                font-family: Economica;
+            }
+            .botoes-fixed{
+                position: fixed;
+                z-index: 200;
+            }
+            #eventos-conteiner{
+                padding-top: 2.2em;
+                padding-bottom: 2.2em;
+            }
+            .ano-conteiner{
+                width: 15em;
+                margin: 0 auto;
+                font-size: 1.5em;
+                position: relative;
+            }
+            .ano-conteiner:nth-child(2n){
+                background: navajowhite;
+            }
+            .evento{
+                position: relative;
+                height: 1.5em;
+                border-top: 1px solid white;
+                border-bottom: 1px solid white;
+            }
+            .ano-conteiner, .evento, .evento *{
+                transition: 2s all ease;
+            }
+            .evento .titulo{
+                padding: .0em .5em;
+                line-height: 1.5em;
+                height: 1.5em;
+                background: blue;
+                border-bottom: 1px solid white;
+                color:white;
+                cursor: pointer;
+                transition: .5s background-color ease-out;
+
+                white-space:nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .evento:hover{
+                z-index: 100;
+            }
+            .evento:hover .titulo{
+                background: red;
+                height: auto;
+                white-space:normal;
+            }
+
+
+            .ponto{
+                position: absolute;
+                left: -0.4em;
+                top:0.3em;
+                background: blue;
+                width: .8em;
+                height: .8em;
+                border-radius: 50%;
+            }
+            .caixa-angulo-inf{
+                position: absolute;
+                top:0;
+                left: -1.5em;
+                height: 1.5em;
+                width: 1.5em;
+                overflow: hidden;  
+            }
+            .caixa-angulo-inf .angulo{
+                position: absolute;
+                left:0;
+                top:-1.65em;
+                background: transparent;
+                width: 2em;
+                height: 2em;
+                border-radius: 25%;
+                border:5px solid blue;
+            }
+            .caixa-angulo-sup{
+                position: absolute;
+                height: 1.5em;
+                width: 3em;
+                top:-1.45em;
+                left: -3em;
+                overflow: hidden;
+            }
+            .caixa-angulo-sup .angulo{
+                position: absolute;
+                left:-.7em;
+                top:.65em;
+                background: transparent;
+                width: 2em;
+                height: 2em;
+                border-radius: 25%;
+                border:5px solid blue;
+            }
+            .linha-vertical{
+                position: absolute;
+                top:-2em;
+                left:-1.5em;
+                width: 5px;
+                background: blue;
+            }
+            .ano-conteiner .evento:first-child .linha-vertical{
+                display: none;
+            }
+
+            .z0 .ano-conteiner{/*todos os eventos sobrepostos*/
+                height: 2.5em;/*60px;*/
+            }
+            .z1 .ano-conteiner{
+                height: 7.5em;/*180px;*/
+            }
+            .z2 .ano-conteiner{
+                height: 12.55em;/*300px;*/
+            }
+            .z3 .ano-conteiner{
+                height: 17.5em;/*420px;*/
+            }
+            .z4 .ano-conteiner{
+                height: 22.5em;/*540px;*/
+            }
+
+            .z0 .evento{/*todos os eventos sobrepostos*/
+                margin-bottom: -1.5em;/*1.5em altura do titulo*/
+            }
+            .z1 .evento{
+                margin-bottom: -1em;
+            }
+            .z2 .evento{
+                margin-bottom: -0.5em;
+            }
+            .z3 .evento{
+                margin-bottom: 0em;
+            }
+            .z4 .evento{
+                margin-bottom: 0.5em;
+            }
+            .z1 .evento:only-of-type .titulo, .z2 .evento:only-of-type .titulo, .z3 .evento:only-of-type .titulo, .z4 .evento:only-of-type .titulo{/*eventos unitários são exibidos na altura completa*/
+                height: auto;
+                white-space:normal;
+            }
+            
+            .z0 .titulo, .z1 .titulo, .z2 .titulo, 
+            .z0 .ponto, .z1 .ponto,.z2 .ponto,
+            .z0 .linha-vertical, .z1 .linha-vertical, .z2 .linha-vertical{/*eventos sobrepostos*/
+                background: green;
+            }
+            .z0 .caixa-angulo-inf .angulo, .z1 .caixa-angulo-inf .angulo, .z2 .caixa-angulo-inf .angulo{/*eventos sobrepostos*/
+                border-color: green;
+            }
+
+            .z0 .linha-vertical{
+                top:0em;
+                height: 0em;/*-1.5 margin-bottom + 1.5 height*/
+            }
+            .z1 .linha-vertical{
+                top:-.5em;
+                height: .5em;/*-1 margin-bottom + 1.5 height*/
+            }
+            .z2 .linha-vertical{
+                top:-1em;
+                height: 1em;/*-0.5 margin-bottom + 1.5 height*/
+            }
+            .z3 .linha-vertical{
+                top:-1.5em;
+                height: 1.5em;/*0 margin-bottom + 1.5 height*/
+            }
+            .z4 .linha-vertical{
+                top:-2em;
+                height: 2em;/*.5 margin-bottom + 1.5 height*/
+            }
+        </style>
+        <script src="js/jquery-2.0.3.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#zoom0").click(function() {
+                    $("#eventos-conteiner").removeClass("z0 z1 z2 z3 z4");
+                    $("#eventos-conteiner").addClass("z0");
+                });
+                $("#zoom1").click(function() {
+                    $("#eventos-conteiner").removeClass("z0 z1 z2 z3 z4");
+                    $("#eventos-conteiner").addClass("z1");
+                });
+                $("#zoom2").click(function() {
+                    $("#eventos-conteiner").removeClass("z0 z1 z2 z3 z4");
+                    $("#eventos-conteiner").addClass("z2");
+                });
+                $("#zoom3").click(function() {
+                    $("#eventos-conteiner").removeClass("z0 z1 z2 z3 z4");
+                    $("#eventos-conteiner").addClass("z3");
+                });
+                $("#zoom4").click(function() {
+                    $("#eventos-conteiner").removeClass("z0 z1 z2 z3 z4");
+                    $("#eventos-conteiner").addClass("z4");
+                });
+            });
+        </script>
+    </head>
+    <body class="z0">
+        <div class="botoes-fixed">
+            <button id="zoom0">zoom0</button> <button id="zoom1">zoom1</button><button id="zoom2">zoom2</button><button id="zoom3">zoom3</button><button id="zoom4">zoom4</button>
+        </div>
+        <div id="eventos-conteiner">
+            <div class="ano-conteiner">
+            </div>
+            <div class="ano-conteiner">            
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Friederich Miescher e a descoberta da “nucleína”</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Ethical, legal and social implications (ELSI) programmes founded at the US National Institutes of Health (NIH) and Department of Energy (DOE)</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">10,000 full-length human cDNAs sequenced</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The HGP ends with all goals achieved</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Friederich Miescher e a descoberta da “nucleína”</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">US National Center for Human Genome Research becomes the National Human Genome Research Institute (NHGRI)</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">10,000 full-length human cDNAs sequenced</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The HGP ends with all goals achieved</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Friederich Miescher e a descoberta da "nucleína"</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">US National Center for Human Genome Research becomes the National Human Genome Research Institute (NHGRI)</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The HGP ends with all goals achieved</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">US National Center for Human Genome Research becomes the National Human Genome Research Institute (NHGRI)</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Ethical, legal and social implications (ELSI) programmes founded at the US National Institutes of Health (NIH) and Department of Energy (DOE)</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Charles Darwin e a seleção natural</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">10,000 full-length human cDNAs sequenced</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The Human Genome Project (HGP) launched in the United States</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Ethical, legal and social implications (ELSI) programmes founded at the US National Institutes of Health (NIH) and Department of Energy (DOE)</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">First gene for breast cancer (BRCA1) mapped</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">First US genome centres established</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Second-generation human genetic map developed</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Rapid-data-release guidelines established by the NIH and DOE</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">New five-year plan for the HGP in the United States published</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The Sanger Centre founded near Cambridge, UK, (later renamed the Wellcome Trust Sanger Institute)</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The HGP’s human genetic mapping goal achieved</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The HGP’s human physical mapping goal achieved</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">First bacterial genome (Haemophilus influenzae) sequenced</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">US Equal Employment Opportunity Commission issues policy on genetic discrimination in the workplace</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">First human gene map established</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Pilot projects for human genome sequencing begin in the United States</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">First archaeal genome sequenced</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Yeast (Saccharomyces cerevisiae) genome sequenced</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The HGP’s mouse genetic mapping goal achieved</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Bermuda principles for rapid and open data release established</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">The DOE forms the Joint Genome Institute</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">US National Center for Human Genome Research becomes the National Human Genome Research Institute (NHGRI)</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Escherichia coli genome sequenced</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Genoscope (French National Genome Sequencing Center) founded near Paris</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Incorporation of 30,000 genes into human genome map</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">New five-year plan for the HGP in the United States published</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">RIKEN Genomic Sciences Center established in Japan</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Roundworm (Caenorhabditis elegans) genome sequenced</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Single-nucleotide polymorphism (SNP) initiative begins</div></div>
+                <div class="evento"><div class="linha-vertical"></div><span class="caixa-angulo-inf"><span class="angulo"></span></span><div class="ponto"></div><div class="titulo">Chinese National Human Genome Centers established in Beijing and Shanghai</div></div>
+                <span class="caixa-angulo-sup"><span class="angulo"></span></span>
+            </div> 
+            <div class="ano-conteiner">
+            </div>
+        </div>
+    </body>
+</html>

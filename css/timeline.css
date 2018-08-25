@@ -1,0 +1,2612 @@
+/**
+ * CONFIGURAÇÃO DAS FONTES
+ */
+@font-face{
+    font-family: "Economica";
+    src: url('../fonts/Economica-Regular.ttf');
+}
+@font-face{
+    font-family: "Economica-Bold";
+    src: url('../fonts/Economica-Bold.ttf');
+}
+@font-face{
+    font-family: "Economica-BoldItalic";
+    src: url('../fonts/Economica-BoldItalic.ttf');
+}
+@font-face{
+    font-family: "Economica-Italic";
+    src: url('../fonts/Economica-Italic.ttf');
+}
+
+
+html{
+    margin:0;
+    padding:0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+    font-family: Economica, sans-serif;
+}
+
+
+
+/**
+ * CABEÇALHO DO SITE
+ */
+#site-header{
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    z-index: 30;
+    background: rgba(0, 0, 0, .8);
+    color:white;
+    height: 60px;
+    bottom: auto;
+    top:auto;
+    overflow: hidden;
+}
+#site-header.aberto{
+    top:0;
+    bottom: 0;
+    height: auto;
+}
+#site-header .centro{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+#site-header #toggle-menu{
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    background: rgb(255, 90, 0);
+    border: none;
+    color:white;
+    cursor: pointer;
+    transition: .2s all ease-in;
+}
+#site-header #toggle-menu:hover{
+    background: white;
+    color: rgb(255, 50, 0);
+}
+#site-header #toggle-menu i:first-child{
+    display: block;
+}
+#site-header #toggle-menu i:last-child{
+    display: none;
+}
+#site-header.aberto #toggle-menu i:first-child{
+    display: none;
+}
+#site-header.aberto #toggle-menu i:last-child{
+    display: block;
+}
+
+#site-header ul{
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+    background: rgb(255, 90, 0);
+}
+
+#site-header a{
+    display: block;
+    padding-left: 90px; 
+    font-family: "Economica-Bold";
+    font-weight: normal;
+    line-height: 40px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color:white;
+    transition: .5s background ease;
+}
+#site-header a.logo{
+    visibility: hidden;
+    margin-left: 60px;
+    height: 60px;
+    background: url("../img/logo200x35.png") no-repeat 30px 50%;
+    opacity: 0;
+    transition: .5s opacity ease-in;
+}
+#site-header a.active, #site-header a:active, #site-header a:hover{
+    background-color: rgb(255, 50, 0);
+}
+#site-header.aberto a.logo{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+/**
+ * BARRA DE FERRAMENTAS
+ */
+#container-ferramentas{
+    position: fixed;
+    top:0;
+    left:60px;
+    z-index: 30;
+    height: 60px;
+    opacity: 1;
+}
+#container-ferramentas.aberto{
+    opacity: 0;
+    visibility: hidden;
+}
+#container-ferramentas .ferramenta{
+    width: 50px;
+    height: 60px;
+    background: rgb(255, 90, 0);
+    border:none;
+    font-size: 24px;
+    color:white;
+    cursor: pointer;
+    float:left;
+}
+#container-ferramentas .ferramenta:disabled{
+    opacity: .5;
+    cursor: not-allowed;
+}
+#container-ferramentas .ferramenta:disabled:hover{
+    background: rgb(255, 90, 0);
+}
+#container-ferramentas .ferramenta:hover{
+    background: rgb(255, 50, 0);
+}
+#container-ferramentas #play .fa-play, #container-ferramentas #play.play .fa-pause{
+    display: block;
+}
+#container-ferramentas #play .fa-pause, #container-ferramentas #play.play .fa-play{ 
+    display: none;
+}
+#container-ferramentas .grupo{
+    float: left;
+}
+#container-ferramentas .grupo form{
+    position: absolute;
+    top:0;
+    right:0;
+    display: none;
+}
+#container-ferramentas .grupo form input{
+    width: 400px;
+    height: 40px;
+    position: absolute;
+    right: 40px;
+    font-size: 24px;
+    font-family: "Economica";
+    color: rgb(255, 90, 0);
+    padding: 0 10px;
+    background: rgb(204, 204, 204);
+    border:none;
+}
+#container-ferramentas .grupo form input:focus{
+    background: rgb(224, 224, 224);
+}
+#container-ferramentas .grupo form input:focus + button{
+    background: rgb(255, 90,0);
+}
+#container-ferramentas .grupo form input.erro{
+    border: 1px solid red;
+    color: red;
+    background:  rgb(255, 150, 150);
+}
+#container-ferramentas #inputPesquisar{
+    width: 300px;
+}
+#container-ferramentas #inputData{
+    width: 90px;
+}
+#container-ferramentas .grupo form button{
+    width: 40px;
+    height: 40px;
+    background: rgb(102,102,102);
+    border:none;
+    position: absolute;
+    right: 0;
+    font-size: 24px;
+    color:white;
+    transition: .2s all ease;
+    cursor: pointer;
+}
+#container-ferramentas .grupo form button:hover {
+    background: rgb(255, 50, 0) !important;
+}
+#container-ferramentas .grupo form button i:first-child, #container-ferramentas .grupo form button.aguardando i:last-child{
+    display: block;
+}
+#container-ferramentas .grupo form button i:last-child, #container-ferramentas .grupo form button.aguardando i:first-child{
+    display: none;
+}
+
+
+
+
+/**
+ * DNA
+ * Dna animado com apenas uma cor. Compatível com todos os navegadores modernos (Utiliza CSS3 standard).
+ */
+
+
+@-webkit-keyframes fade-in {     
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} 
+@keyframes fade-in {     
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes fade-out {     
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}        
+@keyframes fade-out {     
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}        
+
+@-webkit-keyframes translate1 {     
+    0%{
+        left: 0;
+    }
+    50%{
+        left: 15em;
+    }
+    100%{
+        left: 0;
+    }
+}
+@keyframes translate1 {     
+    0%{
+        left: 0;
+    }
+    50%{
+        left: 15em;
+    }
+    100%{
+        left: 0;
+    }
+}
+
+@-webkit-keyframes translate2 {     
+    0%{
+        left:15em;
+    }
+    50%{
+        left:0em;
+    }
+    100%{
+        left:15em;
+    }
+}
+@keyframes translate2 {     
+    0%{
+        left:15em;
+    }
+    50%{
+        left:0em;
+    }
+    100%{
+        left:15em;
+    }
+}
+
+@-webkit-keyframes scale1 {  
+    0%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    35%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    65%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);	
+    }
+    85%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+}
+@keyframes scale1 {  
+    0%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    35%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+    }
+    65%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);	
+    }
+    85%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+}
+
+@-webkit-keyframes scale2 {  
+    0%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    35%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);	
+    }
+    65%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }         		
+    85%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        transform: scale(1.35); 	
+    }
+}
+@keyframes scale2 {  
+    0%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    15%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 	
+    }
+    35%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);	
+    }
+    65%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }         		
+    85%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }
+    100%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        transform: scale(1.35); 	
+    }
+}
+
+@-webkit-keyframes rotate{  
+    0%{
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        transform: rotateY(0); 	
+    }
+    50%{
+        -webkit-transform: rotateY(180deg); 
+        -ms-transform: rotateY(180deg); 
+        transform: rotateY(180deg); 	
+    }
+    100%{
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg); 	
+    }
+}
+@keyframes rotate{  
+    0%{
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        transform: rotateY(0); 	
+    }
+    50%{
+        -webkit-transform: rotateY(180deg); 
+        -ms-transform: rotateY(180deg); 
+        transform: rotateY(180deg); 	
+    }
+    100%{
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg); 	
+    }
+}
+
+@-webkit-keyframes pulsar{
+    0%{
+        -webkit-transform: scale(.5);
+        -ms-transform: scale(.5);
+        transform: scale(.5);
+    }
+    100%{
+        -webkit-transform: scale(2.5);
+        -ms-transform: scale(2.5);
+        transform: scale(2.5); 
+    }
+}
+@keyframes pulsar{
+    0%{
+        -webkit-transform: scale(.5);
+        -ms-transform: scale(.5);
+        transform: scale(.5);
+        display:block;
+    }
+    100%{
+        -webkit-transform: scale(2.5);
+        -ms-transform: scale(2.5);
+        transform: scale(2.5); 
+        display:block;
+    }
+}
+
+#container-dna{
+    background-color: white;
+    position: fixed;
+    width: 100%;
+}
+#dna{
+    width: 17em;
+    margin: 0px auto;
+    position: relative;
+    font-size: .75em;/*somente tamanhos multiplos de 5*/
+}
+.sequencia{
+    position: absolute;
+    top:0px;  
+}
+.z0 #container-dna{
+    font-size: .25em;
+}
+.z1 #container-dna{
+    font-size: .5em;
+}
+.z2 #container-dna{
+    font-size: .75em;
+}
+.z3 #container-dna{
+    font-size: 1em;
+}
+.z4 #container-dna{
+    font-size: 1.25em;
+}
+
+.helice{
+    position: relative;
+    width: 17em;
+    height: 2em;
+    padding-top:2em;  
+}
+.esfera1 {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: absolute;
+    background-color: rgb(255, 90, 0);
+}
+.esfera2 {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    background-color: rgb(255, 90, 0);
+}
+.haste{
+    position: absolute;
+    width: 12.5em;
+    height: .3em;
+    bottom: .85em;
+    margin-left: 2.25em;
+    margin-right: 2.25em;
+    background-color: rgb(255, 90, 0);
+}
+/*helice 0*/
+.helice:nth-child(5n+0) .esfera1{
+    left: 7.5em;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2); 
+}
+.helice:nth-child(5n+0) .esfera2{
+    left: 7.5em;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2); 
+}
+.helice:nth-child(5n+0) .haste{
+    -webkit-transform: rotateY(90deg); 
+    -ms-transform: rotateY(90deg); 
+    transform: rotateY(90deg); 
+}
+/*helice 1*/
+.helice:nth-child(5n+1) .esfera1{
+    left: 12em;
+    -webkit-transform: scale(.7);
+    -ms-transform: scale(.7);
+    transform: scale(.7);
+}
+.helice:nth-child(5n+1) .esfera2{
+    left: 2.5em;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2); 
+}
+.helice:nth-child(5n+1) .haste{
+    -webkit-transform: rotateY(140deg); 
+    -ms-transform: rotateY(140deg); 
+    transform: rotateY(140deg); 
+}
+/*helice 2*/
+.helice:nth-child(5n+2) .esfera1{
+    left: 0.38em;
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+}
+.helice:nth-child(5n+2) .esfera2{
+    left: 14.6em;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+.helice:nth-child(5n+2) .haste{
+    -webkit-transform: rotateY(170deg); 
+    -ms-transform: rotateY(170deg); 
+    transform: rotateY(170deg);
+}
+/*helice 3*/
+.helice:nth-child(5n+3) .esfera1{
+    left: 0.3em;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+.helice:nth-child(5n+3) .esfera2{
+    left: 14.6em;
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+}
+.helice:nth-child(5n+3) .haste{
+    -webkit-transform: rotateY(170deg); 
+    -ms-transform: rotateY(170deg); 
+    transform: rotateY(170deg);
+}
+/*helice 4*/
+.helice:nth-child(5n+4) .esfera1{
+    left: 2em;
+    -webkit-transform: scale(.7);
+    -ms-transform: scale(.7);
+    transform: scale(.7);
+}
+.helice:nth-child(5n+4) .esfera2{
+    left: 12.9em;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+}
+.helice:nth-child(5n+4) .haste{
+    -webkit-transform: rotateY(150deg); 
+    -ms-transform: rotateY(150deg); 
+    transform: rotateY(150deg);
+}
+
+.paused *{
+    -webkit-animation-play-state: paused !important;
+    animation-play-state: paused !important;
+}
+.play .helice{
+    -webkit-animation: fade-in 1s ease-in 0s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-play-state: running;
+
+    animation: fade-in 1s ease-in 0s;
+    animation-fill-mode: both;
+    animation-play-state: running;
+}
+.play .helice:nth-child(5n+0) *{
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+.play .helice:nth-child(5n+1) *{
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+.play .helice:nth-child(5n+2) *{
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+.play .helice:nth-child(5n+3) *{
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+}
+.play .helice:nth-child(5n+4) *{
+    -webkit-animation-delay: 2s;
+    animation-delay: 2s;
+}
+.play .esfera1{
+    -webkit-animation: translate1 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal, scale1 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate1 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal, scale1 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.play .esfera2{
+    -webkit-animation: translate2 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal, scale2 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate2 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal, scale2 5s linear 0s infinite normal;
+    animation-play-state: running; 
+}
+.play .haste{
+    -webkit-animation: rotate 5s cubic-bezier(.58, .13, .38, .95) 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: rotate 5s  cubic-bezier(.58, .13, .38, .95) 0s infinite normal;
+    animation-play-state: running;
+}
+
+
+/**
+ * MARCADORES DE EVENTOS
+ */
+
+#container-eventos{
+    position: absolute;
+    width: 100%;
+}
+.container-ano{
+    margin: 0;
+    font-size: 1.5em;
+    position: relative;
+}
+.container-ano:nth-child(2n+1){
+}
+.eventos{
+    position: absolute;
+    width: 100%;
+}
+.evento{
+    position: relative;
+    height: 1.5em;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    font-size: .83em;
+}
+#container-eventos, .container-ano{
+    -webkit-transition: 1s all ease;
+    transition: 1s all ease;
+}
+.evento{
+    -webkit-transition: 1s margin-bottom ease;
+    transition: 1s margin-bottom ease;
+}
+.evento *{
+    -webkit-transition: .5s all ease;
+    transition: .5s all ease;
+}
+.evento .circulo, .evento .circulo div{
+    -webkit-transition: none;
+    transition: none;
+}
+.evento .titulo{
+    padding: .0em .5em;
+    line-height: 1.5em;
+    height: 1.5em;
+    background: rgb(40, 70, 155);
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    color:white;
+    cursor: pointer;
+    -webkit-transition: .5s background-color ease-out;
+    transition: .5s background-color ease-out;
+
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+}
+.evento .circulo{
+    display: none;
+    height: 1.6em;
+    width: .75em;
+    position: absolute;
+    right: -.7em;
+    top:-1px;
+    overflow: hidden;
+}
+.evento .circulo > div{
+    height: 1.5em;
+    width: 1.5em;
+    background: rgb(40, 70, 155);
+    border-radius: 50%;
+    border: 1px solid white;
+    position: absolute;
+    right: 0em;
+}
+.evento .imagem{
+    background-image: url('../img/imagem1.jpg');
+    background-size: cover;
+    border-radius: 50%;
+    border: .15em solid rgb(40, 70, 155);
+    width: 1.1em;
+    height: 1.1em;
+    position: absolute;
+    top:.05em;
+    right: -.6em;
+    cursor: pointer;
+    display: none;
+}
+.evento .imagem i{
+    padding: .5em;
+    background: rgba(0,0,0, .3);
+    position: absolute;
+    bottom:-.1em;
+    right:-.15em;
+    border-radius: 50%;
+    font-size: .6em;
+    color:white;
+    visibility: visible;
+}
+.ponto{
+    display: none;
+    position: absolute;
+    left: -0.4em;
+    top:0.3em;
+    background: rgb(40, 70, 155);
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+}
+.seta{
+    position: absolute;
+    left:50%;
+    margin-left: -.5em;
+    top:-.4em;
+    width: 1em;
+    height: .4em;
+    overflow: hidden;
+}
+.seta span{
+    box-sizing: border-box;
+    position: absolute;
+    display: block;
+    background: rgb(40, 70, 155);
+    border: 1px solid white;
+    width: .6em;
+    height: .6em;
+    left:50%;
+    margin-left: -.3em;
+    margin-top: .1em;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.caixa-angulo-inf{
+    display: none;
+    position: absolute;
+    top:0;
+    left: -1.5em;
+    height: 1.5em;
+    width: 1.5em;
+    overflow: hidden;  
+}
+.caixa-angulo-inf .angulo{
+    position: absolute;
+    left:0;
+    top:-1.65em;
+    background: transparent;
+    width: 2em;
+    height: 2em;
+    border-radius: 25%;
+    border:5px solid rgb(40, 70, 155);
+}
+.caixa-angulo-sup{
+    display: none;
+    position: absolute;
+    height: 1.5em;
+    width: 3em;
+    top:-1.45em;
+    left: 3em;
+    overflow: hidden;
+}
+.caixa-angulo-sup .angulo{
+    position: absolute;
+    left:-.7em;
+    top:.65em;
+    background: transparent;
+    width: 2em;
+    height: 2em;
+    border-radius: 25%;
+    border:5px solid rgb(40, 70, 155);
+}
+.linha-vertical{
+    display: none;
+    position: absolute;
+    top:-2em;
+    left:-1.5em;
+    width: 5px;
+    background: rgb(40, 70, 155);
+}
+.linha-horizontal{
+    display: none;
+    background: rgb(40, 70, 155);
+    width: 3em;
+    height: 5px;
+    position: absolute;
+    top:-.8em;
+    left: 0em;
+}
+.marcador{
+    background: rgb(40, 70, 155);
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+    position: absolute;
+    top:-1.1em;
+    left: 50%;
+    margin-left: -.4em;
+}
+.marcador > span{
+    position: absolute;
+    width: .8em;
+    height: .8em;
+    background: rgb(40, 70, 155);
+    border-radius: 50%;
+    opacity: .5;
+    z-index: 1;
+}
+.tooltip{
+    background: rgb(26,26,26);
+    color:white;
+    position: absolute;
+    top:-3em;
+    left:50%;
+    margin-left: -1.3em;
+    font-family: "Economica-Bold";
+    padding: .4em .5em;
+    border-radius: 8%;
+    opacity: 0;
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    cursor: default;
+    z-index: 10;
+    visibility: hidden;
+}
+.tooltip > span{
+    background: rgb(26,26,26);
+    width: .7em;
+    height: .7em;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    left: 50%;
+    margin-left: -.35em;
+    bottom:-.3em;
+}
+.escala{
+    position: absolute;
+    left:0;
+    top:-1.1em;
+    border-top: 1px solid rgb(26,26,26);
+    color: rgb(26,26,26);
+    font-size: 0.7em;
+    padding-left: .5em;
+}
+.escala.decada{
+    font-size: 0.8em;
+    padding-left: .8em;
+}
+.evento:hover{
+    z-index: 10;
+}
+.evento:hover .titulo{
+    background: rgb(20, 36, 78);
+    height: auto;
+    white-space:normal;
+}
+.evento:hover .imagem{
+    width: 4.8em;
+    height: 4.8em;
+    right: -4.5em;
+    top:-1.25em;
+    border: .2em solid rgb(20, 36, 78) !important;
+}
+.evento:hover .imagem i{
+    visibility: hidden;
+}
+.evento:hover ~ .tooltip , .marcador:hover ~ .tooltip{
+    opacity: 1;
+    top:-4em;
+    visibility: visible;
+}
+.evento:hover .seta span{
+    background: rgb(20, 36, 78);
+}
+.evento:hover ~ .marcador > span, .marcador:hover > span{
+    -webkit-animation: pulsar 2s  ease-out 0s infinite alternate;
+    animation: pulsar 2s  ease-out 0s infinite alternate;
+}
+
+/*zoom*/
+.z0 #container-eventos{
+    padding-top: 6em;
+}
+
+.z0 .container-ano{/*todos os eventos sobrepostos*/
+    height: 3em;/*72px*/
+}
+.z1 .container-ano{
+    height: 7.5em;/*180px;*/
+}
+.z2 .container-ano{
+    height: 12.55em;/*300px;*/
+}
+.z3 .container-ano{
+    height: 17.5em;/*420px;*/
+}
+.z4 .container-ano{
+    height: 22.5em;/*540px;*/
+}
+
+.z0 .evento{/*todos os eventos sobrepostos*/
+    margin-bottom: -1.5em;/*1.5em altura do titulo*/
+}
+.z1 .evento{
+    margin-bottom: -1em;
+}
+.z2 .evento{
+    margin-bottom: -0.5em;
+}
+.z3 .evento{
+    margin-bottom: 0em;
+}
+.z4 .evento{
+    margin-bottom: 0.5em;
+}
+.z1 .evento:only-of-type .titulo, .z2 .evento:only-of-type .titulo, .z3 .evento:only-of-type .titulo, .z4 .evento:only-of-type .titulo{/*eventos unitários são exibidos expandidos*/
+    height: auto;
+    white-space:normal;
+}
+.z1 .evento:only-of-type .imagem, .z2 .evento:only-of-type .imagem, .z3 .evento:only-of-type .imagem, .z4 .evento:only-of-type .imagem{/*imagens em eventos unitários são exibidas expandidas*/
+    width: 4.8em;
+    height: 4.8em;
+    right: -4.5em;
+    top:-1.25em;
+    border: .2em solid rgb(40, 70, 155);
+}
+.z1 .evento:only-of-type .imagem i, .z2 .evento:only-of-type .imagem i, .z3 .evento:only-of-type .imagem i, .z4 .evento:only-of-type .imagem i{/*imagens em eventos unitários são exibidas expandidas*/
+    visibility: hidden;
+}
+
+.z0 .titulo, .z1 .titulo, .z2 .titulo, 
+.z0 .ponto, .z1 .ponto,.z2 .ponto,
+.z0 .linha-vertical, .z1 .linha-vertical, .z2 .linha-vertical{/*eventos sobrepostos*/
+    /*background: rgb(40, 70, 155);*/
+}
+.z0 .caixa-angulo-inf .angulo, .z1 .caixa-angulo-inf .angulo, .z2 .caixa-angulo-inf .angulo{/*eventos sobrepostos*/
+    /*border-color: rgb(40, 70, 155);*/
+}
+
+.z0 .linha-vertical{
+    top:0em;
+    height: 0em;/*-1.5 margin-bottom + 1.5 height*/
+}
+.z1 .linha-vertical{
+    top:-.5em;
+    height: .5em;/*-1 margin-bottom + 1.5 height*/
+}
+.z2 .linha-vertical{
+    top:-1em;
+    height: 1em;/*-0.5 margin-bottom + 1.5 height*/
+}
+.z3 .linha-vertical{
+    top:-1.5em;
+    height: 1.5em;/*0 margin-bottom + 1.5 height*/
+}
+.z4 .linha-vertical{
+    top:-2em;
+    height: 2em;/*.5 margin-bottom + 1.5 height*/
+}
+
+
+
+/**
+ * POPUP DETALHES
+ * ao clicar num evento da timeline, o popup  com os detalhes do evento é exibido.
+ */
+#cortina-detalhes{
+    background: rgba(0,0,0,0.8);
+    z-index: 20;
+    position: fixed;
+    width: 100%;
+    cursor: pointer;
+    display: none;
+}
+#container-detalhes{
+    background: rgb(240, 235, 225);
+    margin: 65px auto;
+    left:0;
+    right: 0;
+    width: 1000px;
+    position: fixed;
+    z-index: 25;
+    overflow-y: auto;
+    color: rgb(50, 50, 60);
+    display: none;
+}
+#container-detalhes #fechar{
+    position: fixed;
+    width: 940px;
+    margin: 30px auto;
+    left:0;
+    right: 0;
+}
+#container-detalhes #fechar i{
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+#container-detalhes aside{
+    width: 260px;
+    float: left;
+}
+#container-detalhes aside .biografia{
+    margin: 60px 0px 30px 30px;
+    border-bottom: 1px solid rgb(50, 50, 60);
+}
+#container-detalhes .biografia header{
+
+}
+#container-detalhes .biografia header h1{
+    font-family: "Economica-Bold";
+    font-weight: normal;
+    font-size: 28px;
+    margin: 0;
+}
+#container-detalhes .biografia header h2{
+    font-family: "Economica";
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0;
+}
+#container-detalhes .biografia h3{
+    font-family: "Economica-Bold";
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-bottom: 0;
+}
+#container-detalhes .biografia p{
+    margin-top: 0;
+    text-align: justify;
+}
+
+
+#container-detalhes section{
+    float: left;
+    margin-left: 60px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 590px;
+}
+#container-detalhes section h2{
+    font-family: "Economica";
+    font-size: 28px;
+    font-weight: normal;
+    margin:0;
+}
+#container-detalhes section h1{
+    font-family: "Economica-Bold";
+    font-size: 36px;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+#container-detalhes section p{
+    text-align: justify;
+    font-size: 19px;
+    line-height: 25px;
+}
+#container-detalhes article.extra{
+    margin-left: 60px;
+    margin-right: 30px;
+    margin-top:60px;
+    margin-bottom: 60px;
+}
+#container-detalhes .extra h1{
+    font-family: "Economica-Bold";
+    font-weight: normal;
+    font-size: 24px;
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 30px;
+    margin: 0;
+}
+#container-detalhes .extra h1 i{
+    position: absolute;
+    left: 0;
+}
+#container-detalhes .extra p{
+    margin-left: 30px;
+}
+
+
+a{
+    color: rgb(255, 90, 0);
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+figure{
+    text-align: center;
+}
+figure img{
+    max-width: 100%;
+}
+figure figcaption{
+    font-family: "Economica-Italic";
+    font-size: 14px;
+    /*text-align: left;*/
+}
+
+
+
+@media screen and (min-width:480px){
+    /**
+     * MARCADORES DE EVENTOS
+     */
+
+    #container-eventos{
+        position: absolute;
+        width: 100%;
+    }
+    .container-ano{
+        margin: 0;
+        font-size: 1.5em;
+        position: relative;
+    }
+    .eventos{
+        position: relative;
+        width: 15.6em;
+        margin:0 auto;
+    }
+    .evento{
+        position: relative;
+        height: 1.5em;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        font-size: .83em;
+    }
+    .evento .titulo{
+        padding: .0em .5em;
+        line-height: 1.5em;
+        height: 1.5em;
+        background: rgb(40, 70, 155);
+        border-bottom: 1px solid white;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+        color:white;
+        cursor: pointer;
+        -webkit-transition: .5s background-color ease-out;
+        transition: .5s background-color ease-out;
+
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;  
+    }
+    .evento .circulo{
+        display: block;
+        height: 1.6em;
+        width: .75em;
+        position: absolute;
+        right: -.7em;
+        top:-1px;
+        overflow: hidden;
+
+    }
+    .evento .circulo > div{
+        height: 1.5em;
+        width: 1.5em;
+        background: rgb(40, 70, 155);
+        border-radius: 50%;
+        border: 1px solid white;
+        position: absolute;
+        right: 0em;
+    }
+    .evento .imagem{
+        display: block;
+        background-image: url('../img/imagem1.jpg');
+        background-size: cover;
+        border-radius: 50%;
+        border: .15em solid rgb(40, 70, 155);
+        width: 1.1em;
+        height: 1.1em;
+        position: absolute;
+        top:.05em;
+        right: -.6em;
+        cursor: pointer;
+    }
+    .evento .imagem i{
+        padding: .5em;
+        background: rgba(0,0,0, .3);
+        position: absolute;
+        bottom:-.1em;
+        right:-.15em;
+        border-radius: 50%;
+        font-size: .6em;
+        color:white;
+        visibility: visible;
+    }
+    .ponto{
+        display: none;
+        position: absolute;
+        left: -0.4em;
+        top:0.3em;
+        background: rgb(40, 70, 155);
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+    }
+    .seta{
+        position: absolute;
+        left:50%;
+        margin-left: -.5em;
+        top:-.4em;
+        width: 1em;
+        height: .4em;
+        overflow: hidden;
+    }
+    .seta span{
+        box-sizing: border-box;
+        position: absolute;
+        display: block;
+        background: rgb(40, 70, 155);
+        border: 1px solid white;
+        width: .6em;
+        height: .6em;
+        left:50%;
+        margin-left: -.3em;
+        margin-top: .1em;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        cursor: pointer;
+    }
+    .caixa-angulo-inf{
+        display: none;
+        position: absolute;
+        top:0;
+        left: -1.5em;
+        height: 1.5em;
+        width: 1.5em;
+        overflow: hidden;  
+    }
+    .caixa-angulo-inf .angulo{
+        position: absolute;
+        left:0;
+        top:-1.65em;
+        background: transparent;
+        width: 2em;
+        height: 2em;
+        border-radius: 25%;
+        border:5px solid rgb(40, 70, 155);
+    }
+    .caixa-angulo-sup{
+        display: none;
+        position: absolute;
+        height: 1.5em;
+        width: 3em;
+        top:-1.45em;
+        left: 3em;
+        overflow: hidden;
+    }
+    .caixa-angulo-sup .angulo{
+        position: absolute;
+        left:-.7em;
+        top:.65em;
+        background: transparent;
+        width: 2em;
+        height: 2em;
+        border-radius: 25%;
+        border:5px solid rgb(40, 70, 155);
+    }
+    .linha-vertical{
+        display: none;
+        position: absolute;
+        top:-2em;
+        left:-1.5em;
+        width: 5px;
+        background: rgb(40, 70, 155);
+    }
+    .linha-horizontal{
+        display: none;
+        background: rgb(40, 70, 155);
+        width: 3em;
+        height: 5px;
+        position: absolute;
+        top:-.8em;
+        left: 0em;
+    }
+    .marcador{
+        background: rgb(40, 70, 155);
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+        position: absolute;
+        top:-1.1em;
+        left: 50%;
+        margin-left: -.4em;
+    }
+    .marcador > span{
+        position: absolute;
+        width: .8em;
+        height: .8em;
+        background: rgb(40, 70, 155);
+        border-radius: 50%;
+        opacity: .5;
+        z-index: 1;
+    }
+    .tooltip{
+        background: rgb(26,26,26);
+        color:white;
+        position: absolute;
+        top:-3em;
+        left:50%;
+        margin-left: -1.3em;
+        font-family: "Economica-Bold";
+        padding: .4em .5em;
+        border-radius: 8%;
+        opacity: 0;
+        -webkit-transition: all .5s ease-out;
+        transition: all .5s ease-out;
+        cursor: default;
+        z-index: 10;
+        visibility: hidden;
+    }
+    .tooltip > span{
+        background: rgb(26,26,26);
+        width: .7em;
+        height: .7em;
+        position: absolute;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        left: 50%;
+        margin-left: -.35em;
+        bottom:-.3em;
+    }
+    .escala{
+        position: absolute;
+        left:0;
+        top:-1.1em;
+        border-top: 1px solid rgb(26,26,26);
+        color: rgb(26,26,26);
+        font-size: 0.7em;
+        padding-left: .5em;
+    }
+    .escala.decada{
+        font-size: 0.8em;
+        padding-left: .8em;
+    }
+    .evento:hover{
+        z-index: 10;
+    }
+    .evento:hover .titulo{
+        background: rgb(20, 36, 78);
+        height: auto;
+        white-space:normal;
+        padding-right: 2.6em;
+    }
+    .evento:hover .imagem{
+        width: 4.8em;
+        height: 4.8em;
+        right: -2.4em;
+        top:-1.25em;
+        border: .2em solid rgb(20, 36, 78) !important;
+    }
+    .evento:hover .imagem i{
+        visibility: hidden;
+    }
+    .evento:hover ~ .tooltip , .marcador:hover ~ .tooltip{
+        opacity: 1;
+        top:-4em;
+        visibility: visible;
+    }
+    .evento:hover .seta span{
+        background: rgb(20, 36, 78);
+    }
+    .evento:hover ~ .marcador > span, .marcador:hover > span{
+        -webkit-animation: pulsar 2s  ease-out 0s infinite alternate;
+        animation: pulsar 2s  ease-out 0s infinite alternate;
+    }
+
+    /*zoom*/
+    .z0 #container-eventos{
+        padding-top: 6em;
+    }
+
+    .z0 .container-ano{/*todos os eventos sobrepostos*/
+        height: 3em;/*72px*/
+    }
+    .z1 .container-ano{
+        height: 7.5em;/*180px;*/
+    }
+    .z2 .container-ano{
+        height: 12.55em;/*300px;*/
+    }
+    .z3 .container-ano{
+        height: 17.5em;/*420px;*/
+    }
+    .z4 .container-ano{
+        height: 22.5em;/*540px;*/
+    }
+
+    .z0 .evento{/*todos os eventos sobrepostos*/
+        margin-bottom: -1.5em;/*1.5em altura do titulo*/
+    }
+    .z1 .evento{
+        margin-bottom: -1em;
+    }
+    .z2 .evento{
+        margin-bottom: -0.5em;
+    }
+    .z3 .evento{
+        margin-bottom: 0em;
+    }
+    .z4 .evento{
+        margin-bottom: 0.5em;
+    }
+    .z1 .evento:only-of-type .titulo, .z2 .evento:only-of-type .titulo, .z3 .evento:only-of-type .titulo, .z4 .evento:only-of-type .titulo{/*eventos unitários são exibidos expandidos*/
+        height: auto;
+        white-space:normal;
+        padding-right: 2.6em;
+    }
+    .z1 .evento:only-of-type .imagem, .z2 .evento:only-of-type .imagem, .z3 .evento:only-of-type .imagem, .z4 .evento:only-of-type .imagem{/*imagens em eventos unitários são exibidas expandidas*/
+        width: 4.8em;
+        height: 4.8em;
+        right: -2.4em;
+        top:-1.25em;
+        border: .2em solid rgb(40, 70, 155);
+    }
+    .z1 .evento:only-of-type .imagem i, .z2 .evento:only-of-type .imagem i, .z3 .evento:only-of-type .imagem i, .z4 .evento:only-of-type .imagem i{/*imagens em eventos unitários são exibidas expandidas*/
+        visibility: hidden;
+    }
+
+    .z0 .titulo, .z1 .titulo, .z2 .titulo, 
+    .z0 .ponto, .z1 .ponto,.z2 .ponto,
+    .z0 .linha-vertical, .z1 .linha-vertical, .z2 .linha-vertical{/*eventos sobrepostos*/
+        /*background: rgb(40, 70, 155);*/
+    }
+    .z0 .caixa-angulo-inf .angulo, .z1 .caixa-angulo-inf .angulo, .z2 .caixa-angulo-inf .angulo{/*eventos sobrepostos*/
+        /*border-color: rgb(40, 70, 155);*/
+    }
+
+    .z0 .linha-vertical{
+        top:0em;
+        height: 0em;/*-1.5 margin-bottom + 1.5 height*/
+    }
+    .z1 .linha-vertical{
+        top:-.5em;
+        height: .5em;/*-1 margin-bottom + 1.5 height*/
+    }
+    .z2 .linha-vertical{
+        top:-1em;
+        height: 1em;/*-0.5 margin-bottom + 1.5 height*/
+    }
+    .z3 .linha-vertical{
+        top:-1.5em;
+        height: 1.5em;/*0 margin-bottom + 1.5 height*/
+    }
+    .z4 .linha-vertical{
+        top:-2em;
+        height: 2em;/*.5 margin-bottom + 1.5 height*/
+    }
+}
+
+@media screen and (min-width: 768px){
+    /**
+     * CABEÇALHO DO SITE
+     */
+    #site-header, #site-header.aberto{
+        position: fixed;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 60px;
+        z-index: 30;
+        background: rgb(255, 90, 0);
+        color:white;
+    }
+    #site-header .centro{
+        width: 750px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    #site-header #toggle-menu{
+        display: none;
+    }
+    #site-header ul{
+        margin:0;
+        padding: 0;
+        list-style-type: none;
+    }
+    #site-header ul li{
+        float:left;
+    }
+    #site-header a{
+        display: block;
+        padding: 0 16px; 
+        font-family: "Economica-Bold";
+        font-weight: normal;
+        line-height: 60px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color:white;
+        transition: .5s background ease;
+    }
+    #site-header a.logo{
+        visibility: visible;
+        opacity: 1;
+        width: 200px;
+        height: 60px;
+        margin-left: 0;
+        background: url("../img/logo200x35.png") no-repeat 50% 50%;
+    }
+    #site-header a.active, #site-header a:active, #site-header a:hover{
+        background-color: rgb(255, 50, 0);
+    }
+
+
+
+    /**
+     * BARRA DE FERRAMENTAS
+     */
+    #container-ferramentas{
+        position: fixed;
+        top:100px;
+        right:0;
+        left:auto;
+        z-index: 15;
+        width: 40px;
+    }
+    #container-ferramentas .ferramenta{
+        width: 40px;
+        height: 40px;
+        background: rgba(102,102,102, .5);
+        border:none;
+        border-top-left-radius: 10%;
+        border-bottom-left-radius: 10%;
+        margin-bottom: 5px;
+        font-size: 24px;
+        color:white;
+        cursor: pointer;
+    }
+    #container-ferramentas .ferramenta:disabled{
+        opacity: .5;
+        cursor: not-allowed;
+    }
+    #container-ferramentas .ferramenta:disabled:hover{
+        background: rgba(102,102,102, .5);
+    }
+    #container-ferramentas .ferramenta:hover{
+        background: rgba(102,102,102, 1);
+    }
+    #container-ferramentas #play .fa-play, #container-ferramentas #play.play .fa-pause{
+        display: block;
+    }
+    #container-ferramentas #play .fa-pause, #container-ferramentas #play.play .fa-play{ 
+        display: none;
+    }
+    #container-ferramentas .grupo{
+        position: relative;
+    }
+    #container-ferramentas .grupo form{
+        position: absolute;
+        top:0;
+        right:0;
+        display: none;
+    }
+    #container-ferramentas .grupo form input{
+        width: 400px;
+        height: 40px;
+        position: absolute;
+        right: 40px;
+        font-size: 24px;
+        font-family: "Economica";
+        color: rgb(255, 90, 0);
+        padding: 0 10px;
+        background: rgb(204, 204, 204);
+        border:none;
+    }
+    #container-ferramentas .grupo form input:focus{
+        background: rgb(224, 224, 224);
+    }
+    #container-ferramentas .grupo form input:focus + button{
+        background: rgb(255, 90,0);
+    }
+    #container-ferramentas .grupo form input.erro{
+        border: 1px solid red;
+        color: red;
+        background:  rgb(255, 150, 150);
+    }
+    #container-ferramentas #inputPesquisar{
+        width: 300px;
+    }
+    #container-ferramentas #inputData{
+        width: 90px;
+    }
+    #container-ferramentas .grupo form button{
+        width: 40px;
+        height: 40px;
+        background: rgb(102,102,102);
+        border:none;
+        position: absolute;
+        right: 0;
+        font-size: 24px;
+        color:white;
+        transition: .2s all ease;
+        cursor: pointer;
+    }
+    #container-ferramentas .grupo form button:hover {
+        background: rgb(255, 50, 0) !important;
+    }
+    #container-ferramentas .grupo form button i:first-child, #container-ferramentas .grupo form button.aguardando i:last-child{
+        display: block;
+    }
+    #container-ferramentas .grupo form button i:last-child, #container-ferramentas .grupo form button.aguardando i:first-child{
+        display: none;
+    }
+
+
+
+    /**
+     * DNA
+     */
+    #dna{
+        width: 17em;
+        left: 15%;
+        margin: -8.5em;
+        position: relative;
+        font-size: .75em;/*somente tamanhos multiplos de 5*/
+    }
+
+    /**
+     * MARCADORES DE EVENTOS
+     */
+
+    #container-eventos{
+        position: absolute;
+        width: 100%;
+    }
+    .container-ano{
+        margin: 0;
+        font-size: 1.5em;
+        position: relative;
+    }
+    .eventos{
+        position: absolute;
+        left: 15%;
+        width: 15.4em;
+    }
+    .evento{
+        position: relative;
+        font-size: 1em;
+        height: 1.5em;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        left:6em;
+    }
+    .evento .titulo{
+        padding: .0em .5em;
+        line-height: 1.5em;
+        height: 1.5em;
+        background: rgb(40, 70, 155);
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        color:white;
+        cursor: pointer;
+        -webkit-transition: .5s background-color ease-out;
+        transition: .5s background-color ease-out;
+
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;  
+    }
+    .evento .circulo{
+        height: 1.6em;
+        width: .75em;
+        position: absolute;
+        right: -.7em;
+        top:-1px;
+        overflow: hidden;
+        display: block;
+    }
+    .evento .circulo > div{
+        height: 1.5em;
+        width: 1.5em;
+        background: rgb(40, 70, 155);
+        border-radius: 50%;
+        border: 1px solid white;
+        position: absolute;
+        right: 0em;
+    }
+    .evento .imagem{
+        background-image: url('../img/imagem1.jpg');
+        background-size: cover;
+        border-radius: 50%;
+        border: .15em solid rgb(40, 70, 155);
+        width: 1.1em;
+        height: 1.1em;
+        position: absolute;
+        top:.05em;
+        right: -.6em;
+        cursor: pointer;
+        display: block;
+    }
+    .evento .imagem i{
+        padding: .5em;
+        background: rgba(0,0,0, .3);
+        position: absolute;
+        bottom:-.1em;
+        right:-.15em;
+        border-radius: 50%;
+        font-size: .6em;
+        color:white;
+        visibility: visible;
+    }
+    .ponto{
+        display: block;
+        position: absolute;
+        left: -0.4em;
+        top:0.3em;
+        background: rgb(40, 70, 155);
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+    }
+    .seta{
+        display: none;
+    }
+    .caixa-angulo-inf{
+        display: block;
+        position: absolute;
+        top:0;
+        left: -1.5em;
+        height: 1.5em;
+        width: 1.5em;
+        overflow: hidden;  
+    }
+    .caixa-angulo-inf .angulo{
+        position: absolute;
+        left:0;
+        top:-1.65em;
+        background: transparent;
+        width: 2em;
+        height: 2em;
+        border-radius: 25%;
+        border:5px solid rgb(40, 70, 155);
+    }
+    .caixa-angulo-sup{
+        display: block;
+        position: absolute;
+        height: 1.5em;
+        width: 3em;
+        top:-1.45em;
+        left: 3em;
+        overflow: hidden;
+    }
+    .caixa-angulo-sup .angulo{
+        position: absolute;
+        left:-.7em;
+        top:.65em;
+        background: transparent;
+        width: 2em;
+        height: 2em;
+        border-radius: 25%;
+        border:5px solid rgb(40, 70, 155);
+    }
+    .linha-vertical{
+        display: block;
+        position: absolute;
+        top:-2em;
+        left:-1.5em;
+        width: 5px;
+        background: rgb(40, 70, 155);
+    }
+    .container-ano .evento:first-child .linha-vertical{
+        display: none;
+    }
+    .linha-horizontal{
+        display: block;
+        background: rgb(40, 70, 155);
+        width: 3em;
+        height: 5px;
+        position: absolute;
+        top:-.8em;
+        left: 0em;
+    }
+    .marcador{
+        background: rgb(40, 70, 155);
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+        position: absolute;
+        top:-1.1em;
+        left: -0.4em;
+        margin-left: 0;
+    }
+    .marcador > span{
+        position: absolute;
+        width: .8em;
+        height: .8em;
+        background: rgb(40, 70, 155);
+        border-radius: 50%;
+        opacity: .5;
+        z-index: 1;
+    }
+    .tooltip{
+        background: rgb(26,26,26);
+        color:white;
+        position: absolute;
+        top:-1.7em;
+        left:-3em;
+        margin-left: 0;
+        font-family: "Economica-Bold";
+        padding: .4em .5em;
+        border-radius: 8%;
+        opacity: 0;
+        -webkit-transition: all .5s ease-out;
+        transition: all .5s ease-out;
+        cursor: default;
+    }
+    .tooltip > span{
+        background: rgb(26,26,26);
+        width: .7em;
+        height: .7em;
+        position: absolute;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        right: -.35em;
+        top:.6em;
+        left: auto;
+        margin-left: 0;
+    }
+    .escala{
+        position: absolute;
+        left:0;
+        top:-1em;
+        border-top: 1px solid rgb(26,26,26);
+        color: rgb(26,26,26);
+        font-size: 0.7em;
+        padding-left: .5em;
+    }
+    .escala.decada{
+        font-size: 0.8em;
+        padding-left: .8em;
+    }
+    .evento:hover{
+        z-index: 10;
+    }
+    .evento:hover .titulo{
+        background: rgb(20, 36, 78);
+        height: auto;
+        white-space:normal;
+        padding-right: .5em;
+    }
+    .evento:hover .imagem{
+        width: 4.8em;
+        height: 4.8em;
+        right: -4.5em;
+        top:-1.25em;
+        border: .2em solid rgb(20, 36, 78) !important;
+    }
+    .evento:hover .imagem i{
+        visibility: hidden;
+    }
+    .evento:hover ~ .tooltip , .marcador:hover ~ .tooltip{
+        opacity: 1;
+        left:-4.5em;
+        top:-1.7em;
+    }
+    .evento:hover ~ .marcador > span, .marcador:hover > span{
+        -webkit-animation: pulsar 2s  ease-out 0s infinite alternate;
+        animation: pulsar 2s  ease-out 0s infinite alternate;
+    }
+
+
+    /*zoom*/
+    .z0 #container-eventos{
+        padding-top: 6em;
+    }
+
+    .z0 .container-ano{/*todos os eventos sobrepostos*/
+        height: 2.5em;/*60px;*/
+    }
+    .z1 .container-ano{
+        height: 7.5em;/*180px;*/
+    }
+    .z2 .container-ano{
+        height: 12.55em;/*300px;*/
+    }
+    .z3 .container-ano{
+        height: 17.5em;/*420px;*/
+    }
+    .z4 .container-ano{
+        height: 22.5em;/*540px;*/
+    }
+
+    .z0 .evento{/*todos os eventos sobrepostos*/
+        margin-bottom: -1.5em;/*1.5em altura do titulo*/
+    }
+    .z1 .evento{
+        margin-bottom: -1em;
+    }
+    .z2 .evento{
+        margin-bottom: -0.5em;
+    }
+    .z3 .evento{
+        margin-bottom: 0em;
+    }
+    .z4 .evento{
+        margin-bottom: 0.5em;
+    }
+    .z1 .evento:only-of-type .titulo, .z2 .evento:only-of-type .titulo, .z3 .evento:only-of-type .titulo, .z4 .evento:only-of-type .titulo{/*eventos unitários são exibidos expandidos*/
+        height: auto;
+        white-space:normal;
+        padding-right: .5em;
+    }
+    .z1 .evento:only-of-type .imagem, .z2 .evento:only-of-type .imagem, .z3 .evento:only-of-type .imagem, .z4 .evento:only-of-type .imagem{/*imagens em eventos unitários são exibidas expandidas*/
+        width: 4.8em;
+        height: 4.8em;
+        right: -4.5em;
+        top:-1.25em;
+        border: .2em solid rgb(40, 70, 155);
+    }
+    .z1 .evento:only-of-type .imagem i, .z2 .evento:only-of-type .imagem i, .z3 .evento:only-of-type .imagem i, .z4 .evento:only-of-type .imagem i{/*imagens em eventos unitários são exibidas expandidas*/
+        visibility: hidden;
+    }
+
+    .z0 .titulo, .z1 .titulo, .z2 .titulo, 
+    .z0 .ponto, .z1 .ponto,.z2 .ponto,
+    .z0 .linha-vertical, .z1 .linha-vertical, .z2 .linha-vertical{/*eventos sobrepostos*/
+        /*background: rgb(40, 70, 155);*/
+    }
+    .z0 .caixa-angulo-inf .angulo, .z1 .caixa-angulo-inf .angulo, .z2 .caixa-angulo-inf .angulo{/*eventos sobrepostos*/
+        /*border-color: rgb(40, 70, 155);*/
+    }
+
+    .z0 .linha-vertical{
+        top:0em;
+        height: 0em;/*-1.5 margin-bottom + 1.5 height*/
+    }
+    .z1 .linha-vertical{
+        top:-.5em;
+        height: .5em;/*-1 margin-bottom + 1.5 height*/
+    }
+    .z2 .linha-vertical{
+        top:-1em;
+        height: 1em;/*-0.5 margin-bottom + 1.5 height*/
+    }
+    .z3 .linha-vertical{
+        top:-1.5em;
+        height: 1.5em;/*0 margin-bottom + 1.5 height*/
+    }
+    .z4 .linha-vertical{
+        top:-2em;
+        height: 2em;/*.5 margin-bottom + 1.5 height*/
+    }
+}
+
+
+@media screen and (min-width: 1024px){
+    /**
+   * CABEÇALHO DO SITE
+   */
+    #site-header{
+        position: fixed;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 60px;
+        z-index: 30;
+        background: rgb(255, 90, 0);
+        color:white;
+    }
+    #site-header .centro{
+        width: 750px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    #site-header ul{
+        margin:0;
+        padding: 0;
+        list-style-type: none;
+    }
+    #site-header ul li{
+        float:left;
+    }
+    #site-header a{
+        display: block;
+        padding: 0 16px; 
+        font-family: "Economica-Bold";
+        font-weight: normal;
+        line-height: 60px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color:white;
+        transition: .5s background ease;
+    }
+    #site-header a.logo{
+        width: 200px;
+        height: 60px;
+        background: url("../img/logo200x35.png") no-repeat 50% 50%;
+    }
+    #site-header a.active, #site-header a:active, #site-header a:hover{
+        background-color: rgb(255, 50, 0);
+    }
+
+
+    /**
+     * DNA
+     */
+    #dna{
+        left: 25%;
+    }
+
+    /**
+     * MARCADORES DE EVENTOS
+     */
+    .eventos{
+        left: 25%;
+    }
+}
+
+
+@media screen and (min-width: 1280px){
+    /**
+     * CABEÇALHO DO SITE
+     */
+    #site-header{
+        position: fixed;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 60px;
+        z-index: 30;
+        background: rgb(255, 90, 0);
+        color:white;
+    }
+    #site-header .centro{
+        width: 1000px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    #site-header ul{
+        margin:0;
+        padding: 0;
+        list-style-type: none;
+    }
+    #site-header ul li{
+        float:left;
+    }
+    #site-header a{
+        display: block;
+        padding: 0 37px; 
+        font-family: "Economica-Bold";
+        font-weight: normal;
+        line-height: 60px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color:white;
+        transition: .5s background ease;
+    }
+    #site-header a.logo{
+        width: 200px;
+        height: 60px;
+        background: url("../img/logo200x35.png") no-repeat 50% 50%;
+    }
+    #site-header a.active, #site-header a:active, #site-header a:hover{
+        background-color: rgb(255, 50, 0);
+    }
+
+    /**
+     * DNA
+     */
+    #dna{
+        width: 17em;
+        margin: 0px auto;
+        left:0;
+        position: relative;
+        font-size: .75em;/*somente tamanhos multiplos de 5*/
+    }
+
+    /**
+    * MARCADORES DE EVENTOS
+    */
+
+    /*eventos à direita do DNA*/
+    #container-eventos{
+        position: absolute;
+        width: 100%;
+    }
+    .container-ano{
+        margin: 0;
+        font-size: 1.5em;
+        position: relative;
+    }
+    .eventos{
+        position: absolute;
+        left: 50%;
+        width: 15.4em;
+    }
+    .evento{
+        position: relative;
+        font-size: 1em;
+        height: 1.5em;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        left:6em;
+    }
+    .evento .titulo{
+        padding: .0em .5em;
+        line-height: 1.5em;
+        height: 1.5em;
+        background: rgb(40, 70, 155);
+        border-bottom: 1px solid white;
+        border-right: 1px solid white;
+        color:white;
+        cursor: pointer;
+        -webkit-transition: .5s background-color ease-out;
+        transition: .5s background-color ease-out;
+
+        white-space:nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;  
+    }
+    .evento .circulo{
+        height: 1.6em;
+        width: .75em;
+        position: absolute;
+        right: -.7em;
+        top:-1px;
+        overflow: hidden;
+        display: block;
+    }
+    .evento .circulo > div{
+        height: 1.5em;
+        width: 1.5em;
+        background: rgb(40, 70, 155);
+        border-radius: 50%;
+        border: 1px solid white;
+        position: absolute;
+        right: 0em;
+    }
+    .evento .imagem{
+        background-image: url('../img/imagem1.jpg');
+        background-size: cover;
+        border-radius: 50%;
+        border: .15em solid rgb(40, 70, 155);
+        width: 1.1em;
+        height: 1.1em;
+        position: absolute;
+        top:.05em;
+        right: -.6em;
+        cursor: pointer;
+        display: block;
+    }
+    .evento .imagem i{
+        padding: .5em;
+        background: rgba(0,0,0, .3);
+        position: absolute;
+        bottom:-.1em;
+        right:-.15em;
+        border-radius: 50%;
+        font-size: .6em;
+        color:white;
+        visibility: visible;
+    }
+    .ponto{
+        display: block;
+        position: absolute;
+        left: -0.4em;
+        top:0.3em;
+        background: rgb(40, 70, 155);
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+    }
+    .seta{
+        display: none;
+    }
+    .caixa-angulo-inf{
+        display: block;
+        position: absolute;
+        top:0;
+        left: -1.5em;
+        height: 1.5em;
+        width: 1.5em;
+        overflow: hidden;  
+    }
+    .caixa-angulo-inf .angulo{
+        position: absolute;
+        left:0;
+        top:-1.65em;
+        background: transparent;
+        width: 2em;
+        height: 2em;
+        border-radius: 25%;
+        border:5px solid rgb(40, 70, 155);
+    }
+    .caixa-angulo-sup{
+        display: block;
+        position: absolute;
+        height: 1.5em;
+        width: 3em;
+        top:-1.45em;
+        left: 3em;
+        overflow: hidden;
+    }
+    .caixa-angulo-sup .angulo{
+        position: absolute;
+        left:-.7em;
+        top:.65em;
+        background: transparent;
+        width: 2em;
+        height: 2em;
+        border-radius: 25%;
+        border:5px solid rgb(40, 70, 155);
+    }
+    .linha-vertical{
+        display: block;
+        position: absolute;
+        top:-2em;
+        left:-1.5em;
+        width: 5px;
+        background: rgb(40, 70, 155);
+    }
+    .container-ano .evento:first-child .linha-vertical{
+        display: none;
+    }
+    .linha-horizontal{
+        display: block;
+        background: rgb(40, 70, 155);
+        width: 3em;
+        height: 5px;
+        position: absolute;
+        top:-.8em;
+        left: 0em;
+    }
+    .marcador{
+        background: rgb(40, 70, 155);
+        width: .8em;
+        height: .8em;
+        border-radius: 50%;
+        position: absolute;
+        top:-1.1em;
+        left: -0.4em;
+        margin-left: 0;
+    }
+    .marcador > span{
+        position: absolute;
+        width: .8em;
+        height: .8em;
+        background: rgb(40, 70, 155);
+        border-radius: 50%;
+        opacity: .5;
+        z-index: 1;
+    }
+    .tooltip{
+        background: rgb(26,26,26);
+        color:white;
+        position: absolute;
+        top:-1.7em;
+        left:-3em;
+        margin-left: 0;
+        font-family: "Economica-Bold";
+        padding: .4em .5em;
+        border-radius: 8%;
+        opacity: 0;
+        -webkit-transition: all .5s ease-out;
+        transition: all .5s ease-out;
+        cursor: default;
+    }
+    .tooltip > span{
+        background: rgb(26,26,26);
+        width: .7em;
+        height: .7em;
+        position: absolute;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        right: -.35em;
+        top:.6em;
+        left: auto;
+        margin-left: 0;
+    }
+    .escala{
+        position: absolute;
+        left:0;
+        top:-1em;
+        border-top: 1px solid rgb(26,26,26);
+        color: rgb(26,26,26);
+        font-size: 0.7em;
+        padding-left: .5em;
+    }
+    .escala.decada{
+        font-size: 0.8em;
+        padding-left: .8em;
+    }
+    .evento:hover{
+        z-index: 10;
+    }
+    .evento:hover .titulo{
+        background: rgb(20, 36, 78);
+        height: auto;
+        white-space:normal;
+        padding-right: .5em;
+    }
+    .evento:hover .imagem{
+        width: 4.8em;
+        height: 4.8em;
+        right: -4.5em;
+        top:-1.25em;
+        border: .2em solid rgb(20, 36, 78) !important;
+    }
+    .evento:hover .imagem i{
+        visibility: hidden;
+    }
+    .evento:hover ~ .tooltip , .marcador:hover ~ .tooltip{
+        opacity: 1;
+        left:-4.5em;
+        top:-1.7em;
+    }
+    .evento:hover ~ .marcador > span, .marcador:hover > span{
+        -webkit-animation: pulsar 2s  ease-out 0s infinite alternate;
+        animation: pulsar 2s  ease-out 0s infinite alternate;
+    }
+
+    /*eventos à esquerda do DNA*/
+    .container-ano:nth-child(2n){
+    }
+    .container-ano:nth-child(2n) .eventos{
+        left: auto;
+        right: 50%;  
+    }
+    .container-ano:nth-child(2n) .evento{
+        left:-6em;
+    }
+    .container-ano:nth-child(2n) .evento .titulo{
+        padding-left: .7em;
+        padding-right: .3em;
+    }
+    .container-ano:nth-child(2n) .evento .circulo{
+        right: auto;
+        left: -.7em;
+    }
+    .container-ano:nth-child(2n) .evento .circulo > div{
+        right: auto;
+        left: 0em;
+    }
+    .container-ano:nth-child(2n) .evento .imagem{
+        right: auto;
+        left: -.6em;
+    }
+    .container-ano:nth-child(2n) .evento .imagem i{
+        bottom:-.1em;
+        right:auto;
+        left:-.15em;
+    }
+    .container-ano:nth-child(2n) .ponto{
+        left: auto;
+        right: -0.4em;
+    }
+    .container-ano:nth-child(2n) .caixa-angulo-inf{
+        left: auto;
+        right: -1.5em;
+    }
+    .container-ano:nth-child(2n) .caixa-angulo-inf .angulo{
+        left:auto;
+        right: 0;
+    }
+    .container-ano:nth-child(2n) .caixa-angulo-sup{
+        left: auto;
+        right: 3em;
+    }
+    .container-ano:nth-child(2n) .caixa-angulo-sup .angulo{
+        left:auto;
+        right: -.725em;
+    }
+    .container-ano:nth-child(2n) .linha-vertical{
+        left:auto;
+        right: -1.5em;
+    }
+    .container-ano:nth-child(2n) .linha-horizontal{
+        left: auto;
+        right: 0em;
+    }
+    .container-ano:nth-child(2n) .marcador{
+        left: auto;
+        right: -0.4em;
+    }
+    .container-ano:nth-child(2n) .tooltip{
+        left:auto;
+        right: -3em;
+    }
+    .container-ano:nth-child(2n) .tooltip > span{
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        right: auto;
+        left: -.35em;
+    }
+    .container-ano:nth-child(2n) .evento:hover .imagem{
+        right: auto;
+        left:-4.5em;
+    }
+    .container-ano:nth-child(2n) .evento:hover ~ .tooltip , .container-ano:nth-child(2n) .marcador:hover ~ .tooltip{
+        left:auto;
+        right: -4.5em;
+    }
+
+
+
+    /*zoom*/
+    .z0 #container-eventos{
+        padding-top: 6em;
+    }
+
+    .z0 .container-ano{/*todos os eventos sobrepostos*/
+        height: 2.5em;/*60px;*/
+    }
+    .z1 .container-ano{
+        height: 7.5em;/*180px;*/
+    }
+    .z2 .container-ano{
+        height: 12.55em;/*300px;*/
+    }
+    .z3 .container-ano{
+        height: 17.5em;/*420px;*/
+    }
+    .z4 .container-ano{
+        height: 22.5em;/*540px;*/
+    }
+
+    .z0 .evento{/*todos os eventos sobrepostos*/
+        margin-bottom: -1.5em;/*1.5em altura do titulo*/
+    }
+    .z1 .evento{
+        margin-bottom: -1em;
+    }
+    .z2 .evento{
+        margin-bottom: -0.5em;
+    }
+    .z3 .evento{
+        margin-bottom: 0em;
+    }
+    .z4 .evento{
+        margin-bottom: 0.5em;
+    }
+    .z1 .evento:only-of-type .titulo, .z2 .evento:only-of-type .titulo, .z3 .evento:only-of-type .titulo, .z4 .evento:only-of-type .titulo{/*eventos unitários são exibidos expandidos*/
+        height: auto;
+        white-space:normal;
+        padding-right: .5em;
+    }
+    .z1 .evento:only-of-type .imagem, .z2 .evento:only-of-type .imagem, .z3 .evento:only-of-type .imagem, .z4 .evento:only-of-type .imagem{/*imagens em eventos unitários são exibidas expandidas*/
+        width: 4.8em;
+        height: 4.8em;
+        right: -4.5em;
+        top:-1.25em;
+        border: .2em solid rgb(40, 70, 155);
+    }
+    .z1 .container-ano:nth-child(2n) .evento:only-of-type .imagem, .z2 .container-ano:nth-child(2n) .evento:only-of-type .imagem, .z3 .container-ano:nth-child(2n) .evento:only-of-type .imagem, .z4 .container-ano:nth-child(2n) .evento:only-of-type .imagem{/*imagens em eventos unitários são exibidas expandidas*/
+        right: auto;
+        left:-4.5em;
+    }
+    .z1 .evento:only-of-type .imagem i, .z2 .evento:only-of-type .imagem i, .z3 .evento:only-of-type .imagem i, .z4 .evento:only-of-type .imagem i{/*imagens em eventos unitários são exibidas expandidas*/
+        visibility: hidden;
+    }
+
+    .z0 .titulo, .z1 .titulo, .z2 .titulo, 
+    .z0 .ponto, .z1 .ponto,.z2 .ponto,
+    .z0 .linha-vertical, .z1 .linha-vertical, .z2 .linha-vertical{/*eventos sobrepostos*/
+        /*background: rgb(40, 70, 155);*/
+    }
+    .z0 .caixa-angulo-inf .angulo, .z1 .caixa-angulo-inf .angulo, .z2 .caixa-angulo-inf .angulo{/*eventos sobrepostos*/
+        /*border-color: rgb(40, 70, 155);*/
+    }
+
+    .z0 .linha-vertical{
+        top:0em;
+        height: 0em;/*-1.5 margin-bottom + 1.5 height*/
+    }
+    .z1 .linha-vertical{
+        top:-.5em;
+        height: .5em;/*-1 margin-bottom + 1.5 height*/
+    }
+    .z2 .linha-vertical{
+        top:-1em;
+        height: 1em;/*-0.5 margin-bottom + 1.5 height*/
+    }
+    .z3 .linha-vertical{
+        top:-1.5em;
+        height: 1.5em;/*0 margin-bottom + 1.5 height*/
+    }
+    .z4 .linha-vertical{
+        top:-2em;
+        height: 2em;/*.5 margin-bottom + 1.5 height*/
+    }
+}

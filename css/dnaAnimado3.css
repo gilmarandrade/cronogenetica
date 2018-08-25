@@ -1,0 +1,723 @@
+/*
+Dna animado com 4 cores e efeito de sombra. Compatível com todos os navegadores modernos (Utiliza CSS3 standard).
+*/
+@-webkit-keyframes fade-in {     
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} 
+@keyframes fade-in {     
+    0%{
+        opacity:0;
+    }
+    100%{
+        opacity:1;
+    }
+} 
+
+@-webkit-keyframes fade-out {     
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}                   
+@keyframes fade-out {     
+    0%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}        
+
+@-webkit-keyframes translate-front {     
+    0%{
+        left: 0;
+        visibility: visible;
+    }
+    50%{
+        left: 15em;
+        visibility: hidden;
+    }
+    100%{
+        left: 15em;
+        visibility: hidden;
+    }
+}
+@keyframes translate-front {     
+    0%{
+        left: 0;
+        visibility: visible;
+    }
+    50%{
+        left: 15em;
+        visibility: hidden;
+    }
+    100%{
+        left: 15em;
+        visibility: hidden;
+    }
+}
+
+
+@-webkit-keyframes translate-back {     
+    0%{
+        left: 15em;
+        visibility: visible;
+    }
+    50%{
+        left: 0;
+        visibility: hidden;
+    }
+    100%{
+        left: 0;
+        visibility: hidden;
+    }
+}
+@keyframes translate-back {     
+    0%{
+        left: 15em;
+        visibility: visible;
+    }
+    50%{
+        left: 0;
+        visibility: hidden;
+    }
+    100%{
+        left: 0;
+        visibility: hidden;
+    }
+}
+
+
+@-webkit-keyframes scale-front {  
+    0%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+    7%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2); 	
+
+    }
+    43%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2); 	
+    }
+    50%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35); 	
+    }
+}
+@keyframes scale-front {  
+    0%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35);   
+    }
+    7%{
+        -webkit-transform: scale(2); 
+        -ms-transform: scale(2); 
+        transform: scale(2);  
+
+    }
+    43%{
+        -webkit-transform: scale(2);
+        -ms-transform: scale(2);
+        transform: scale(2);  
+    }
+    50%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35);   
+    }
+}
+
+@-webkit-keyframes scale-back {  
+    0%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35);   
+    }
+    7%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 
+    }           
+    43%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);   
+    }
+    50%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        transform: scale(1.35); 
+    }
+}
+@keyframes scale-back {  
+    0%{
+        -webkit-transform: scale(1.35); 
+        -ms-transform: scale(1.35); 
+        transform: scale(1.35);   
+    }
+    7%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7); 
+    }           
+    43%{
+        -webkit-transform: scale(.7);
+        -ms-transform: scale(.7);
+        transform: scale(.7);   
+    }
+    50%{
+        -webkit-transform: scale(1.35);
+        -ms-transform: scale(1.35);
+        transform: scale(1.35); 
+    }
+}
+
+@-webkit-keyframes color-front-A {  /*ADENINA - laranja*/
+    0%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }
+    7%{
+        background-color: rgb(255, 127, 39);/*claro*/ 
+    }  
+    50%{
+        background-color: rgb(255, 127, 39);/*claro*/  
+    }
+}
+@keyframes color-front-A {  /*ADENINA - laranja*/
+    0%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }
+    7%{
+        background-color: rgb(255, 127, 39);/*claro*/ 
+    }  
+    50%{
+        background-color: rgb(255, 127, 39);/*claro*/  
+    }
+}
+
+@-webkit-keyframes color-back-A {  /*ADENINA - laranja*/
+    0%{
+        background-color: rgb(255, 127, 39);/*claro*/
+    }
+    7%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }  
+    50%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }
+}
+@keyframes color-back-A {  /*ADENINA - laranja*/
+    0%{
+        background-color: rgb(255, 127, 39);/*claro*/
+    }
+    7%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }  
+    50%{
+        background-color: rgb(170, 68, 0);/*escuro*/
+    }
+}
+
+@-webkit-keyframes color-front-T {  /*TIMINA - azul*/
+    0%{
+        background-color: rgb(35, 43, 133);/*escuro*/
+    }
+    7%{
+        background-color: rgb(63, 72, 204);/*claro*/  
+    }  
+    50%{
+        background-color: rgb(63, 72, 204);/*claro*/
+    }
+}
+@keyframes color-front-T {  /*TIMINA - azul*/
+    0%{
+        background-color: rgb(35, 43, 133);/*escuro*/
+    }
+    7%{
+        background-color: rgb(63, 72, 204);/*claro*/  
+    }  
+    50%{
+        background-color: rgb(63, 72, 204);/*claro*/
+    }
+}
+
+@-webkit-keyframes color-back-T {  /*TIMINA - azul*/
+    0%{
+        background-color: rgb(63, 72, 204);/*claro*/  
+    }
+    7%{
+        background-color: rgb(35, 43, 133);/*escuro*/  
+    }  
+    50%{
+        background-color: rgb(35, 43, 133);/*escuro*/
+    }
+}
+@keyframes color-back-T {  /*TIMINA - azul*/
+    0%{
+        background-color: rgb(63, 72, 204);/*claro*/  
+    }
+    7%{
+        background-color: rgb(35, 43, 133);/*escuro*/  
+    }  
+    50%{
+        background-color: rgb(35, 43, 133);/*escuro*/
+    }
+}
+
+@-webkit-keyframes color-front-G {  /*GUANINA - rosa*/
+    0%{
+        background-color: rgb(80, 20, 80);/*escuro*/
+    }
+    7%{
+        background-color: rgb(182, 48, 182);/*claro*/ 
+    }  
+    50%{
+        background-color: rgb(182, 48, 182);/*claro*/  
+    }
+}
+@keyframes color-front-G {  /*GUANINA - rosa*/
+    0%{
+        background-color: rgb(80, 20, 80);/*escuro*/
+    }
+    7%{
+        background-color: rgb(182, 48, 182);/*claro*/ 
+    }  
+    50%{
+        background-color: rgb(182, 48, 182);/*claro*/  
+    }
+}
+
+@-webkit-keyframes color-back-G {  /*GUANINA - rosa*/
+    0%{
+        background-color: rgb(182, 48, 182);/*claro*/ 
+    }
+    7%{
+        background-color: rgb(80, 20, 80);/*escuro*/
+    }  
+    50%{
+        background-color: rgb(80, 20, 80);/*escuro*/
+    }
+}
+@keyframes color-back-G {  /*GUANINA - rosa*/
+    0%{
+        background-color: rgb(182, 48, 182);/*claro*/ 
+    }
+    7%{
+        background-color: rgb(80, 20, 80);/*escuro*/
+    }  
+    50%{
+        background-color: rgb(80, 20, 80);/*escuro*/
+    }
+}
+
+@-webkit-keyframes color-front-C {  /*CITOSINA - verde*/
+    0%{
+        background-color: rgb(17, 90, 40);/*escuro*/
+    }
+    7%{
+        background-color: rgb(34, 177, 76);/*claro*/  
+    }  
+    50%{
+        background-color: rgb(34, 177, 76);/*claro*/ 
+    }
+}
+@keyframes color-front-C {  /*CITOSINA - verde*/
+    0%{
+        background-color: rgb(17, 90, 40);/*escuro*/
+    }
+    7%{
+        background-color: rgb(34, 177, 76);/*claro*/  
+    }  
+    50%{
+        background-color: rgb(34, 177, 76);/*claro*/ 
+    }
+}
+
+@-webkit-keyframes color-back-C {  /*CITOSINA - verde*/
+    0%{
+        background-color: rgb(34, 177, 76);/*claro*/  
+    }
+    7%{
+        background-color: rgb(17, 90, 40);/*escuro*/  
+    }  
+    50%{
+        background-color: rgb(17, 90, 40);/*escuro*/
+    }
+}
+@keyframes color-back-C {  /*CITOSINA - verde*/
+    0%{
+        background-color: rgb(34, 177, 76);/*claro*/  
+    }
+    7%{
+        background-color: rgb(17, 90, 40);/*escuro*/  
+    }  
+    50%{
+        background-color: rgb(17, 90, 40);/*escuro*/
+    }
+}
+
+@-webkit-keyframes rotate{  
+    0%{
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        transform: rotateY(0);
+    }
+    50%{
+        -webkit-transform: rotateY(180deg); 
+        -ms-transform: rotateY(180deg); 
+        transform: rotateY(180deg);
+    }
+    100%{
+        -webkit-transform: rotateY(360deg); 
+        -ms-transform: rotateY(360deg); 
+        transform: rotateY(360deg);
+    }
+}
+@keyframes rotate{  
+    0%{
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+        transform: rotateY(0);
+    }
+    50%{
+        -webkit-transform: rotateY(180deg); 
+        -ms-transform: rotateY(180deg); 
+        transform: rotateY(180deg);
+    }
+    100%{
+        -webkit-transform: rotateY(360deg); 
+        -ms-transform: rotateY(360deg); 
+        transform: rotateY(360deg);
+    }
+}
+
+.paused, .paused *{
+    -webkit-animation-play-state: paused !important;
+    animation-play-state: paused !important;
+}
+.dna{
+    width: 17em;
+    margin: 0 auto;
+
+    font-size: .75em;/*somente tamanhos multiplos de 5*/
+}
+.dna.pequeno{
+    font-size: .5em;/*somente tamanhos multiplos de 5*/
+}
+.dna.grande{
+    font-size: 1.5em;/*somente tamanhos multiplos de 5*/
+}
+
+.helice{
+    position: relative;
+    width: 17em;
+    height: 2em;
+    margin-top:2em;
+
+    -webkit-animation: fade-in 1s ease-in 2s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-play-state: running;
+
+    animation: fade-in 1s ease-in 2s;
+    animation-fill-mode: both;
+    animation-play-state: running;
+}
+
+.helice .esfera{
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    position: absolute;
+    background-color: orange;
+}
+
+.helice .esfera.esfera1-front{
+    z-index: 100;
+}
+.helice .esfera.esfera1-back{
+    visibility: hidden;
+    z-index: 50;
+    right: 0;
+}
+.helice .esfera.esfera2-back{
+    z-index: 50;
+    right: 0;
+}
+.helice .esfera.esfera2-front{
+    visibility: hidden;
+    z-index: 100;
+}
+
+
+/*HELICE delay + 0s*/
+.helice:nth-child(5n+0) .esfera.esfera1-front, .helice:nth-child(5n+0) .esfera.esfera2-back{
+    -webkit-animation-delay: 0s !important;
+    animation-delay: 0s !important;
+}
+.helice:nth-child(5n+0) .esfera.esfera1-back, .helice:nth-child(5n+0) .esfera.esfera2-front{
+    -webkit-animation-delay: 2.5s !important;
+    animation-delay: 2.5s !important;/*2.5 + 0*/
+}
+.helice:nth-child(5n+0) .haste{
+    -webkit-animation-delay: 0s !important;
+    animation-delay: 0s !important;
+}
+
+/*HELICE delay + 0.5s*/
+.helice:nth-child(5n+1) .esfera.esfera1-front, .helice:nth-child(5n+1) .esfera.esfera2-back{
+    -webkit-animation-delay: 0.5s !important;
+    animation-delay: 0.5s !important;
+}
+.helice:nth-child(5n+1) .esfera.esfera1-back, .helice:nth-child(5n+1) .esfera.esfera2-front{
+    -webkit-animation-delay: 3s !important;
+    animation-delay: 3s !important;/*2.5 + 0.5*/
+}
+.helice:nth-child(5n+1) .haste{
+    -webkit-animation-delay: 0.5s !important;
+    animation-delay: 0.5s !important;
+}
+
+/*HELICE delay + 1s*/
+.helice:nth-child(5n+2) .esfera.esfera1-front, .helice:nth-child(5n+2) .esfera.esfera2-back{
+    -webkit-animation-delay: 1s !important;
+    animation-delay: 1s !important;
+}
+.helice:nth-child(5n+2) .esfera.esfera1-back, .helice:nth-child(5n+2) .esfera.esfera2-front{
+    -webkit-animation-delay: 3.5s !important;
+    animation-delay: 3.5s !important;/*2.5 + 1*/
+}
+.helice:nth-child(5n+2) .haste{
+    -webkit-animation-delay: 1s !important;
+    animation-delay: 1s !important;
+}
+
+/*HELICE delay + 1.5s*/
+.helice:nth-child(5n+3) .esfera.esfera1-front, .helice:nth-child(5n+3) .esfera.esfera2-back{
+    -webkit-animation-delay: 1.5s !important;
+    animation-delay: 1.5s !important;
+}
+.helice:nth-child(5n+3) .esfera.esfera1-back, .helice:nth-child(5n+3) .esfera.esfera2-front{
+    -webkit-animation-delay: 4s !important;
+    animation-delay: 4s !important;/*2.5 + 1.5*/
+}
+.helice:nth-child(5n+3) .haste{
+    -webkit-animation-delay: 1.5s !important;
+    animation-delay: 1.5s !important;
+}
+
+/*HELICE delay + 2s*/
+.helice:nth-child(5n+4) .esfera.esfera1-front, .helice:nth-child(5n+4) .esfera.esfera2-back{
+    -webkit-animation-delay: 2s !important;
+    animation-delay: 2s !important;
+}
+.helice:nth-child(5n+4) .esfera.esfera1-back, .helice:nth-child(5n+4) .esfera.esfera2-front{
+    -webkit-animation-delay: 4.5s !important;
+    animation-delay: 4.5s !important;/*2.5 + 2*/
+}
+.helice:nth-child(5n+4) .haste{
+    -webkit-animation-delay: 2s !important;
+    animation-delay: 2s !important;
+}
+
+
+/*ADENINA-TIMINA*/
+.helice.adenina-timina .esfera.esfera1-front{/*ADENINA - laranja*/
+    background-color: rgb(255, 127, 39);/*claro*/;
+
+    -webkit-animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 5s linear 0s infinite normal, color-front-A 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 5s linear 0s infinite normal, color-front-A 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.helice.adenina-timina .esfera.esfera1-back{/*ADENINA - laranja*/
+    background-color: rgb(170, 68, 0);/*escuro*/
+
+    -webkit-animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-back 5s linear 2.5s infinite normal, color-back-A 5s linear 2.5s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-back 5s linear 2.5s infinite normal, color-back-A 5s linear 2.5s infinite normal;
+    animation-play-state: running;
+}
+.helice.adenina-timina .esfera.esfera2-back{/*TIMINA -  azul*/
+    background-color: rgb(35, 43, 133);/*escuro*/ 
+
+    -webkit-animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 5s linear 0s infinite normal, color-back-T 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 5s linear 0s infinite normal, color-back-T 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.helice.adenina-timina .esfera.esfera2-front{/*TIMINA -  azul*/
+    background-color: rgb(63, 72, 204);/*claro*/ 
+
+    -webkit-animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-front 5s linear 2.5s infinite normal, color-front-T 5s linear 2.5s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-front 5s linear 2.5s infinite normal, color-front-T 5s linear 2.5s infinite normal;
+    animation-play-state: running;
+}
+
+/*TIMINA-ADENINA*/
+.helice.timina-adenina .esfera.esfera1-front{/*TIMINA -  azul*/
+    background-color: rgb(63, 72, 204);/*claro*/ 
+
+    -webkit-animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 5s linear 0s infinite normal, color-front-T 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 5s linear 0s infinite normal, color-front-T 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.helice.timina-adenina .esfera.esfera1-back{/*TIMINA -  azul*/
+    background-color: rgb(35, 43, 133);/*escuro*/ 
+
+    -webkit-animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-back 5s linear 2.5s infinite normal, color-back-T 5s linear 2.5s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-back 5s linear 2.5s infinite normal, color-back-T 5s linear 2.5s infinite normal;
+    animation-play-state: running;
+}
+.helice.timina-adenina .esfera.esfera2-back{/*ADENINA - laranja*/
+    background-color: rgb(170, 68, 0);/*escuro*/
+
+    -webkit-animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 5s linear 0s infinite normal, color-back-A 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 5s linear 0s infinite normal, color-back-A 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.helice.timina-adenina .esfera.esfera2-front{/*ADENINA - laranja*/
+    background-color: rgb(255, 127, 39);/*claro*/;
+
+    -webkit-animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-front 5s linear 2.5s infinite normal, color-front-A 5s linear 2.5s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-front 5s linear 2.5s infinite normal, color-front-A 5s linear 2.5s infinite normal;
+    animation-play-state: running;
+}
+
+/*GUANINA-CITOSINA*/
+.helice.guanina-citosina .esfera.esfera1-front{/*GUANINA - rosa*/
+    background-color: rgb(182, 48, 182);/*claro*/ 
+
+    -webkit-animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 5s linear 0s infinite normal, color-front-G 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 5s linear 0s infinite normal, color-front-G 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.helice.guanina-citosina .esfera.esfera1-back{/*GUANINA - rosa*/
+    background-color: rgb(80, 20, 80);/*escuro*/
+
+    -webkit-animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-back 5s linear 2.5s infinite normal, color-back-G 5s linear 2.5s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-back 5s linear 2.5s infinite normal, color-back-G 5s linear 2.5s infinite normal;
+    animation-play-state: running;
+}
+.helice.guanina-citosina .esfera.esfera2-back{/*CITOSINA - verde*/
+    background-color: rgb(17, 90, 40);/*escuro*/  
+
+    -webkit-animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 5s linear 0s infinite normal, color-back-C 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 5s linear 0s infinite normal, color-back-C 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.helice.guanina-citosina .esfera.esfera2-front{/*CITOSINA - verde*/
+    background-color: rgb(34, 177, 76);/*claro*/  
+
+    -webkit-animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-front 5s linear 2.5s infinite normal, color-front-C 5s linear 2.5s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-front 5s linear 2.5s infinite normal, color-front-C 5s linear 2.5s infinite normal;
+    animation-play-state: running;
+}
+
+/*CITOSINA-GUANINA*/
+.helice.citosina-guanina .esfera.esfera1-front{/*CITOSINA - verde*/
+    background-color: rgb(34, 177, 76);/*claro*/ 
+
+    -webkit-animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 5s linear 0s infinite normal, color-front-C 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-front 5s linear 0s infinite normal, color-front-C 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.helice.citosina-guanina .esfera.esfera1-back{/*CITOSINA - verde*/
+    background-color: rgb(17, 90, 40);/*escuro*/ 
+
+    -webkit-animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-back 5s linear 2.5s infinite normal, color-back-C 5s linear 2.5s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-back 5s linear 2.5s infinite normal, color-back-C 5s linear 2.5s infinite normal;
+    animation-play-state: running;
+}
+.helice.citosina-guanina .esfera.esfera2-back{/*GUANINA - rosa*/
+    background-color: rgb(80, 20, 80);/*escuro*/  
+
+    -webkit-animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 5s linear 0s infinite normal, color-back-G 5s linear 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-back 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal, scale-back 5s linear 0s infinite normal, color-back-G 5s linear 0s infinite normal;
+    animation-play-state: running;
+}
+.helice.citosina-guanina .esfera.esfera2-front{/*GUANINA - rosa*/
+    background-color: rgb(182, 48, 182);/*claro*/  
+
+    -webkit-animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-front 5s linear 2.5s infinite normal, color-front-G 5s linear 2.5s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: translate-front 5s  cubic-bezier(.5, 0, .5, 1) 2.5s infinite normal, scale-front 5s linear 2.5s infinite normal, color-front-G 5s linear 2.5s infinite normal;
+    animation-play-state: running;
+}
+
+
+.helice .haste{
+    position: absolute;
+    width: 12.5em;
+    height: .3em;
+    top:0;
+    bottom: 0;
+    margin: .85em 2.25em;
+    z-index: 0;
+    background-color: orange;
+
+    -webkit-animation: rotate 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal;
+    -webkit-animation-play-state: running;
+
+    animation: rotate 5s  cubic-bezier(.5, 0, .5, 1) 0s infinite normal;
+    animation-play-state: running;
+}
+
+.helice.adenina-timina .haste{
+    background-image: -webkit-linear-gradient(left, orange, blue);
+    background-image: linear-gradient(to right, orange, blue);
+}
+.helice.timina-adenina .haste{
+    background-image: -webkit-linear-gradient(left, blue, orange);
+    background-image: linear-gradient(to right, blue, orange);        
+}
+.helice.guanina-citosina .haste{
+    background-image: -webkit-linear-gradient(left, magenta, green);
+    background-image: linear-gradient(to right, magenta, green);        
+}
+.helice.citosina-guanina .haste{
+    background-image: -webkit-linear-gradient(left, green, magenta);
+    background-image: linear-gradient(to right, green, magenta);        
+}
