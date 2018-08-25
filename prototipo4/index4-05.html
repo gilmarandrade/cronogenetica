@@ -1,0 +1,3239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>prototipo 4-05</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="events/events.js"></script>
+        
+        
+         <link rel="stylesheet" href="js/jquery.mCustomScrollbar.css" />
+         
+         <script src="js/jquery-1.11.0.min.js"></script>
+      
+         <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+	
+<style>
+ /*fontes*/           
+/*@font-face {
+    font-family: Play;
+    //src: url("http://site/fontes/RegencyScriptFLF-Regular.eot"); para IE 
+    src: local("Play"), url("css/fonts/Play-Regular.ttf");
+   // src: local("Play"), url("fonts/Play-Regular.ttf");
+}
+@font-face {
+    font-family: "Six Caps";
+    src: local("Six Caps"), url("css/fonts/SixCaps.ttf");
+    //src: local("Six Caps"), url("fonts/SixCaps.ttf");
+    font-weight: normal;
+    font-style: normal;
+}*/
+</style>
+<style>
+/*index e events*/
+.gt-indexStage , .gt-eventsStage{
+   // position: relative;
+    margin: 0 auto;
+}
+
+.gt-indexStage{
+    position: relative;
+    //background: green;
+}
+.gt-eventsStage{
+    position: relative;
+   // background: red;
+    //height: 500px;
+}
+
+.gt-indexTrack {
+    position: relative;
+    overflow: hidden;
+     margin: 0 auto;
+   // background: pink;
+}
+
+.gt-indexTrack ul {
+    //background: url("../images/timeline-fundo.png");
+    background: url("images/timeline-fundo.png");
+    background-size: cover;
+    margin: 0;
+    margin-left:0;
+    padding: 0;
+    transition-property: margin-left;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+    //-webkit-transition: margin-left .5s ease;
+    //-moz-transition: margin-left .5s ease;
+    //-o-transition: margin-left .5s ease;
+    
+    list-style: none;
+    position: relative;
+    
+}
+
+.gt-indexTrack ul li {
+    position: absolute;
+    width: 14px;//pointSize
+    height: 180px;
+    //float:left;
+}
+.gt-indexTrack ul li span.point.off{
+    visibility: hidden;
+}
+.gt-indexTrack ul li span.point{
+    box-sizing: border-box;
+display:block;
+background-color: #ff3300;
+border:2px solid #550000;
+border-radius: 50%;
+width: 14px;
+height: 14px;
+//cursor: pointer;
+transition: all .3s ease-in 0s;
+}
+.gt-indexTrack ul li span.point:hover, .gt-indexTrack ul li span#gt-selected{
+    background: #550000;
+    border:3px solid white;
+    transform: scale(1.5);
+    
+}
+.gt-indexTrack ul li span.point:active{
+    background: #550000;
+    border:3px solid white;
+    transform: scale(1);
+    transition: all .3s ease;
+    
+}
+
+
+.gt-indexTrack ul li .tooltip{
+        
+        
+        //background: url("../images/tooltipup.png");
+        background: url("images/tooltipup.png");
+        
+        display:block;
+	color:white;
+	//border-radius: 0px;
+	width: 53px;
+	height: 38px;
+	//border:none;
+	z-index: 2000;
+	text-align: center;
+	line-height: 26.5px;
+	position: relative;
+	left:-20px;
+	top:-55px;
+        visibility: hidden;
+	//display: none;
+        opacity:0;
+        transition: all .3s ease-in .2s;
+        cursor: default;
+}
+.gt-indexTrack ul li .tooltip.bottom{
+	//background: url("../images/tooltipdown.png");
+        background: url("images/tooltipdown.png");
+	top:5px;
+        line-height: 46.5px;
+}
+.gt-indexTrack ul li:hover .tooltip{
+	//display: block;
+        visibility: visible;
+        opacity:1;
+        top:-52px;
+}
+.gt-indexTrack ul li:hover .tooltip.bottom{
+	//display: block;
+        opacity:1;
+        top:0px;
+}
+/*.gt-indexTrack ul li span:hover+.tooltip{
+	display: block;
+}*/
+
+.gt-indexStage:hover .gt-indexNav{
+    //background: purple;
+    color:black;
+}
+.gt-indexNav {
+    position: absolute;
+   top: 0;
+    width: 50px;
+    height: 200px;
+   // background: #000;
+     //opacity: 0.9;
+    cursor: pointer;
+    transition: all .4s linear;
+    -webkit-transition: all .4s linear;
+    -moz-transition: all .4s linear;
+    -o-transition: all .4s linear;
+    //-moz-box-shadow: inset 0 0 10px #333;
+    //-webkit-box-shadow: inset 0 0 10px #333;
+   // box-shadow: inset 0 0 10px #333;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    //font-family: Times, "Times New Roman", serif;
+    font-size: 40px;
+    text-align: center;
+    line-height: 180px;
+    color: transparent;
+}
+
+
+.gt-indexNav:hover {
+    color: white !important;
+    background: black !important;
+    
+}
+
+.gt-indexStage .left {
+    left: 0;
+    background: linear-gradient(to left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%); /* W3C */
+   
+    //border-radius: 0 6px 6px 0;
+}
+
+.gt-indexStage .right {
+    right: 0;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%); /* W3C */
+   
+   // border-radius: 6px 0 0 6px;
+}
+
+.gt-indexNav.off:hover {
+    opacity: 0.5;
+    background: #ccc;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+
+            
+            
+/*LINE*/
+            
+            .gt-indexLine{
+               position: absolute;
+               bottom:0;
+               //background: green;
+               width: 14px;
+            }
+            .gt-indexLine.off{
+                visibility: hidden;
+            }
+            .gt-indexLine.disconected .gt-line{
+               //transition: height .5s ease-out; 
+               height: 10px !important; 
+            }
+            .gt-indexLine.disconected .gt-circle{
+                background: white;
+                border: 3px solid black;
+            }
+           
+            .gt-eventsLine{
+                position: absolute;
+                width: 14px;
+            }
+            .gt-eventsLine.off{
+                visibility: hidden;
+            }
+            .gt-eventsLine.off .gt-circle{
+                //transition:none;
+            }
+           
+            .gt-circle{
+                //transition: background .5s ease-out; 
+                position: relative;
+                box-sizing: border-box;
+                border-radius: 50%;
+                border: 2px solid black;
+                background: black;
+                width: 14px;
+                height: 14px;
+            }
+            
+            .gt-circle.gt-border{
+               border: 2px solid black;
+               transform: scale(2);
+               background: white;
+            }
+            .gt-circle.gt-border > .gt-circle{
+               left: -2px;
+               top: -2px;
+               transform: scale(.5);
+            }
+           
+            .gt-circle.gt-link{}
+            
+            .gt-line{
+                //transition: height 1s ease-out; 
+                margin:0 5px;
+                background: black;
+                width: 4px;
+            }
+            
+            
+            
+        .gt-eventsTrack{
+          //background: purple;
+          margin: 0 auto;
+          
+        }       
+        .gt-eventsList{
+            //visibility: hidden;
+            display: none;
+          // background: yellow;
+            position: relative;
+            transition: all 1s ease-out;
+            opacity: 0;
+            //height: 0;
+        }
+        .gt-eventsList.gt-selected{
+           // visibility: visible;
+           display: block;
+           opacity: 1;
+           //height: 100%;
+        }
+        .gt-containerLeft{
+             float: left;
+             margin-left: 130px;
+             width: 200px;
+         }
+        .gt-eventsList h1{
+            text-align: right;
+            //background: aqua;
+            font-family: 'Six Caps';
+            font-size: 3.5em;
+            line-height: 1.2em;
+            font-weight: normal;
+            //float: left;
+        }
+        .gt-eventsList .gt-image{
+            //background: springgreen;
+            width: 200px;
+            height: 200px;
+            //background-image: url('images/imagem1.jpg');
+            background-size: cover;
+            //float: left;
+        }
+         .gt-eventsList ul{
+            //background: olive;
+            border-left:4px solid black;
+            list-style-type: none;
+            //position: absolute;
+            //top:0;
+            padding-top: 4.5em;
+            
+            //height: 0;
+            min-height: 230px;
+            margin-left: 355px;
+            
+            transition: height 1s ease-out; 
+         }
+         .gt-eventsList.gt-selected ul{
+           // min-height: 230px; 
+         }
+         
+         .gt-eventsList ul li{
+             cursor: pointer;
+            //background: brown;
+            position: relative;
+            padding-bottom: 10px;
+            margin-right: 100px;
+            //line-height: 20px;
+            //float: left;
+            //left: -15px;
+            //display: inline-block;
+         }
+         .gt-eventsList ul li:hover h2{
+             //background-color: yellow;
+             font-weight: bold;
+             
+         }
+         .gt-eventsList ul li:hover .gt-circle{
+             background: black;
+         }
+         .gt-eventsList ul li h2{
+             //font-size: 1.3em;
+             //background: blueviolet;
+             padding-left: 20px;
+             
+             font-weight: normal;
+         }
+         .gt-eventsList ul li .gt-circle{
+           //float:left;
+           display: inline-block;
+           position:absolute;
+           margin-left: -9px;
+           margin-top: 8px;
+           
+           background-color: white;
+           
+         }
+         
+         
+         
+.gt-eventsNav {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    //height: 200px;
+    cursor: pointer;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    //-moz-box-shadow: inset 0 0 10px #333;
+    //-webkit-box-shadow: inset 0 0 10px #333;
+   // box-shadow: inset 0 0 10px #333;
+    text-decoration: none;
+    color: #777;
+    font-weight: bold;
+    //font-family: Times, "Times New Roman", serif;
+    font-size: 40px;
+    text-align: center;
+    //line-height: 180px;
+    //color: transparent;
+}
+
+
+.gt-eventsNav:hover {
+    color:#333;
+    //background: black !important;
+    
+}
+
+.gt-eventsStage .left {
+    left: 0;
+    //background: linear-gradient(to left, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%); /* W3C */
+   
+    //border-radius: 0 6px 6px 0;
+}
+
+.gt-eventsStage .right {
+    right: 0;
+    //background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 80%); /* W3C */
+   
+   // border-radius: 6px 0 0 6px;
+}
+.gt-eventsNav.off{
+    opacity: 0.2;
+    color: #555;
+    //background: #ccc;
+    //color: #ccc;
+    cursor: not-allowed;
+}
+.gt-eventsNav.off:hover {
+    //opacity: 0.5;
+    //background: #ccc;
+    //color: #ccc;
+    cursor: not-allowed;
+}
+
+.gt-eventsNav:active{
+    transition: none;
+    color:orange;
+}
+.gt-eventsNav.off:active{
+    transition: none;
+    color: #555;
+}
+
+    
+
+/*event list home*/
+.gt-eventsList#gt-0{
+   // background: red;
+   
+}
+.gt-eventsList#gt-0 .container-left{
+    float: left;
+    //background: blue;
+    position: relative;
+    text-align: right;
+    margin-right: 20px;
+}
+.gt-eventsList#gt-0 .container-left h1{
+    font-size: 10em;
+}
+.gt-eventsList#gt-0 .container-left h2{
+    font-size: 1.7em;
+}
+.gt-eventsList#gt-0 .gt-eventsLine{
+    position:absolute;
+    right: 0;
+}
+        </style>
+<style>
+/*layout básico header/footer*/  
+/*RESET*/
+*{
+	margin: 0;
+	padding: 0;
+}
+/*FONTES*/
+body, input{
+	/*font-family: "Six Caps";
+*/	font-family:Economica;
+//font-family: Play;
+        text-align: justify;
+        font-size: 1.2em;
+        color: rgb(53, 50, 62);
+}
+
+
+.hidden{
+    visibility: hidden;
+}
+/*CONTAINERES PRINCIPAIS*/
+.center{
+    position: relative;
+	width: 1000px;
+	margin: 0 auto;
+        padding: 0 30px;
+        //background: rgba(0,0,255, 0.5);
+}
+
+/*links*/
+a:link{
+   // color: #ff6600;
+    color: #ff3300;
+    text-decoration: none;
+}
+a:visited{
+    
+   //color: #ff6600;
+   color: #ff3300;
+    //text-decoration: none;
+}
+a:active{
+    //color: #ff6600;
+    color: #ff3300;
+   // text-decoration: none;
+}
+a:hover{
+    //color: #ff6600;
+    color: #ff3300;
+    text-decoration: underline;
+}
+
+.clear{
+    clear: both;
+}
+ul.no-list li{
+    list-style: none;
+}
+#header{
+	background-color: #ff6600;
+	height: 60px;
+}
+#header nav{
+    
+    
+}
+#header nav ul{
+    list-style-type: none;
+   
+}
+#header nav ul li{
+    
+    //background: red;
+    //display: inline-block;
+    line-height: 60px;
+    float:left;
+    margin-right: 50px;
+    
+    text-transform: uppercase;
+    color:white;
+}
+
+#header .logo{
+	width: 200px;
+        height: 60px;
+        background: url("images/logo200x35.png") 50% 50% no-repeat;
+        background-size: contain;
+	margin-right: 60px;
+        display: block;
+}
+#header nav a:link,#header nav a:active,#header nav a:visited {
+    color:white;
+    text-decoration: none;
+}
+#header nav a:hover{
+     text-decoration: underline;
+}
+#header nav a.active{
+    font-weight: bold;
+}
+
+#header #search-header{
+    float: right;
+    background: rgba(255,255,255,.2) url(images/lupa.png) no-repeat 100% 50%;
+    background-size: 20%;
+    //opacity: .5;
+   // display: inline-block;
+    padding: 5px 35px 5px 10px;
+    //line-height: 60px;
+    margin: 12.5px 0;
+    width: 130px;
+    height: 25px;
+    border-radius:7px;
+    //margin: 7px;
+    //height: 50px;
+    
+     //width:20%;
+     font-family:Economica;
+     color:white;
+     font-size: 1em;
+     border: none;
+     transition: all .2s ease-in-out;
+     
+}
+#header #search-header:focus{
+    background: rgba(255,255,255,1) url(images/lupa-focus.png) no-repeat 100% 50%;
+    background-size: 20%;
+    color:#ff6600;
+}
+
+#footer{
+   background: #333;
+   padding: 30px 0;
+   
+}   
+#footer a{
+    margin-right: 60px;
+}
+#footer a:last-child{
+    margin-right: 0px;
+}
+</style>
+<style>
+            /*icones*/
+            i.icon{
+                
+                width: 13px;
+                height: 13px;
+                display: inline-block;
+               
+            }
+            i.icon.big{
+                
+                width: 18px;
+                height: 18px;
+                display: inline-block;
+               
+            }
+             i.icon.xbig{
+                
+                width: 22px;
+                height: 22px;
+                display: inline-block;
+               
+            }
+            .icon.i-clock{
+                background: url('images/clock.png') no-repeat;
+                background-size: contain;
+            }
+            .icon.i-link{
+                background: url('images/link.png') no-repeat;
+                background-size: contain;
+            }
+            
+            .icon.i-idea{
+                background: url('images/idea.png') no-repeat;
+                background-size: contain;
+            }
+             .icon.i-clip{
+                background: url('images/clip.png') no-repeat;
+                background-size: contain;
+            }
+            .icon.i-book{
+                background: url('images/book.png') no-repeat;
+                background-size: contain;
+            }
+            .icon.i-tag{
+                background: url('images/tag.png') no-repeat;
+                background-size: contain;
+            }
+</style>
+<style>
+            /*buttons*/
+            button{
+                width: 60px;
+                height: 60px;
+                border: none;
+                border-radius: 50%;
+                background-color: rgb(226, 225, 217);
+                transition: all .2s ease-in-out;
+                cursor: pointer;
+            }
+            button:hover{
+                 background-color:#ff6600;
+            }
+            button:active{
+                transition: none;
+                background-color:black ;
+            }
+            
+            button.print{
+                position: absolute;
+                right: 60px;
+                top: 40px;
+                background-image:url('images/print.png') ;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            button.print:hover{
+                background-image:url('images/print-hover.png') ;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            button.top{
+                position: fixed;
+                right: 60px;
+                bottom: 100px;
+                background-image:url('images/top.png') ;
+                background-repeat: no-repeat;
+                background-size: contain;
+                transition:none;
+                display: none;
+            }
+            button.top:hover{
+                background-image:url('images/top-hover.png') ;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            
+            a.button:link{
+                //display: block;
+                padding: 3px 10px;
+                //background: green;
+                border-radius: 7px;
+                border:2px solid #ff6600;
+                color: #ff6600;
+                font-weight: bold;
+                font-size: .8em;
+            }
+            a.button:active{
+                //display: block;
+                padding: 3px 10px;
+                //background: green;
+                border-radius: 7px;
+                border:2px solid #ff6600;
+                color: #ff6600;
+                font-weight: bold;
+                font-size: .8em;
+            }
+            a.button:visited{
+                //display: block;
+                padding: 3px 10px;
+                //background: green;
+                border-radius: 7px;
+                border:2px solid #ff6600;
+                color: #ff6600;
+                font-weight: bold;
+                font-size: .8em;
+            }
+            a.button:hover{
+                //display: block;
+                padding: 3px 10px;
+                //background: green;
+                border-radius: 7px;
+                border:2px solid #ff6600;
+                background: #ff6600;
+                color:white;
+                font-weight: bold;
+                font-size: .8em;
+                text-decoration: none;
+            }
+            
+</style>
+<style>
+            .line{
+                width: 100%;
+                height: 5px;
+                background: rgb(53, 50, 62);
+                border-radius: 5px;
+                //margin: 11px;
+            }
+            .circle{
+                width: 12px;
+                height: 12px;
+                border:5px solid rgb(53, 50, 62);
+                border-radius: 50%;
+                //background: rgb(240, 238, 228);
+                background: white;
+                
+                position: relative;
+                top:-12px;
+                
+                  transition: all .2s ease-in-out;
+            }
+</style>
+<style>
+     /*detail*/
+    .CG-detail{
+        background-color: rgb(240,238,228);
+        padding-bottom: 60px;
+    }
+   
+    .CG-detail aside{
+        float:left;
+        width: 220px;
+      //background: green;
+        //box-sizing: padding-box;
+        
+        margin-right: 30px;
+        //padding-bottom: 20px;
+        //padding-left: 2.5%;
+    }
+   
+    .CG-detail aside article{
+      // background: greenyellow;
+       margin-top: 60px;
+       border-bottom: .8px solid rgb(53, 50, 62);
+    }
+     .CG-detail aside  header h1{
+        font-size: 1.3em;
+        text-align: left;
+       // text-transform: uppercase;
+    }
+     .CG-detail aside header h2{
+        font-size: .8em;
+        font-weight: normal;
+        text-align: left;
+        text-transform: uppercase;
+    }
+     .CG-detail aside  h2{
+        font-size: .8em;
+        text-transform: uppercase;
+    }
+     .CG-detail aside p{
+        font-size: .8em;
+        margin-bottom: 30px;
+    }
+     .CG-detail aside header figure{
+       margin: 30px 0;
+        
+    }
+     .CG-detail aside figure{
+       margin-bottom: 30px;
+        
+    }
+    .CG-detail aside figure img{
+        width: 100%;
+    }
+    .CG-detail aside figure figcaption{
+        //background:teal;
+        text-align: left;
+        font-weight: normal;
+        font-size: .7em;
+    }
+    
+    
+    
+   
+   
+    
+    .CG-detail section{
+        float:left;
+        width: 570px;
+        //background: cyan;
+       // box-sizing: padding-box;
+        //padding-top: 40px;
+        padding-right: 120px;
+        //padding-bottom:20px;
+        padding-left:60px;
+    }
+    .CG-detail section header{
+        //background: blue;
+        position: relative;
+          margin-top: 40px;
+          margin-bottom: 60px;
+    }
+    .CG-detail section header h1{
+        clear: both;
+        font-size: 1.8em;
+        //background: greenyellow;
+    }
+    .CG-detail section .atualizacao{
+        font-size:0.7em;
+        text-transform: uppercase;
+        text-align: left;
+        float:left;
+        line-height: 20px;
+    }
+    .CG-detail section .link{
+        font-size:0.7em;
+        
+        //text-transform: uppercase;
+        text-align: left;
+        float:right;
+        
+    }
+    .CG-detail section .link input{
+        //font-size:0.7em;
+        text-align: left;
+        border:none;
+        background: none;
+        width: 340px;
+       
+    }
+    
+    
+    
+    
+    
+    .CG-detail section article{
+        position: relative;
+      //  border:1px solid red;
+        //background: burlywood;
+        //margin-bottom: 40px;
+        //max-width: 700px;
+    }
+    .CG-detail section p{
+        margin-bottom: 30px;
+        line-height: 1.4em;
+        //text-align: justify;
+    }
+   
+    .CG-detail section .img-center{
+        width: 100%;
+        //background: fuchsia;
+        text-align: center;
+        //margin: 40px 0;
+    }
+    .CG-detail section figure{
+       // background: red;
+       margin-bottom: 30px;
+        
+    }
+    .CG-detail section figure img{
+        width: 100%;
+    }
+    .CG-detail section figure figcaption{
+        //background:teal;
+        text-align: left;
+        font-weight: normal;
+        font-size: .8em;
+    }
+    
+    .CG-detail section .minibox{
+        //background: brown;
+        padding-left: 60px;
+        margin-bottom: 60px;
+    }
+     .CG-detail section h2{
+        //background: firebrick;
+        text-transform: uppercase;
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+    .CG-detail section .minibox h2{
+       
+        margin-left: -20px;
+    }
+     .CG-detail section p:last-child{
+        //background: brown;
+        margin-bottom: 0;
+    }
+     .CG-detail section .minibox ul li{
+       //background: firebrick;
+       //list-style: none;
+     
+    }
+     .CG-detail section .box{
+        //background: red;
+        margin-bottom: 60px;
+    }
+    .CG-detail section .box.refer ul li{
+        //background: red;
+        //margin-bottom: 20px;
+        font-size: .9em;
+        line-height: 1.6em;
+    }
+    .CG-detail section .box.tags ul li {
+        float: left;
+        margin-right: 8px;
+        margin-bottom: 6px;
+       //background: red;
+        height: 30px;
+    }
+      .CG-detail .box.nav{
+        //background: greenyellow;
+        //margin-bottom: 60px;
+        //margin-left:250px;
+        float:right;
+       padding-left: 0px;
+       margin-right: 120px;
+    }
+    .CG-detail .box.nav a{
+        float: left;
+        width: 255px;
+        padding-left: 30px;
+    }
+   
+     .CG-detail .box.nav a h2{
+       padding-left: 20px;
+       text-transform: uppercase;
+       font-weight: normal;
+       margin: 0;
+       
+    }
+      .CG-detail .box.nav a strong{
+       padding-left: 20px; 
+       color:rgb(53, 50, 62);
+    }
+      .CG-detail  .box.nav a h3{
+        padding-left: 20px;
+        color:rgb(53, 50, 62);
+        font-weight: normal;
+        font-size: .8em;
+    }
+    
+     .CG-detail  .box.nav a:hover{
+        text-decoration: none;
+    }
+    .CG-detail .box.nav a:hover .circle{
+        background: rgb(53, 50, 62);
+    }
+      .CG-detail  .box.nav a h2:hover{
+        text-decoration: underline;
+    }
+</style>
+<style>
+     
+    
+    /*timeline*/
+     .CG-timeline{
+       width: 1335px; /*1366 - 17 @15 = 1335px*/ 
+       //background: seagreen;
+       margin: 0 auto;
+    } 
+    .CG-events{
+       background: blue; 
+       position: relative;
+    }
+    .CG-eventsContentScroll{
+      width: 1335px; /*1366 - 17 @15 = 1335px*/  
+     //background: royalblue;
+    }
+       .dna{
+                background: white url('images/dna.png') repeat-x;
+                background-size: auto 100px;
+                background-position: -69px 50px ;
+                height: 200px;
+
+            }
+             .decade{
+              // background: cornflowerblue;
+               width: 150px;
+               height: 200px;
+               float: left;
+               position: relative;
+               //opacity: .5;
+            }
+            .decade:nth-child(2n){
+                //background: cyan;
+            }
+            
+            .scale{
+               //z-index: 1001;
+               position: absolute;
+               color:rgba(94,100,100,1);
+               width: 100%;
+               height: 100%;
+               //background-color: pink;
+               background-image: linear-gradient(to right, rgba(94,100,100,1) 1px, transparent 1px), linear-gradient(to right, rgba(94,100,100,1) 1px, transparent 1px);
+               background-size: 15px 15px, 150px 35px;
+               background-repeat: repeat-x;
+            }
+            
+            .decade .scale{
+               
+                background-size: 15px 15px, 150px 35px;
+                //background-position:  0 0, 0px 0;
+                left:7px;
+             
+            }
+            .decade.s-2 .scale{
+                background-size: 30px 15px, 300px 35px;
+                //background-position:  0 0, 270px 0;
+                //left:22px;
+                 //background-color: #caaee1;
+            }
+            .scale span{
+                
+                position: absolute;
+                left: -2em;
+                font-family: Economica;
+                font-size: 16px;
+                top:1em;
+            }
+            .s-2 .scale span{
+                left: -2em;
+            } 
+            .scale.big span{
+                font-size: 1.2em;
+                top:.6em;
+                left: -1.8em;
+                
+            }
+            .s-2 .scale.big span{
+                //background: blue;
+                //font-size: 1.2em;
+                //top:.7em;
+                //left:-1.8em;
+            }
+            .year{
+                position: absolute;
+                //background: yellow;
+                height: 200px;
+            }
+            .year:nth-child(2n){
+               // background: orange;
+            }
+            
+             .s-2 .year{
+               // background: green;
+            }
+            .s-2 .year:nth-child(2n){
+               // background:greenyellow;
+            }
+            
+            /*Scale-1*/
+            .year.y-0{
+                
+                left: 0;
+            }
+            .year.y-0 .pointer{
+                margin-top:92.5px;
+                //background: blue;
+            }
+            .year.y-1{
+                left: 15px;
+            }
+            .year.y-1 .pointer{
+                margin-top:110px;
+            }
+            .year.y-2{
+                left: 30px;
+            }
+            .year.y-2 .pointer{
+                margin-top:122px;
+            }
+            .year.y-3{
+                left: 45px;
+            }
+            .year.y-3 .pointer{
+                margin-top:130px;
+            }
+            .year.y-4{
+                left: 60px;
+            }
+            .year.y-4 .pointer{
+                margin-top:135px;
+            }
+            .year.y-5{
+                left: 75px;
+            }
+            .year.y-5 .pointer{
+                margin-top:48px;
+            }
+            .year.y-6{
+                left: 90px;
+            }
+            .year.y-6 .pointer{
+                margin-top:50px;
+            }
+            .year.y-7{
+                left: 105px;
+            }
+            .year.y-7 .pointer{
+                margin-top:55px;
+            }
+            .year.y-8{
+                left: 120px;
+            }
+            .year.y-8 .pointer{
+                margin-top:63px;
+            }
+            .year.y-9{
+                left: 135px;
+            }
+            .year.y-9 .pointer{
+                margin-top:75px;
+            }
+          
+            
+            
+            
+             /*Scale-2*/
+             .decade.s-2{
+                 width: 300px;
+             }
+             .s-2 .year.y-0{
+                left: 0px;
+            }
+            .s-2 .year.y-0 .pointer{
+                margin-top:92.5px;
+            }
+            
+            .s-2 .year.y-1{
+                left: 30px;
+            }
+            .s-2 .year.y-1 .pointer{
+                margin-top:120px;
+            }
+            .s-2 .year.y-2{
+                left: 60px;
+            }
+            .s-2 .year.y-2 .pointer{
+                margin-top:135px;
+                
+            }
+            .s-2 .year.y-3{
+                left: 90px;
+            }
+            .s-2 .year.y-3 .pointer{
+                margin-top:135px;
+            }
+            .s-2 .year.y-4{
+                left: 120px;
+            }
+            .s-2 .year.y-4 .pointer{
+                margin-top:122px;
+            }
+            .s-2 .year.y-5{
+                left: 150px;
+            }
+            .s-2 .year.y-5 .pointer{
+                margin-top:92.5px;
+            }
+            .s-2 .year.y-6{
+                left: 180px;
+            }
+             .s-2 .year.y-6 .pointer{
+                margin-top:64px;
+            }
+            .s-2 .year.y-7{
+                left: 210px;
+            }
+            .s-2 .year.y-7 .pointer{
+                margin-top:50px;
+            }
+            .s-2 .year.y-8{
+                left: 240px;
+            }
+            .s-2 .year.y-8 .pointer{
+                margin-top:50px;
+            }
+            .s-2 .year.y-9{
+                left: 270px;
+            }
+            .s-2 .year.y-9 .pointer{
+                margin-top:65px;
+            }
+           
+            
+            .pointer{
+                width: 15px;
+                height: 15px;
+                display: block;
+                background: red;
+                border-radius: 50%;
+                margin-top:92.5px;
+                cursor: pointer;
+                transition: all .3s ease-in .2s;
+            }
+            .year:hover .tooltip{
+                visibility: visible;
+        opacity:1;
+        top:-52px;
+            }
+            .pointer:hover{
+                transform: scale(1.5);
+            }
+            .tooltip{
+                background: url("images/tooltipup.png");
+                display:block;
+                color:white;
+                position: absolute;
+                left: -35%;
+                opacity: 0;
+                z-index: 1000;
+                width: 50px;
+                height: 35px;
+                text-align: center;
+                line-height: 26.5px;
+                position: relative;
+                font-size: 24px;
+                font-weight: bold;
+                //left:-20px;
+                top:-45px;
+                visibility: hidden;
+                opacity:0;
+                transition: all .3s ease-in .2s;
+                cursor: default;
+            }
+               .CG-events .mark{
+                position: absolute;
+                bottom: 0;
+                width: 15px;
+               // height: 100%;
+                //background: blue;
+                //margin-left: 465px; /*(innerWidth@15 - eventsList.width)/2 @15  + img.width = 180 + 255 = */  
+                visibility: hidden;
+               }
+               .CG-events .mark.on{
+                   visibility: visible;
+               }
+             .CG-events  .mark.right{
+                //margin-left: 870px; /*(innerWidth@15 - eventsList.width)/2 @15  + col2.width + 15 = 180 + 675 + 15 =870 */  
+            
+            }
+            .CG-events  .mark span{
+                width: 22px;
+                height: 22px;
+                background:  rgb(53, 50, 62);
+                border-radius: 50%;
+                display: block;
+                margin: -3.5px;
+                
+                width: 15px;
+                height: 15px;
+                margin: 0;
+            }
+            .CG-events  .mark > div{
+                 position: absolute;
+                bottom: 0;
+            }
+            .CG-events  .mark > div > div{
+               
+                width: 5px;
+                margin: 0 5px;
+                background: rgb(53, 50, 62);
+                height: 100px;
+            }
+            .CG-events  .mark#markLeft-1 > div > div,
+            .CG-events  .mark#markRight-1 > div > div{
+                height: 75px;
+            }
+            .CG-events  .mark#markLeft-2 > div > div,
+            .CG-events  .mark#markRight-2 > div > div{
+                height: 63px;
+            }
+            .CG-events  .mark#markLeft-3 > div > div,
+            .CG-events  .mark#markRight-3 > div > div{
+                height: 55px;
+            }
+            .CG-events  .mark#markLeft-4 > div > div,
+            .CG-events  .mark#markRight-4 > div > div{
+                height: 50px;
+            }
+            .CG-events  .mark#markLeft-5 > div > div,
+            .CG-events  .mark#markRight-5 > div > div{
+                height: 137px;
+            }
+            .CG-events  .mark#markLeft-6 > div > div,
+            .CG-events  .mark#markRight-6 > div > div{
+                height: 135px;
+            }
+            .CG-events  .mark#markLeft-7 > div > div,
+            .CG-events  .mark#markRight-7 > div > div{
+                height: 130px;
+            }
+            .CG-events  .mark#markLeft-8 > div > div,
+            .CG-events  .mark#markRight-8 > div > div{
+                height: 122px;
+            }
+            .CG-events  .mark#markLeft-9 > div > div,
+            .CG-events  .mark#markRight-9 > div > div{
+                height: 110px;
+            }
+            .CG-events  .mark#markLeft-0 > div > div,
+            .CG-events  .mark#markRight-0 > div > div{
+                height: 92px;
+            }
+            .CG-events  .mark#markLeft-off > div > div,
+            .CG-events  .mark#markRight-off > div > div{
+                height: 0px;
+            }
+            
+            
+            
+            .CG-events  .s-2.mark#markLeft-1 > div > div,
+            .CG-events  .s-2.mark#markRight-1 > div > div{
+                height: 63px;
+            }
+            .CG-events  .s-2.mark#markLeft-2 > div > div,
+            .CG-events  .s-2.mark#markRight-2 > div > div{
+                height: 50px;
+            }
+            .CG-events  .s-2.mark#markLeft-3 > div > div,
+            .CG-events  .s-2.mark#markRight-3 > div > div{
+                height: 50px;
+            }
+            .CG-events  .s-2.mark#markLeft-4 > div > div,
+            .CG-events  .s-2.mark#markRight-4 > div > div{
+                height: 63px;
+            }
+            .CG-events  .s-2.mark#markLeft-5 > div > div,
+            .CG-events  .s-2.mark#markRight-5 > div > div{
+                height: 92px;
+            }
+            .CG-events  .s-2.mark#markLeft-6 > div > div,
+            .CG-events  .s-2.mark#markRight-6 > div > div{
+                height: 122px;
+            }
+            .CG-events  .s-2.mark#markLeft-7 > div > div,
+            .CG-events  .s-2.mark#markRight-7 > div > div{
+                height: 135px;
+            }
+            .CG-events  .s-2.mark#markLeft-8 > div > div,
+            .CG-events  .s-2.mark#markRight-8 > div > div{
+                height: 135px;
+            }
+            .CG-events  .s-2.mark#markLeft-9 > div > div,
+            .CG-events  .s-2.mark#markRight-9 > div > div{
+                height: 122px;
+            }
+            .CG-events  .s-2.mark#markLeft-0 > div > div,
+            .CG-events  .s-2.mark#markRight-0 > div > div{
+                height: 92px;
+            }
+            .CG-events  .s-2.mark#markLeft-off > div > div,
+            .CG-events  .s-2.mark#markRight-off > div > div{
+                height: 0px;
+            }
+            
+            
+            
+            
+            
+            .CG-eventTrack{
+               // background: chartreuse;
+                 min-height: 400px;
+                 position: relative;
+            }
+            .CG-eventTrack .nav-left{
+               background: url('images/arrowLeft-small.png') no-repeat center;
+               width: 60px;
+               min-height: 400px;
+               position: absolute;
+               left: 0;
+               top:0;
+               cursor: pointer;
+               transition: all .2s ease-in-out; 
+               opacity: .2;
+               visibility: hidden;
+            }
+            .CG-eventTrack .nav-right{
+               background: url('images/arrowRight-small.png') no-repeat center;
+               width: 60px;
+               min-height: 400px;
+               position: absolute;
+               right: 0;
+               top:0;
+               cursor: pointer;
+               transition: all .2s ease-in-out;
+               opacity: .2;
+               visibility: hidden;
+            }
+            .CG-eventTrack:hover .nav-left,  .CG-eventTrack:hover .nav-right{
+              opacity: 1;
+            }
+            .CG-eventTrack .nav-left.on, .CG-eventTrack .nav-right.on{
+                visibility: visible;
+            }
+            .CG-eventsList{
+               // background: blue;
+                //width: 990px; /*15 * 66*/
+                //margin-left: 180px;/*(innerWidth@15 - eventsList.width)/2 @15 = 180*/
+                display: none;
+               
+            }
+            .CG-eventsList.selected{
+               display: block;
+            }
+            
+            /*left*/
+            .CG-eventsList.left .col{
+                float: left;
+            }
+            .CG-eventsList.left .col.col1{
+                //background: green;
+            }
+            .CG-eventsList.left .col.col2{
+               // background: chocolate;
+                max-width: 675px;
+            }
+            .CG-eventsList.left .img{
+                width: 245px;
+                height: 245px;
+                background-size: cover;
+                border-radius: 50%;
+                border: 5px solid rgb(53, 50, 62);
+                margin-right: 30px;
+            }
+         
+            .CG-eventsList.left .col.col2 h1{
+                font-size: 60px;
+                border-left: 5px solid rgb(53, 50, 62);
+                margin-left: 5px;
+                //background: darkblue;
+                padding-bottom: 20px;
+                padding-left: 20px;
+                
+            }
+            .CG-eventsList.left ul{
+                //margin-left: 25px;
+                margin-left: 5px;
+                margin-bottom: 30px;
+                
+            }
+            .CG-eventsList.left ul li{
+              // background: palegreen;
+                //list-style-position: outside;
+                //list-style-type:disc;
+               // list-style-image: url('images/circle22.png');
+               list-style: none;
+                padding-bottom: 10px;
+                font-size: 24px;
+                border-left: 5px solid rgb(53,50,62);
+                display: inline-block;
+               // margin-left: -20px;
+               cursor: pointer;
+            }
+            .CG-eventsList.left ul li:hover{
+                font-weight: bold;
+                letter-spacing: -0.02em;
+            }
+            .CG-eventsList.left ul li:hover .circle{
+                font-weight: bold;
+                background-color:rgb(53,50,62);
+            }
+            .CG-eventsList.left ul li:last-child{
+                border-left:5px solid transparent;
+                
+            }
+            .CG-eventsList.left ul li .circle{
+                margin-left: -14px;
+                //height: 100%;
+                float:left;
+                display: block;
+                //background-color: red;
+                 margin-top: 11px;
+            }
+            .CG-eventsList.left ul li p{
+               // background: sandybrown;
+                margin-left: 20px;
+               // margin-top: -10px;
+                margin-bottom: 10px;
+               
+            }
+            
+            
+            
+            /*right*/
+            .CG-eventsList.right .col{
+                float: right;
+            }
+            .CG-eventsList.right .col.col1{
+                //background: green;
+            }
+            .CG-eventsList.right .col.col2{
+               //background: chocolate;
+                max-width: 675px;
+            }
+            .CG-eventsList.right .img{
+                width: 245px;
+                height: 245px;
+                background-size: cover;
+                border-radius: 50%;
+                border: 5px solid rgb(53, 50, 62);
+                margin-left:  30px;
+            }
+          
+            .CG-eventsList.right .col.col2 h1{
+                font-size: 60px;
+                border-right: 5px solid rgb(53, 50, 62);
+                margin-right: 5px;
+                //background: darkblue;
+                padding-bottom: 20px;
+                padding-right:  20px;
+                text-align: right;
+                
+            }
+            .CG-eventsList.right ul{
+                //margin-left: 25px;
+                margin-right:  5px;
+                margin-bottom: 30px;
+                text-align: right;
+                
+            }
+            .CG-eventsList.right ul li{
+             // background: palegreen;
+                //list-style-position: outside;
+                //list-style-type:disc;
+               // list-style-image: url('images/circle22.png');
+               list-style: none;
+                padding-bottom: 10px;
+                font-size: 24px;
+                border-right:  5px solid rgb(53,50,62);
+                display: inline-block;
+               // margin-left: -20px;
+               cursor: pointer;
+            }
+            .CG-eventsList.right ul li:hover{
+                font-weight: bold;
+                letter-spacing: -0.02em;
+            }
+            .CG-eventsList.right ul li:hover .circle{
+                font-weight: bold;
+                background-color:rgb(53,50,62);
+            }
+            .CG-eventsList.right ul li:last-child{
+                border-right:5px solid transparent;
+                
+            }
+            .CG-eventsList.right ul li .circle{
+                margin-right: -14px;
+                //height: 100%;
+                float:right;
+                display: block;
+                //background-color: red;
+                 margin-top: 11px;
+            }
+            .CG-eventsList.right ul li p{
+               // background: sandybrown;
+                margin-right:  20px;
+               // margin-top: -10px;
+                margin-bottom: 10px;
+               
+            }
+            /*.mCSB_buttonLeft{
+               background-image: url('images/arrowLeft-small.png');
+               // visibility: hidden !important;
+            }*/
+       
+</style>
+<style type="text/css" media="print">
+    #header, #footer, .CG-timeline, button.print, button.top, article.box.tags,article.box.nav, span.link {
+        display: none;
+    } 
+</style>
+    </head>
+    <body id="backTop">
+        <header id="header" >
+            <div class="center">
+                <nav>
+                    <ul>
+                        <li><a href="paginaPrincipal.html" class="logo"></a></li>
+                        <li><a href="#" class="active">timeline</a></li>
+                        <li><a href="#">créditos</a></li>
+                        <li><a href="#">equipe</a></li>
+                        <li><a href="#">links</a></li>
+                    </ul>
+                </nav>
+                <input type="text" id="search-header" placeholder="pesquisar..."/>
+            </div>
+        </header>
+        
+
+        
+         <div id="CG"> 
+             <div class="CG-timeline">
+                <div class="CG-events" data-start="1810" data-end="2010"> 
+                <div class="CG-eventsContentScroll">
+                            
+                            <div class="dna">
+                                 <div class="decade s-2">
+                                    <div class="scale"><span>1810</span></div>
+                                 
+                                </div>
+                                <div class="decade s-1">
+                                    <div class="scale"><span>1820</span></div>
+                                 
+                                </div>
+                                 <div class="decade s-2">
+                                    <div class="scale"><span>1830</span></div>
+                                 
+                                </div>
+                                <div class="decade s-1">
+                                    <div class="scale"><span>1840</span></div>
+                                   
+                                </div>
+                                <div class="decade s-1">
+                                    <div class="scale"><span>1850</span></div>
+                                   
+                                     <div class="year y-9">
+                                         <span class="pointer" data-index="1859"></span>
+                                        <span class="tooltip" >1859</span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="decade s-2">
+                                    <div class="scale"><span>1860</span></div>
+                                 
+                                     <div class="year y-5">
+                                        <span class="pointer" data-index="1865"></span>
+                                        <span class="tooltip">1865</span>
+                                    </div>
+                                </div>
+                                <div class="decade s-1">
+                                     <div class="scale"><span>1870</span></div>
+                                   
+                                       <div class="year y-1">
+                                        <span class="pointer" data-index="1871"></span>
+                                        <span class="tooltip">1871</span>
+                                    </div>
+                                  
+                                </div>
+                                <div class="decade s-2">
+                                    <div class="scale"><span>1880</span></div>
+                                    <div class="year y-0">
+                                        <span class="pointer" data-index="1880"></span>
+                                        <span class="tooltip">1880</span>
+                                    </div>
+                                    <div class="year y-1">
+                                        <span class="pointer" data-index="1881"></span>
+                                        <span class="tooltip">1881</span>
+                                    </div>
+                                     <div class="year y-2">
+                                        <span class="pointer" data-index="1882"></span>
+                                        <span class="tooltip">1882</span>
+                                    </div>
+                                     <div class="year y-3">
+                                        <span class="pointer" data-index="1883"></span>
+                                        <span class="tooltip">1883</span>
+                                    </div>
+                                     <div class="year y-4">
+                                        <span class="pointer" data-index="1884"></span>
+                                        <span class="tooltip">1884</span>
+                                    </div>
+                                     <div class="year y-5">
+                                        <span class="pointer" data-index="1885"></span>
+                                        <span class="tooltip">1885</span>
+                                    </div>
+                                     <div class="year y-6">
+                                        <span class="pointer" data-index="1886"></span>
+                                        <span class="tooltip">1886</span>
+                                    </div>
+                                     <div class="year y-7">
+                                        <span class="pointer" data-index="1887"></span>
+                                        <span class="tooltip">1887</span>
+                                    </div>
+                                     <div class="year y-8">
+                                        <span class="pointer" data-index="1888"></span>
+                                        <span class="tooltip">1888</span>
+                                    </div>
+                                     <div class="year y-9">
+                                        <span class="pointer" data-index="1889"></span>
+                                        <span class="tooltip">1889</span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="decade s-1">
+                                    <div class="scale big"><span>1890</span></div>
+                                   <div class="year y-0">
+                                        <span class="pointer" data-index="1890"></span>
+                                        <span class="tooltip">1890</span>
+                                    </div>
+                                       <div class="year y-1">
+                                        <span class="pointer" data-index="1891"></span>
+                                        <span class="tooltip">1891</span>
+                                    </div>
+                                     <div class="year y-2">
+                                        <span class="pointer" data-index="1892"></span>
+                                        <span class="tooltip">1892</span>
+                                    </div>
+                                     <div class="year y-3">
+                                        <span class="pointer" data-index="1893"></span>
+                                        <span class="tooltip">1893</span>
+                                    </div>
+                                     <div class="year y-4">
+                                        <span class="pointer" data-index="1894"></span>
+                                        <span class="tooltip">1894</span>
+                                    </div>
+                                     <div class="year y-5">
+                                        <span class="pointer" data-index="1895"></span>
+                                        <span class="tooltip">1895</span>
+                                    </div>
+                                     <div class="year y-6">
+                                        <span class="pointer" data-index="1896"></span>
+                                        <span class="tooltip">1896</span>
+                                    </div>
+                                     <div class="year y-7">
+                                        <span class="pointer" data-index="1897"></span>
+                                        <span class="tooltip">1897</span>
+                                    </div>
+                                     <div class="year y-8">
+                                        <span class="pointer" data-index="1898"></span>
+                                        <span class="tooltip">1898</span>
+                                    </div>
+                                     <div class="year y-9">
+                                        <span class="pointer" data-index="1899"></span>
+                                        <span class="tooltip">1899</span>
+                                    </div>
+                                     
+                                </div>
+                                <div class="decade s-2">
+                                    <div class="scale big"><span>1900</span></div>
+                                    <div class="year y-0">
+                                        <span class="pointer" data-index="1900"></span>
+                                        <span class="tooltip">1900</span>
+                                    </div>
+                                       <div class="year y-1">
+                                        <span class="pointer" data-index="1901"></span>
+                                        <span class="tooltip">1901</span>
+                                    </div>
+                                     <div class="year y-2">
+                                        <span class="pointer" data-index="1902"></span>
+                                        <span class="tooltip">1902</span>
+                                    </div>
+                                     <div class="year y-3">
+                                        <span class="pointer" data-index="1903"></span>
+                                        <span class="tooltip">1903</span>
+                                    </div>
+                                     <div class="year y-4">
+                                        <span class="pointer" data-index="1904"></span>
+                                        <span class="tooltip">1904</span>
+                                    </div>
+                                     <div class="year y-5">
+                                        <span class="pointer" data-index="1905"></span>
+                                        <span class="tooltip">1905</span>
+                                    </div>
+                                     <div class="year y-6">
+                                        <span class="pointer" data-index="1906"></span>
+                                        <span class="tooltip">1906</span>
+                                    </div>
+                                     <div class="year y-7">
+                                        <span class="pointer" data-index="1907"></span>
+                                        <span class="tooltip">1907</span>
+                                    </div>
+                                     <div class="year y-8">
+                                        <span class="pointer" data-index="1908"></span>
+                                        <span class="tooltip">1908</span>
+                                    </div>
+                                     <div class="year y-9">
+                                        <span class="pointer" data-index="1909"></span>
+                                        <span class="tooltip">1909</span>
+                                    </div>
+                                  
+                                    
+                                </div>
+                               
+                                <div class="decade s-2">
+                                    <div class="scale"><span>1910</span></div>
+                                    <div class="year y-0">
+                                        <span class="pointer" data-index="1910"></span>
+                                        <span class="tooltip">1910</span>
+                                    </div>
+                                       <div class="year y-1">
+                                        <span class="pointer" data-index="1911"></span>
+                                        <span class="tooltip">1911</span>
+                                    </div>
+                                     <div class="year y-2">
+                                        <span class="pointer" data-index="1912"></span>
+                                        <span class="tooltip">1912</span>
+                                    </div>
+                                     <div class="year y-3">
+                                        <span class="pointer" data-index="1913"></span>
+                                        <span class="tooltip">1913</span>
+                                    </div>
+                                     <div class="year y-4">
+                                        <span class="pointer" data-index="1914"></span>
+                                        <span class="tooltip">1914</span>
+                                    </div>
+                                     <div class="year y-5">
+                                        <span class="pointer" data-index="1915"></span>
+                                        <span class="tooltip">1915</span>
+                                    </div>
+                                     <div class="year y-6">
+                                        <span class="pointer" data-index="1916"></span>
+                                        <span class="tooltip">1916</span>
+                                    </div>
+                                     <div class="year y-7">
+                                        <span class="pointer" data-index="1917"></span>
+                                        <span class="tooltip">1917</span>
+                                    </div>
+                                     <div class="year y-8">
+                                        <span class="pointer" data-index="1918"></span>
+                                        <span class="tooltip">1918</span>
+                                    </div>
+                                     <div class="year y-9">
+                                        <span class="pointer" data-index="1919"></span>
+                                        <span class="tooltip">1919</span>
+                                    </div>
+                                 
+                                </div>
+                                
+                                <div class="decade s-1">
+                                    <div class="scale"><span>1920</span></div>
+                                    <div class="year y-0">
+                                        <span class="pointer" data-index="1920"></span>
+                                        <span class="tooltip">1920</span>
+                                    </div>
+                                       <div class="year y-1">
+                                        <span class="pointer" data-index="1921"></span>
+                                        <span class="tooltip">1921</span>
+                                    </div>
+                                     <div class="year y-2">
+                                        <span class="pointer" data-index="1922"></span>
+                                        <span class="tooltip">1922</span>
+                                    </div>
+                                     <div class="year y-3">
+                                        <span class="pointer" data-index="1923"></span>
+                                        <span class="tooltip">1923</span>
+                                    </div>
+                                     <div class="year y-4">
+                                        <span class="pointer" data-index="1924"></span>
+                                        <span class="tooltip">1924</span>
+                                    </div>
+                                     <div class="year y-5">
+                                        <span class="pointer" data-index="1925"></span>
+                                        <span class="tooltip">1925</span>
+                                    </div>
+                                     <div class="year y-6">
+                                        <span class="pointer" data-index="1926"></span>
+                                        <span class="tooltip">1926</span>
+                                    </div>
+                                     <div class="year y-7">
+                                        <span class="pointer" data-index="1927"></span>
+                                        <span class="tooltip">1927</span>
+                                    </div>
+                                     <div class="year y-8">
+                                        <span class="pointer" data-index="1928"></span>
+                                        <span class="tooltip">1928</span>
+                                    </div>
+                                     <div class="year y-9">
+                                        <span class="pointer" data-index="1929"></span>
+                                        <span class="tooltip">1929</span>
+                                    </div>
+                                   
+                                    
+                                </div>
+                                
+                                <div class="decade s-1">
+                                    <div class="scale"><span>1930</span></div>
+                                   
+                                </div>
+                                
+                                <div class="decade s-2">
+                                    <div class="scale"><span>1940</span></div>
+                                     
+                                     <div class="year y-0">
+                                        <span class="pointer" data-index="1940"></span>
+                                        <span class="tooltip">1940</span>
+                                    </div> 
+                                       <div class="year y-1">
+                                        <span class="pointer" data-index="1941"></span>
+                                        <span class="tooltip">1941</span>
+                                    </div>
+                                     <div class="year y-2">
+                                        <span class="pointer" data-index="1942"></span>
+                                        <span class="tooltip">1942</span>
+                                    </div>
+                                     <div class="year y-3">
+                                        <span class="pointer" data-index="1943"></span>
+                                        <span class="tooltip">1943</span>
+                                    </div>
+                                     <div class="year y-4">
+                                        <span class="pointer" data-index="1944"></span>
+                                        <span class="tooltip">1944</span>
+                                    </div>
+                                     <div class="year y-5">
+                                        <span class="pointer" data-index="1945"></span>
+                                        <span class="tooltip">1945</span>
+                                    </div>
+                                     <div class="year y-6">
+                                        <span class="pointer" data-index="1946"></span>
+                                        <span class="tooltip">1946</span>
+                                    </div>
+                                     <div class="year y-7">
+                                        <span class="pointer" data-index="1947"></span>
+                                        <span class="tooltip">1947</span>
+                                    </div>
+                                     <div class="year y-8">
+                                        <span class="pointer" data-index="1948"></span>
+                                        <span class="tooltip">1948</span>
+                                    </div>
+                                     <div class="year y-9">
+                                        <span class="pointer" data-index="1949"></span>
+                                        <span class="tooltip">1949</span>
+                                 
+                                    </div>
+                                </div>
+                                
+                                <div class="decade s-2">
+                                    <div class="scale"><span>1950</span></div>
+                                 
+                                </div>
+                                 <div class="decade s-2">
+                                    <div class="scale"><span>1960</span></div>
+                                 
+                                </div>
+                                 <div class="decade s-1">
+                                    <div class="scale"><span>1970</span></div>
+                                 
+                                </div>
+                                <div class="decade s-2">
+                                    <div class="scale"><span>1980</span></div>
+                                 
+                                </div>
+                                 <div class="decade s-2">
+                                    <div class="scale"><span>1990</span></div>
+                                 
+                                </div>
+                                 <div class="decade s-2">
+                                    <div class="scale"><span>2000</span></div>
+                                 
+                                </div>
+                              
+                            </div>
+		</div>
+                     <div class="mark"><div><span></span><div></div></div></div>
+                     <div class="mark right"><div><span></span><div></div></div></div>
+                </div>
+                 <div class="CG-eventTrack">
+                     <div id="CG-0" class="CG-eventsList right">
+                        <div class="col col1"> <div class="img" style="background-image:url('images/imagem1.jpg'); " data-img="images/imagem1.jpg"></div></div>
+                        <div class="col col2">
+                            <h1>1952</h1>
+                            <ul>
+                                <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Men</p></li>
+                                 <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre a</p></li>
+                                  <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                   <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                    <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da</p></li>
+                                     <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                            </ul>
+                        </div>   
+                        <div class="clear"></div>
+                     </div>
+                     <div id="CG-1" class="CG-eventsList left">
+                        <div class="col col1"> <div class="img" style="background-image:url('images/imagem1.jpg'); " data-img="images/imagem1.jpg"></div></div>
+                        <div class="col col2">
+                            <h1>1952</h1>
+                            <ul>
+                                <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Men</p></li>
+                                 <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre a</p></li>
+                                  <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                   <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                    <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da</p></li>
+                                     <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                            </ul>
+                        </div>   
+                        <div class="clear"></div>
+                     </div>
+                 </div>
+             </div>
+             <div class="CG-detail">
+                 <div class="center">
+                  <button class="print"></button>
+                  <button class="top"></button>
+                  
+                     <aside>
+                        <article>
+                        <header>
+                            <h1>Charles Robert Darwin</h1>
+                            <h2>Biólogo, cientista, pai da Genética</h2>
+
+                            <figure>
+                                <img src="images/imagem1.jpg" alt=""/>
+                                <figcaption>legenda da figura. Fonte: <a href="#">Wikimidia</a></figcaption>
+                            </figure>
+                        </header>
+                       
+                        <h2>Nascimento</h2>
+                        <p>12 de fevereiro de 1809, em Shrewsbury, Inglaterra</p>
+                        <h2>Falescimento</h2>
+                        <p>19 de abril de 1882, em Downe, Inglaterra</p>
+
+                        <h2>Publicação</h2>
+                        <figure>
+                            <img src="images/imagem1.jpg" alt=""/>
+                            <figcaption>legenda da figura?</figcaption>
+                        </figure>
+                        <p>Em 1859, Darwin lança seu livro <em>"Da Origem das Espécies por Via da Seleção Natural ou A Preservação das Raças Favorecidas na Luta pela Vida"</em>. O livro teve sua <a href="#">primeira edição</a> esgotada em um dia.</p>
+                        
+                       
+                        <h2>Prêmiações</h2>
+                        <p>Medalha Real, Medalha Wollaston, Medalha Copley</p>
+                        </article>
+                          <article>
+                        <header>
+                            <h1>Charles Robert Darwin</h1>
+                            <h2>Biólogo, cientista, pai da Genética</h2>
+
+                            <figure>
+                                <img src="images/imagem1.jpg" alt=""/>
+                                <figcaption>legenda da figura extremamente longa. legenda da figura extremamente longa.</figcaption>
+                            </figure>
+                        </header>
+                       
+                        <h2>Nascimento</h2>
+                        <p>12 de fevereiro de 1809, em Shrewsbury, Inglaterra</p>
+                        <h2>Falescimento</h2>
+                        <p>19 de abril de 1882, em Downe, Inglaterra</p>
+
+                        <h2>Publicação</h2>
+                        <p>Em 1859, Darwin lança seu livro <em>"Da Origem das Espécies por Via da Seleção Natural ou A Preservação das Raças Favorecidas na Luta pela Vida"</em>. O livro teve sua primeira edição esgotada em um dia.</p>
+                        
+                       
+                        <h2>Prêmiações</h2>
+                        <p>Medalha Real, Medalha Wollaston, Medalha Copley</p>
+                        </article>
+                    </aside>
+                    <section>
+                        <header>
+                            
+                            <span class="atualizacao"><i class="icon i-clock"></i> atualizado em 23/04/2014</span> 
+                            <span class="link"><i class="icon i-link"></i><input type="text" readonly="readonly" value=" http://linkparaesseresultadodepesquisa.com/pesquisa/?a=1956&e=0" /></span>
+                            <h1>1859: Charles Darwin e a Seleção Natural Charles Darwin e a Seleção Natural</h1>
+                        
+                        </header>
+                        
+                        <article>
+                           
+                            
+                            <p>The first printing of Charles Darwin's book, On the <em>Origin of Species by Means of Natural Selection</em>, or the Preservation of Favoured Races in the Struggle for Life, sold out in a matter of days. Darwin considered <a href="#" >the volume a short abstract of the ideas</a> he'd been developing about evolution by natural selection for decades. He'd been building on his ideas since his five-year journey in the 1830s to the South American coast, the Galapagos Islands, and other regions on the British ship H.M.S. Beagle. Darwin probably wouldn't have published in 1859 if not spurred by Alfred Russel Wallace's paper touching on the idea of natural selection. Wallace was a young naturalist who had developed his ideas while working in the islands of the Malay Archipelago.</p>
+                            <p>Darwin's exploratory survey on the H.M.S. Beagle had brought him into contact with a wide variety of living organisms and fossils. The adaptations he saw in the finches and tortoises on the Galapagos Islands struck him particularly acutely. Darwin concluded that species change through natural selection, or - to use Wallace's phrase - through "the survival of the fittest" in a given environment.</p>
+                            <p>Darwin's book immediately attracted attention and controversy, not only from the scientific community, but also from the general public, who were ignited by the social and religious implications of the theory. Darwin eventually produced six editions of this book.</p>
+                            <div class="img-center">
+                                <figure>
+                                    <img src="images/imagem1.jpg" alt=""/>
+                                    <figcaption>legenda da figura?</figcaption>
+                                </figure>
+                            </div>
+                            <p>In time, a growing understanding of genetics and of the fact that genes inherited from both parents remain distinct entities - even if the characteristics of parents appear to blend in their children - explained how natural selection could work and helped vindicate Darwin's proposal.</p>
+                            <p>Charles Darwin's On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life remains in print, in many languages.</p>
+                            
+                            <article class="minibox">
+                                <h2><i class="icon big i-idea"></i> curiosidades</h2>
+                                <p>Charles Darwin's On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life remains in print, in many languages.</p>
+                                <p>Charles Darwin's On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life remains in print, in many languages.</p>
+                            </article>
+                            
+                            <p>Darwin's five theories:</p>
+                            <ol>
+                                <li>The organisms steadily evolve over time (evolution theory)</li>
+                                <li>Different kinds of organisms descended from a common ancestor (common descent theory)</li>
+                                <li>Species multiply over time (speciation theory)</li>
+                                <li>Evolution takes place through the gradual change of populations (gradualism theory)</li>
+                                <li>The mechanism of evolution is the competition among vast numbers of unique individuals for limited resources under selective pressures, which leads to differences in survival and reproduction (natural selection theory).</li>
+                            </ol>
+                             <p>In time, a growing understanding of genetics and of the fact that genes inherited from both parents remain distinct entities - even if the characteristics of parents appear to blend in their children - explained how natural selection could work and helped vindicate Darwin's proposal.</p>
+                            <p>Charles Darwin's On the Origin of Species by Means of Natural Selection, or the Preservation of Favoured Races in the Struggle for Life remains in print, in many languages.</p>
+                            
+                            <article class="minibox">
+                                <h2><i class="icon big i-clip"></i> para saber mais...</h2>
+                                <ul class="no-list">
+                                    <li><a href="#" >O DNA vai à Escola -</a> objetos educacionais sobre genética. E mais objetos educacionais sobre genética.</li>
+                                    <li><a href="#" >Home DNA Learning Center -</a> animações sobre genética (inglês)</li>
+                                </ul>
+                            </article>
+                            
+                            <article class="box refer">
+                            <h2>Referências <i class="icon big i-book"></i></h2>
+                           
+                            <ul class="no-list">
+                                <li>GREGOR Mendel. 2014. Disponível em <a href="#" >http://www.site.com</a>. Acesso em: 11 nov. 2014.</li>
+                                <li>GREGOR Mendel. 2014. Disponível em http://www.site.com. Acesso em: 11 nov. 2014.</li>
+                                <li>GREGOR Mendel. 2014. Disponível em http://www.site.com. Acesso em: 11 nov. 2014.</li>
+                                <li>GREGOR Mendel. 2014. Disponível em http://www.site.com. Acesso em: 11 nov. 2014.</li>
+                            </ul>
+                            </article>
+                            
+                            <article class="box tags">
+                            <h2>tags <i class="icon big i-tag"></i></h2>
+                           
+                            <ul class="no-list">
+                                <li><a href="#" class="button">hereditariedade</a></li>
+                                <li><a href="#" class="button">Darwin</a></li>
+                                <li><a href="#" class="button">beagle</a></li>
+                                <li><a href="#" class="button">Nobel</a></li>
+                                <li><a href="#" class="button">tag</a></li>
+                                <li><a href="#" class="button">hereditariedade</a></li>
+                                <li><a href="#" class="button">Darwin</a></li>
+                                <li><a href="#" class="button">beagle</a></li>
+                                <li><a href="#" class="button">Nobel</a></li>
+                                <li><a href="#" class="button">tag</a></li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                            </article>
+                            
+                           
+                            
+                            
+                        </article>
+
+                        
+                    </section>
+                   <!-- <div class="clear"></div>-->
+                     <article class="box nav">
+                                <div class="line"></div>
+                                 
+                                <a href="#">
+                                   <div class="circle"></div> 
+                                        <h2>anterior</h2>
+                                        <strong>1802</strong>
+                                        <h3>Charles Darwin e a Seleção Natural Charles Darwin e a Seleção Natural</h3>
+                                    
+                                </a>
+                                <a href="#">
+                                   <div class="circle"></div> 
+                                        <h2>próximo</h2>
+                                        <strong>1814</strong>
+                                        <h3>Charles Darwin e a Seleção Natural</h3>
+                                    
+                                </a>
+                               
+                     </article>
+                     <div class="clear"></div>
+                 </div>
+             </div>
+         </div> 
+        
+        <footer id='footer'>
+            <div class="center">
+                <a href="#"><img src="images/logo300x100.png" alt="cronogenética - das ervilhas de Mendel à Biotecnologia"/></a>
+                <a href="#"><img src="images/logocapes.png" alt="CAPES"/></a>
+                <a href="#"><img src="images/logobsc.png" alt="BSC - biologia sistêmica do câncer"/></a>
+                <a href="#"><img src="images/logoufrn.png" alt="UFRN"/></a>
+            </div>
+        </footer>
+    
+        
+    
+<script> 
+     console.log( encodeURIComponent('Charles Darwin e a Seleção Natural') );
+//metodos rápidos
+var ID = function(id){return document.getElementById(id);};
+var CLASS = function(classe){return document.querySelectorAll(classe);};
+var createObj = function(tag){return document.createElement(tag);};
+
+//variaveis de controle
+var pointSize = 15;//px
+var pointSizeConvert = function(num){return parseInt(num/pointSize);};
+
+var headerHeight = ID('header') == null ? 0 : parseInt(ID('header').offsetHeight);//px
+//alert(headerHeight);
+var innerHeight = $(window).innerHeight(),
+    innerWidth  = pointSizeConvert($(window).innerWidth())*pointSize,
+    indexHeight = (innerHeight - headerHeight)*(40/100),//px
+    eventsHeight = innerHeight - headerHeight - 200,//(innerHeight - headerHeight)*(60/100),//px
+    eventsListWidth = 990,
+    eventsImgWidth = 285,
+    indexTrackWidth,//px
+    indexScroll = innerWidth/pointSize;//pontos
+   // console.log(eventsHeight);
+// var paddingLeft = 25;//pontos
+
+ 
+//anos é um array de anos contendo apenas um representante de cada ano em Events (elimina anos repetidos)
+var anos = new Array();
+var halfYear;
+var start, end;
+var setLeft = 0;
+//var startDefault = true;
+
+var structure = new Array();
+//var elements = new Array();
+var root, application;
+//var current = 0;
+
+
+console.log('resolução útil:' + innerWidth + ' x ' + innerHeight);
+
+//var pointSize = 15;
+var paddingLeft = pointSizeConvert((innerWidth - eventsListWidth)/2) + pointSizeConvert(eventsImgWidth);
+//console.log('paddingLeft'+paddingLeft);
+var paddingRight = pointSizeConvert((innerWidth - eventsListWidth)/2) + pointSizeConvert(eventsListWidth - eventsImgWidth) -1;
+//console.log(paddingRight+paddingRight); 
+    
+//retorna array de parametros da url ou null
+function getParamURL(param){
+        var erro = false;
+        var url = window.location.search;
+        //console.log('url:'+ url);
+        if(url!=''){
+            var parametrosDaUrl = url.split("?")[1];
+            //console.log('parametrosDaUrl:'+parametrosDaUrl);
+            var listaDeParametros = parametrosDaUrl.split("&");
+            //console.log('listaDeParametros:'+listaDeParametros);
+
+           var hash = {};
+           if(listaDeParametros.length < param.length){
+               erro = true;
+           }else{
+               for(var i = 0; i < param.length; i++){
+                    var parametro = listaDeParametros[i].split("=");
+                    var chave = decodeURIComponent(parametro[0]);
+                    var valor = decodeURIComponent(parametro[1]);
+
+
+                    if(chave == param[i] && (valor != null && valor!= '')){
+                        hash[chave] = valor;
+                    }else{
+                        erro = true;
+                    }
+
+               }
+           }
+
+
+
+           //console.log(hash);
+        }else{
+           //console.log('erro sem parametro');
+           erro = true;
+        }
+
+        if(erro == true){
+            //console.log("deu erro");
+            return null;
+        }else{
+            //console.log(hash);
+            return hash;
+        }
+
+    }
+
+//retorna primeiro evento pesquisado por search no atributo attr, ou retorna null se nada for econtrado
+function searchEvent(search,attr){
+    for(var i=0; i<Events.length; i++){
+        if(search == Events[i][attr]){
+           // console.log(Events[i][attr]);
+            return Events[i];
+        }
+    }
+    return null;
+}
+
+//retorna indice do primeiro evento pesquisado por search no atributo attr, ou retorna -1 se nada for econtrado
+function searchEventIndex(search,attr){
+    for(var i=0; i<Events.length; i++){
+        if(search == Events[i][attr]){
+           // console.log(Events[i][attr]);
+            return i;
+        }
+    }
+    return -1;
+}
+
+//retorna array de eventos pesquisado por search no atributo attr
+function searchEventsArray(search,attr){
+    var e = new Array();
+    var j=0;
+    for(var i=0; i<Events.length; i++){
+        if(search == Events[i][attr]){
+           // console.log(Events[i][attr]);
+            e[j] = Events[i];
+            j++;
+        }
+    }
+    return e;
+}
+
+//cria Marks
+function createMark(posicao){
+    var mark = createObj('div');
+    mark.classList.add('mark');
+    
+    if(posicao == 'right'){
+        mark.classList.add(posicao);
+        mark.style.marginLeft = (paddingRight*pointSize) + 'px';
+        //alert(paddingRight*pointSize);
+    }else{
+        mark.style.marginLeft = (paddingLeft*pointSize) + 'px';
+    }
+    
+    var div = createObj('div');
+    
+    var circle = createObj('span');
+    var line = createObj('div');
+    
+    div.appendChild(circle);
+    div.appendChild(line);
+    
+    mark.appendChild(div);
+    
+    return mark;
+}
+
+
+//calcula posição do scroll para um determinado year
+function calculaScroll(ano){
+    var to = ano;
+    start = parseInt($(".dna").attr('data-start'));
+    end = parseInt($(".dna").attr('data-end'));
+    var dna = document.querySelector('.dna');
+    var decades = dna.children;
+    var acc = 0;
+    var i,j;
+    for(i=start, j=0; i<(to-to%10); i+=10, j++){
+        if(decades[j].classList.contains('s-2'))
+            acc+=pointSize*10*2;
+        else
+            acc+=pointSize*10*1;
+       // console.log("i:"+i+" j:"+j+ " acc:"+acc);
+    }
+    
+    
+            var amount;
+            var scale=1;
+            for(var s=0; s<Scale.length;s++){
+                if(ano >= Scale[s].year)
+                    scale= Scale[s].scale;
+            }//if(e.target.parentNode.parentNode.classList.contains('s-2')){
+            //    scale = 2;
+            //}
+            
+            if(to%10 == 0){
+                amount=0;
+                acc+=pointSize*amount*scale;// - pointSize*scale;
+               // if(scale==2)
+                  //  acc+=pointSize;
+              //  console.log("shiftAmount:"+pointSize*amount*scale - pointSize*scale);
+            }else{
+                amount = to%10;
+                acc+=pointSize*amount*scale;// + pointSize*scale;
+               // if(scale==2)
+                   // acc+=pointSize;
+               //  console.log("shiftAmount:"+pointSize*amount*scale);
+          }
+
+
+            scrollTo=acc;
+
+            //halfYear = (start+(end - start)/2);
+            var scrollTo;
+            var marks= document.querySelectorAll('.mark');
+            console.log("halfyear:"+halfYear);
+            if(to <= halfYear){
+                console.log("left");
+                scrollTo -= paddingLeft*pointSize;
+                marks[0].classList.add('on');
+                marks[1].classList.remove('on');
+
+                marks[0].setAttribute('id', 'markLeft-'+to%10);
+                if(scale==2)
+                    marks[0].classList.add('s-2');
+                else
+                    marks[0].classList.remove('s-2');
+               }else{
+                console.log("right");
+                scrollTo -=paddingRight*pointSize;
+                marks[0].classList.remove('on');
+                marks[1].classList.add('on');
+
+                marks[1].setAttribute('id', 'markRight-'+to%10);
+                if(scale==2)
+                    marks[1].classList.add('s-2');
+                else
+                    marks[1].classList.remove('s-2');
+            }
+
+            // marks[0].setAttribute('id', 'id-1');
+           // scrollTo = (to - start)*15; 
+           //scrollTo = e.screenX;
+            console.log(to + ", scrollTo"+scrollTo);
+            
+            return scrollTo;
+
+}
+
+//cria year
+function createYear(ano){
+    //console.log(ano);
+    var year = createObj('div');
+    year.classList.add('year');
+    year.classList.add('y-'+ano.Ano%10);
+    
+    var pointer = createObj('span');
+    pointer.classList.add('pointer');
+    pointer.setAttribute('data-index',ano.Ano);
+    pointer.setAttribute('id','p-'+ano.Ano);
+    //pointer.setAttribute('data-eventsId',i);
+    
+    var tooltip = createObj('span');
+    tooltip.className = 'tooltip';
+    tooltip.innerHTML = ano.Ano;
+    
+    year.appendChild(pointer);
+    year.appendChild(tooltip);
+    
+    return year;
+}
+//cria element0 scale
+function createScale(decadeNum){
+    var scale = createObj('div');
+    scale.className = 'scale';
+    
+    var span = createObj('span');
+    span.innerHTML = decadeNum;
+    
+    scale.appendChild(span);
+    return scale;
+}
+
+//cria decade
+function createDecade(decadeNum, anos){
+    var decade = createObj('div');
+    decade.classList.add('decade');
+    var ano = decadeNum;
+    var scaleType = 1;
+    if(Scale[0].year > ano){
+        //s1
+        decade.classList.add("s-1");
+    }else{
+        for(var i=0; i< Scale.length-1; i++){
+            if( ano >= Scale[i].year && ano <  Scale[i+1].year ){
+                decade.classList.add("s-"+Scale[i].scale);
+                scaleType = Scale[i].scale;
+            }
+        }
+    }
+
+    if(ano >= Scale[Scale.length-1].year){
+        decade.classList.add("s-"+Scale[Scale.length-1].scale);
+        scaleType = Scale[i].scale;
+    }
+    
+    decade.appendChild(createScale(decadeNum));
+    
+    //anos
+      
+     // console.log(anos);
+    for(var i=0; i< anos.length; i++){
+        //console.log('anos aqui');
+       // console.log(anos[i]);
+        decade.appendChild(createYear( anos[i]));
+    }
+   
+    
+    return decade;
+}
+
+//cria array anos. anos é um array de anos contendo apenas um representante de cada ano em Events (elimina anos repetidos)
+function createArrayAnos(){   
+    anos = new Array();
+    anos[0] = parseInt(Events[0].Ano);
+    var c=1;
+    for(var i = 1; i< Events.length; i++){
+        if(Events[i].Ano != Events[i-1].Ano){
+            anos[c] = parseInt(Events[i].Ano);
+            c++;
+        }
+    }
+    
+    
+    
+}
+//cria dna
+function createDNA(){
+    var dna = createObj('div');
+    dna.className = 'dna';
+  
+    /*//anos é um array de anos contendo apenas um representante de cada ano em Events (elimina anos repetidos)
+    anos = new Array();
+    anos[0] = parseInt(Events[0].Ano);
+    var c=1;
+    for(var i = 1; i< Events.length; i++){
+        if(Events[i].Ano != Events[i-1].Ano){
+            anos[c] = parseInt(Events[i].Ano);
+            c++;
+        }
+    }*/
+    
+  //  console.log(anos);
+    var acc = new Array;
+    var aux = new Array;
+    var inferior = anos[0] - (anos[0]%10);
+    var superior = inferior+10;
+    var j=0,k=0;
+    var i=0;
+    while(k<Events.length){
+        //console.log(Events[i].Ano);
+        if(parseInt(Events[k].Ano) >= inferior && parseInt(Events[k].Ano)<superior){
+            //console.log(Events[k].Ano);
+            acc[j]=Events[k];
+            j++;
+           // console.log(k);
+            k++;
+        }else{
+        //console.log(anos[i]%100 - anos[i]%100%10);
+            //dna.appendChild(createDecade(acc);
+           // for(var k=0; k<acc.length; k++){
+               // console.log(acc[k]);
+            //}
+            //acc={};
+           // j=0;
+           aux[i] = acc;
+            inferior+=10;
+            superior+=10;
+            i++;
+            j=0;
+            acc = new Array();
+            //acc[j]= Events[i];
+            //j++;
+            //console.log('dacade' + inferior + " - "+(superior-1));
+            //console.log(Events[i].Ano);
+        }//}
+        //
+    }
+    
+    //console.log('paddingLeft'+paddingLeft);
+    //paddingRight
+       var start = parseInt(Events[0].Ano - Events[0].Ano%10)- parseInt((paddingLeft-paddingLeft%10+10));
+            //var end = parseInt($(".CG-events").attr('data-end'));
+            var end = parseInt((pointSizeConvert(innerWidth) - paddingRight+10));
+            end=end-end%10;
+            end+= parseInt(Events[Events.length -1].Ano - Events[Events.length -1].Ano%10);
+console.log(start+" "+end);
+    
+    
+    
+    
+    
+    aux[i]=acc;
+    //console.log(aux);
+    var decadeNum = anos[0] - anos[0]%10;
+    dna.setAttribute('data-start',(decadeNum -(decadeNum - start) ) );
+    var inicio = (decadeNum -(decadeNum - start) );
+    //console.log("decadeNum - start"+(decadeNum - start)/10);
+    //adiciona decadas vazias no começo
+    for(var i =(decadeNum - start); i>0; i=i-10 ){
+        dna.appendChild(createDecade(decadeNum - i, new Array()) );
+    }
+    //adiciona decadas
+    for(var i=0; i< aux.length; i++){
+        //console.log(aux[i]);
+        dna.appendChild(createDecade(decadeNum, aux[i]) );
+        decadeNum+=10;
+    }
+    //adiciona  decadas vazias no final
+    console.log('decadeNum no fim'+decadeNum);
+    for(var i =decadeNum; i<end; i=i+10 ){
+       
+        dna.appendChild(createDecade(decadeNum, new Array()) );
+         decadeNum+=10;
+    }
+ 
+    dna.setAttribute('data-end', decadeNum);
+   var fim =  decadeNum;
+   halfYear = (inicio+(fim - inicio)/2);
+   //halfYear = decadeNum/2;
+    return dna;
+}
+
+//cria CGeventsContentScroll
+function createCGEventsContentScroll(){
+    var CGEventsContentScroll = createObj('div');
+    CGEventsContentScroll.className = 'CG-eventsContentScroll';
+    
+    var dna = createDNA();
+    
+    CGEventsContentScroll.appendChild(dna);
+    return CGEventsContentScroll;
+}
+
+//cria CGEventsList
+function createCGEventsList(){
+  /*<div id="CG-0" class="CG-eventsList right">
+                        <div class="col col1"> <div class="img" style="background-image:url('images/imagem1.jpg'); " data-img="images/imagem1.jpg"></div></div>
+                        <div class="col col2">
+                            <h1>1952</h1>
+                            <ul>
+                                <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Men</p></li>
+                                 <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre a</p></li>
+                                  <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                   <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                                    <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da</p></li>
+                                     <li><span class='circle'></span><p>Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade Gregor Mendel Descobre as Leis da Hereditariedade</p></li>
+                            </ul>
+                        </div>   
+                        <div class="clear"></div>
+                     </div>
+    */
+}
+
+function goToPrevYear(){
+    var current = CLASS('.CG-timeline')[0].getAttribute('data-current');
+    var navLeft = document.querySelector('.CG-eventTrack .nav-left');
+    var navRight = document.querySelector('.CG-eventTrack .nav-right');
+    if(current == anos[1]){
+        navLeft.classList.remove('on');
+    }
+   
+    if(current != anos[0]){  
+        navRight.classList.add('on');
+        for(var i=0; i<anos.length; i++){
+            if(anos[i] == current){
+                 goToEvents(anos[i-1]);
+                 break;
+             }
+        }
+    } 
+        
+    
+}
+
+function goToNextYear(){
+    var current = CLASS('.CG-timeline')[0].getAttribute('data-current');
+    
+    var navLeft = document.querySelector('.CG-eventTrack .nav-left');
+    
+    var navRight = document.querySelector('.CG-eventTrack .nav-right');
+    if(current == anos[anos.length-2])
+         navRight.classList.remove('on');
+    
+     if(current != anos[anos.length-1]){
+        navLeft.classList.add('on');
+        for(var i=0; i<anos.length; i++){
+            if(anos[i] == current){
+                 goToEvents(anos[i+1]);
+                 break;
+             }
+        }
+    } 
+        
+    
+}
+
+//cria eventsNavLeft
+function createEventsNavLeft(){
+    var CGeventsNavLeft = createObj('div');
+    CGeventsNavLeft.classList.add('nav-left');
+    //CGeventsNavLeft.classList.add('on');
+    CGeventsNavLeft.addEventListener('click', goToPrevYear);
+    return CGeventsNavLeft;
+}
+//cria eventsNavRight
+function createEventsNavRight(){
+
+    var CGeventsNavRight = createObj('div');
+    CGeventsNavRight.classList.add('nav-right');
+    CGeventsNavRight.classList.add('on');
+    
+    CGeventsNavRight.addEventListener('click', goToNextYear);
+    return CGeventsNavRight;
+}
+
+//cria createCGEventsTrack
+function createCGEventsTrack(){
+    var CGeventsTrack = createObj('div');
+    CGeventsTrack.className =  'CG-eventTrack';
+    
+    var year = anos[0];
+  //  if(event != -1)
+    //    year = Events[event].Ano;
+    
+    
+    var eventsList, clear;
+    var col1, img;
+    var col2, h1, ul, items, li, span,p;
+    for(var i =0; i< anos.length; i++){
+        //console.log(anos[i]);
+        eventsList = createObj('div');
+        eventsList.classList.add('CG-eventsList');
+        eventsList.style.width = '990px';
+        eventsList.style.marginLeft = pointSizeConvert( (innerWidth-990)/2 )*pointSize + 'px';/*(innerWidth@15 - eventsList.width)/2 @15 = 180*/
+        if( anos[i]==year )
+            eventsList.classList.add('selected');
+       // alert(halfYear);
+        if(anos[i]<=halfYear){
+            eventsList.classList.add('left');
+        }else{
+            eventsList.classList.add('right');
+        }
+        eventsList.setAttribute('id', 'CG-'+anos[i]);
+        
+        col1 = createObj('div');
+        col1.classList.add('col');
+        col1.classList.add('col1');
+        
+        img = createObj('div');
+        img.classList.add('img');
+        img.style.backgroundImage = "url('images/imagem1.jpg')";
+        
+        col1.appendChild(img);
+        eventsList.appendChild(col1);
+        
+        col2 = createObj('div');
+        col2.classList.add('col');
+        col2.classList.add('col2');
+        
+        h1 = createObj('h1');
+        h1.innerHTML = anos[i];
+        col2.appendChild(h1);
+        
+        ul = createObj('ul');
+        items = searchEventsArray(anos[i],'Ano');
+        for(var j= 0; j< items.length; j++){
+           //console.log(items[j].Titulo);
+           li = createObj('li');
+           li.setAttribute('data-content', items[j].Conteudo);
+           li.setAttribute('data-event', searchEventIndex(items[j].Titulo, 'Titulo'));
+           /*li.onclick = function (e) {
+                e.preventDefault();
+                showEventDetail(e);
+           };*/
+           span = createObj('span');
+           span.className = 'circle';
+           span.setAttribute('data-content', items[j].Conteudo);
+           span.setAttribute('data-event', searchEventIndex(items[j].Titulo, 'Titulo'));
+           span.onclick = function (e) {
+                e.preventDefault();
+                showEventDetail(e);
+           };
+           li.appendChild(span);
+           p = createObj('p');
+           p.innerHTML = items[j].Titulo;
+           p.setAttribute('data-content', items[j].Conteudo);
+           p.setAttribute('data-event', searchEventIndex(items[j].Titulo, 'Titulo'));
+           p.setAttribute('id', 'e-'+searchEventIndex(items[j].Titulo, 'Titulo'));
+           p.onclick = function (e) {
+                e.preventDefault();
+                showEventDetail(e);
+           };
+           li.appendChild(p);
+           
+           ul.appendChild(li);
+        }
+        col2.appendChild(ul);
+        
+        eventsList.appendChild(col2);
+        
+        
+        clear = createObj('div');
+        clear.classList.add('clear');
+        
+        eventsList.appendChild(clear);
+     
+        CGeventsTrack.appendChild(eventsList);
+    }
+    
+    CGeventsTrack.appendChild(createEventsNavLeft());
+    CGeventsTrack.appendChild(createEventsNavRight());
+    return CGeventsTrack;
+} 
+
+//cria CGevents
+function createCGEvents(){
+    var CGevents = createObj('div');
+    CGevents.className = 'CG-events';
+    
+    var CGeventsContentScroll = createCGEventsContentScroll();
+    var markLeft = createMark('');
+    var markRight = createMark('right');
+    
+    CGevents.appendChild(CGeventsContentScroll);
+    CGevents.appendChild(markLeft);
+    CGevents.appendChild(markRight);
+    
+    return CGevents;
+}
+
+
+//cria CGtimeline
+function createCGTimeline(){
+    var CGevents = createCGEvents();
+    var CGeventsTrack = createCGEventsTrack();
+    
+    var CGtimeline = createObj('div');
+    CGtimeline.className = 'CG-timeline';
+    
+    
+    CGtimeline.setAttribute('data-current', anos[0]);
+    CGtimeline.setAttribute('data-event', '-1'); 
+    
+    /*if(event == -1){
+        CGtimeline.setAttribute('data-current', anos[0]);
+        //CGtimeline.setAttribute('data-scroll', calculaScroll(anos[0]) );
+    }else{
+        CGtimeline.setAttribute('data-current', Events[event].Ano);
+     //CGtimeline.setAttribute('data-scroll', calculaScroll(parseInt(event.Ano) ) );
+    }
+    CGtimeline.setAttribute('data-event', event); 
+     */ 
+    CGtimeline.appendChild(CGevents);
+    CGtimeline.appendChild(CGeventsTrack);
+    
+    return CGtimeline;
+}
+
+//inicia a contrução da aplicação
+function applicationBuild(){
+    var CGtimeline = createCGTimeline();
+    var CGdetail = createObj('div');
+    CGdetail.className = 'CG-detail';
+
+    root.innerHTML = '';
+    root.appendChild(CGtimeline); 
+    root.appendChild(CGdetail); 
+        
+    
+    
+    //var scrollTo = calculaScroll(year);
+    //year.setAttribute('data-scroll',scrollTo );
+    
+    }
+        
+//cria aplicação com inicio default
+function buildCG(options){
+    root = ID(options.selector);
+
+    if (root == null) {
+        console.log('nenhum elemento '+options.selector +' encontrado. FIM');
+    }else{
+        createArrayAnos();
+        applicationBuild();
+
+        //window.addEventListener('resize', resize);
+        
+       
+    }
+}
+
+
+//cria aplicação com inicio em event
+function buildCGEvent(options, event){
+    
+}
+
+//identifica elemento com ID .CG,e chama funções para construir a aplicação
+function initCG(options) {
+    console.log( 'iniciando CronoGenética Plugin - versão 4.05');
+    //var param = getParamURL(new Array('a','ev'));
+    var param = getParamURL(new Array('ev'));
+
+    if(param != null){
+        console.log('inicio alterado');
+        var event = searchEventIndex(param['ev'], 'Titulo');
+        //var event = searchEvent(param['a'], 'Ano');
+        console.log(Events[event]);
+        //if(event != null){
+            //inicie no evento
+           // buildCGEvent(options, event);
+        //}else{
+            buildCG(options);
+            if(event != -1){
+                setLeft = calculaScroll(Events[event].Ano);
+              //  alert('#e-'+event);
+                $('#e-'+event).trigger('click');
+                goToEvents(Events[event].Ano);
+            }else
+                setLeft = calculaScroll(anos[0]);
+            
+            //$(".pointer").trigger("click");
+             
+            //goToEvents(event.Ano);
+        //}
+
+    }else{
+        console.log("inicio default");
+        buildCG(options, -1);
+        setLeft = calculaScroll(anos[0]);
+        //goToEvents(anos[0].Ano);
+        
+    }
+    /*
+    var elements = ID(options.selector);
+
+    if (elements.length < 1) {
+        console.log('nenhum elemento '+options.selector +' encontrado. FIM');
+    }else {
+        console.log(elements.length + ' elementos '+options.selector +' encontrados');
+        root = elements[0];
+        structureBuild();
+        applicationBuild();
+
+        window.addEventListener('resize', resize);
+    }*/
+}
+     
+function goToEvents(ano){
+   // alert(ano);
+   var scrollTo = calculaScroll(ano);
+   $('.CG-eventsContentScroll').mCustomScrollbar("scrollTo",scrollTo);
+            
+            
+           // goToEvents(to);
+    
+    
+    
+    var timeline = CLASS('.CG-timeline')[0];
+   
+    
+    var num = timeline.getAttribute('data-current');
+    //alert(num);
+    var remove = ID('CG-'+num);
+    remove.classList.remove('selected');
+      
+    
+     var atual= ID('CG-'+ano);
+     //if(atual != null)
+     atual.classList.add('selected');
+    
+    timeline.setAttribute('data-current', ano);
+    //timeline.setAttribute('data-event', '-1');
+    
+    
+    var current =ano;
+    
+    var navLeft = document.querySelector('.CG-eventTrack .nav-left');
+    var navRight = document.querySelector('.CG-eventTrack .nav-right');
+    
+    if(current == anos[anos.length-1]){
+         navLeft.classList.add('on');
+         navRight.classList.remove('on');
+    }else if(current == anos[0]){
+         navLeft.classList.remove('on');
+         navRight.classList.add('on');
+    }else{
+     //   alert('add');
+         navLeft.classList.add('on');
+         navRight.classList.add('on');
+    }
+}   
+
+ function smoothScrollTo(i,h){
+            if(i<=h){
+                window.setTimeout(function(){
+                    window.scrollTo(0, i);
+                    smoothScrollTo(i+10, h);
+                }, 10);
+            }  
+}
+        
+function showEventDetail(e){
+            console.log(e.target.getAttribute('data-content'));
+            //console.log(e.target);
+            var xmlhttp;
+            if(window.XMLHttpRequest){
+                //code for IE7+, firefox, chrome, opera, safari
+                xmlhttp = new XMLHttpRequest();
+            }else{
+                //code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    var timeline = CLASS('.CG-timeline')[0];
+                    timeline.setAttribute('data-event', e.target.getAttribute('data-event'));
+                    var detail = document.querySelectorAll('.CG-detail');
+                            detail[0].innerHTML = xmlhttp.responseText;
+                            
+                            //window.scrollTo(0, innerHeight);
+                            smoothScrollTo(0,innerHeight);
+                            //window.scrollTo(0, 200);
+                            //$("#btBackTop").hide();
+                            window.addEventListener('scroll', onScrollPage);
+                           
+                }
+            }
+            
+            xmlhttp.open("GET", options.contentFolder+'/'+e.target.getAttribute('data-content'), true);
+            xmlhttp.send();
+}      
+
+
+function doPrinting(){
+    if(!window.print)
+        alert('Seu navegador não é compatível');
+    else
+        window.print();
+}
+
+function onScrollPage(){
+   var limit =  $('.CG-timeline').innerHeight() + headerHeight;
+   limit = innerHeight;
+   limit = 160;
+   // alert( limit);
+    if($(window).scrollTop() > limit){
+      $("#btBackTop").fadeIn();  
+    }else{
+      $("#btBackTop").fadeOut();   
+    }
+}
+
+function scrollToTop(){
+   // $(window).animate({scrollTop:"0px"},600);
+    window.scrollTo(0,0);
+}
+
+(function($){
+$(window).load(function(){
+	
+  
+    function scroll(){
+        console.log("onScroll");
+        var marks = CLASS('.mark');
+       // marks[0].setAttribute('id', 'markLeft-off');
+       // marks[1].setAttribute('id', 'markRight-off');
+        console.log(marks);
+    }
+    function totalScroll(){
+        console.log("total Scroll");
+    }
+     function totalScrollBack(){
+        console.log("total Scroll back");
+    }    
+        
+    
+    $(".CG-eventsContentScroll").mCustomScrollbar({
+        setLeft:setLeft+"px",
+        axis:"x",
+        theme:"timeline",
+        // setWidth:1335, /*innerWidth - 17 @15 = 1335px*/  
+        setHeight:200,
+        scrollbarPosition:"inside",
+        //scrollInertia:800,
+        autoDraggerLength:true,
+        autoHideScrollbar:false,
+        autoExpandScrollbar:true,
+        snapAmount:pointSize,
+        contentTouchScroll:25,
+        advanced:{
+            autoExpandHorizontalScroll:true,
+            updateOnContentResize:true
+        },
+        scrollButtons:{
+            enable:true,
+            scrollType:"stepless",
+            scrollAmount:pointSize*10
+        },
+        keyboard:{
+            scrollType:"stepless",
+            scrollAmount:pointSize*10
+        },
+        mouseWheel:{scrollAmount:pointSize*10},
+        callbacks:{
+            onScroll:function(){ scroll(); },
+            onTotalScroll:function(){ totalScroll(); },
+            onTotalScrollBack:function(){ totalScrollBack(); }
+        }
+    });
+                                
+                         
+				
+    $(".pointer").click(function(e){
+        e.preventDefault();
+        console.log('click '+e.target);
+        var to = parseInt(e.target.getAttribute('data-index'));
+        
+        goToEvents(to);
+         /* e.preventDefault();
+            console.log(e.target);
+            var to = parseInt(e.target.getAttribute('data-index'));
+            start = parseInt($(".dna").attr('data-start'));
+            //var start = parseInt(Events[0].Ano - Events[0].Ano%10)- parseInt((paddingLeft-paddingLeft%10+10));
+            end = parseInt($(".dna").attr('data-end'));
+            //var end = parseInt((pointSizeConvert(innerWidth) - paddingRight+10));
+            //end=end-end%10;
+            //end+= parseInt(Events[Events.length -1].Ano - Events[Events.length -1].Ano%10);
+//console.log(start+" "+end);
+            var dna = document.querySelector('.dna');
+            var decades = dna.children;
+            var acc = 0;
+
+            for(i=start,j=0; i<(to-to%10); i+=10, j++){
+                if(decades[j].classList.contains('s-2'))
+                    acc+=pointSize*10*2;
+                else
+                    acc+=pointSize*10*1;
+                console.log("i:"+i+" j:"+j+ " acc:"+acc);
+            }
+
+            var amount;
+            var scale=1;
+            if(e.target.parentNode.parentNode.classList.contains('s-2')){
+                scale = 2;
+            }
+            if(to%10 == 0){
+                amount=0;
+                acc+=pointSize*amount*scale;// - pointSize*scale;
+               // if(scale==2)
+                  //  acc+=pointSize;
+              //  console.log("shiftAmount:"+pointSize*amount*scale - pointSize*scale);
+            }else{
+                amount = to%10;
+                acc+=pointSize*amount*scale;// + pointSize*scale;
+               // if(scale==2)
+                   // acc+=pointSize;
+               //  console.log("shiftAmount:"+pointSize*amount*scale);
+          }
+
+
+            scrollTo=acc;
+
+            //halfYear = (start+(end - start)/2);
+            var scrollTo;
+            var marks= document.querySelectorAll('.mark');
+            console.log("halfyear:"+halfYear);
+            if(to <= halfYear){
+                console.log("left");
+                scrollTo -= paddingLeft*pointSize;
+                marks[0].classList.add('on');
+                marks[1].classList.remove('on');
+
+                marks[0].setAttribute('id', 'markLeft-'+to%10);
+                if(scale==2)
+                    marks[0].classList.add('s-2');
+                else
+                    marks[0].classList.remove('s-2');
+               }else{
+                console.log("right");
+                scrollTo -=paddingRight*pointSize;
+                marks[0].classList.remove('on');
+                marks[1].classList.add('on');
+
+                marks[1].setAttribute('id', 'markRight-'+to%10);
+                if(scale==2)
+                    marks[1].classList.add('s-2');
+                else
+                    marks[1].classList.remove('s-2');
+            }
+
+            // marks[0].setAttribute('id', 'id-1');
+           // scrollTo = (to - start)*15; 
+           //scrollTo = e.screenX;
+            console.log(to + ", scrollTo"+scrollTo);
+            $('.CG-eventsContentScroll').mCustomScrollbar("scrollTo",scrollTo);
+            
+            
+            goToEvents(to);
+        */
+    });
+        
+      
+        
+         
+});
+})(jQuery);
+</script>
+<script>
+     //opções de inicialização
+    var options = {
+        selector:'CG',
+        imageFolder:'events/images',
+        contentFolder:'events/contents'
+    };
+    initCG(options);
+    
+</script>
+    </body>
+</html>

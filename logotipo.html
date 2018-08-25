@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>CronoGenética</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Six+Caps' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Economica:400,700' rel='stylesheet' type='text/css'>
+
+        <style>
+            *{
+                margin:0;
+                padding: 0;
+                
+            }
+            body{
+               
+                width: 100%;
+            }
+            .logo-container{
+                position: relative;
+                width: 900px;
+                height: 300px;
+                margin: 0 auto;
+                 padding: 150px 0;
+                
+            }
+            .ampulheta-container{
+                z-index: -1;
+                position: absolute;
+                
+                 width: 230px;
+                height: 300px;
+             
+            }
+            .ampulheta-container.animate{
+                animation-name: girarAmpulheta;
+                animation-duration: 5s;
+                animation-direction: normal;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease;
+            }
+            .ampulheta{
+                position: absolute;
+                top:0;
+                left:0;
+                background-image: url('images/ampulheta.png');
+                background-size: contain;
+                width: 230px;
+                height: 300px;
+                
+               
+            }
+            .base{
+                position:absolute;
+                background: rgb(255,102,0);
+            }
+            .base1{
+                width: 230px;
+                height: 10px;
+            //   background:green;
+               bottom: 0;
+           
+            }
+            .base1.animate{
+                     
+                animation-name: base1;
+                animation-duration: 5s;
+                animation-direction: normal;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            .base2{
+                width: 230px;
+                height: 10px;
+              //  background:blue;
+                bottom: 11px;
+                
+            
+            }
+            .base2.animate{
+                animation-name: base2;
+                animation-duration: 5s;
+                animation-direction: normal;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;  
+            }
+            .base3{
+                width: 230px;
+                height: 10px;
+              // background:purple;
+              bottom: 28px;
+                
+              
+            }
+            .base3.animate{
+                animation-name: base3;
+                animation-duration: 5s;
+                animation-direction: normal;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out; 
+            }
+            .base4{
+                width: 230px;
+                height: 10px;
+              //  background:red;
+                bottom: 50px;
+                
+      
+            }
+            .base4.animate{
+                animation-name: base4;
+                animation-duration: 5s;
+                animation-direction: normal;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;   
+            }
+            .base5{
+                width: 230px;
+                height: 10px;
+               //background:yellow;
+                bottom: 80px;
+                
+          
+            }
+            .base5.animate{
+                animation-name: base5;
+                animation-duration: 5s;
+                animation-direction: normal;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            .base6{
+                width: 230px;
+                height: 10px;
+              // background:cyan;
+            bottom: 180px;
+          
+            }
+            .base6.animate{
+                      
+                animation-name: base6;
+                animation-duration: 5s;
+                animation-direction: normal;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            .base7{
+                width: 230px;
+                height: 10px;
+               //background:slateblue;
+               bottom: 220px;
+                
+            }
+            .base7.animate{
+                
+                animation-name: base7;
+                animation-duration: 5s;
+                animation-direction: normal;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            @keyframes girarAmpulheta{
+                0%{
+                    transform: rotate(0deg);
+                }
+                70%{
+                     transform: rotate(0deg);
+                }
+                100%{
+                    transform: rotate(180deg);
+                }
+            }
+            @keyframes base1{
+                0%{
+                   top:0px;
+                }
+                80%{
+                    top:101px;
+                    //top:185px;
+                }
+                100%{
+                    top:101px;
+                   //top:185px;
+                }
+            }
+              @keyframes base2{
+                0%{
+                    top:19.5px;
+                   //top:11px;
+                }
+                80%{
+                    top:148px;
+                   // top:211px;
+                }
+                100%{
+                     top:148px;
+                   //top:211px;
+                }
+            }
+            @keyframes base3{
+                0%{
+                   top:45px;
+                   //top:25px;
+                }
+                80%{
+                    top:188px;
+                   // top:233px;
+                }
+                100%{
+                     top:188px;
+                  // top:233px;
+                }
+            }
+            @keyframes base4{
+                0%{
+                   top:72px;
+                   //top:40px;
+                }
+                80%{
+                    top:218px;
+                   // top:250px;
+                }
+                100%{
+                     top:218px;
+                  // top:250px;
+                }
+            }
+           @keyframes base5{
+                0%{
+                   top:102px;
+                   //top:57px;
+                }
+                80%{
+                    top:245px;
+                    //top:265px;
+                }
+                100%{
+                     top:245px;
+                   //top:265px;
+                }
+            }
+              @keyframes base6{
+                0%{
+                   top:142px;
+                   //top:79px;
+                }
+                80%{
+                    top:270.5px;
+                   // top:279px;
+                }
+                100%{
+                     top:270.5px;
+                  // top:279px;
+                }
+            }
+              @keyframes base7{
+                0%{
+                   top:189px;
+                   //top:105px;
+                }
+                80%{
+                   
+                    top:290px;
+                }
+                100%{
+                   top:290px;
+                }
+            }
+            h1{
+                font-family: Economica;
+                font-size: 221px;
+                margin-left: 270px;
+                color:rgb(53, 50, 62);
+                //background: green;
+                line-height: 80px;
+            }
+             h2{
+                font-family: Economica;
+               font-size: 221px;
+                margin-left: 270px;
+                color:rgb(255,102, 0);
+                //background: purple;
+                 line-height: 205px;
+            }
+            h3{
+                font-family: Play;
+                color:rgb(255,102, 0);
+                margin-left: 370px;
+                font-size: 27.5px;
+                //background: darkblue;
+                line-height: 0px;
+            }
+            .apontador{
+                background: url("images/apontador.png");
+                height: 300px;
+                width: 122px;
+                position: absolute;
+                left:170px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="logo-container">
+        <div class="ampulheta-container">
+            <div class="base base1"></div>
+            <div class="base base2"></div>
+             <div class="base base3"></div>
+               <div class="base base4"></div>
+                 <div class="base base5"></div>
+             <div class="base base6"></div>
+               <div class="base base7"></div>
+            <div class="ampulheta"></div>
+        </div>
+            <div class="apontador"></div>
+        <h1>crono</h1>
+        <h2>genética</h2>
+        <h3>das ervilhas de Mendel à Biotecnologia</h3>
+        </div>
+        
+         <div class="logo-container">
+        <div class="ampulheta-container animate">
+            <div class="base base1 animate"></div>
+            <div class="base base2 animate"></div>
+             <div class="base base3 animate"></div>
+               <div class="base base4 animate"></div>
+                 <div class="base base5 animate"></div>
+             <div class="base base6 animate"></div>
+               <div class="base base7 animate"></div>
+            <div class="ampulheta"></div>
+        </div>
+            <div class="apontador"></div>
+        <h1>crono</h1>
+        <h2>genética</h2>
+        <h3>das ervilhas de Mendel à Biotecnologia</h3>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Fade In and Fade Out effect Using CSS3 Transition</title>
+    <style type="text/css">
+        @keyframes fade {
+            0% {
+                opacity:1;
+            }
+            50%{
+                opacity:0.5;
+            }
+            100% {
+                opacity:1;
+            }
+        }
+        
+        /* Fade-In Effect */
+        .visible
+        {
+           
+            visibility: visible;
+            opacity: 1; 
+            transition: opacity 1s linear;
+            
+        }        
+        /* Fade-Out Effect */
+        .hidden
+        {
+            
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 1s, opacity 1s linear;
+
+            
+        }
+        #wrapper{
+            background: green;
+            position:relative;
+            min-height: 70px;
+        }
+        #wrapper > div
+        {
+            background: none repeat scroll 0 0 #f5f;
+            border: 5px solid #808080;
+            //border-radius: 50px;
+            padding: 20px;
+            width: 50px;
+            
+            //position:absolute;
+            //top:30px;
+            //left:0;
+        }
+        .animar{
+            animation: fade 1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <p>
+            <button type="button" id="s1">Contar</button>
+            <button type="button" id="h1">Hide 1</button>
+            <button type="button" id="s2">Show 2</button>
+            <button type="button" id="h2">Hide 2</button>
+            <button type="button" id="s3">Show 3</button>
+            <button type="button" id="h3">Hide 3</button>
+            <button type="button" id="s4">Show 4</button>
+            <button type="button" id="h4">Hide 4</button>
+        </p>
+        
+        <div class="hidden" id="c1">0</div>
+        <div class="hidden" id="c2">2</div>
+        <div class="hidden" id="c3">3</div>
+        <div class="hidden" id="c4">4</div>
+    </div>
+    <div>conteudo abaixo</div>
+    <script type="text/javascript">
+        var count = 0;
+        function carregar(numero){
+        //Add query Selector
+        var showButtonClick = document.querySelector("#wrapper "+"#s"+numero),
+            hideButtonClick = document.querySelector("#wrapper "+"#h"+numero),
+            content = document.querySelector("#wrapper "+"#c"+numero);
+
+        //Show wrapper div content
+        showButtonClick.addEventListener("click", function () {
+            count++;
+            content.innerHTML = count;
+            content.className = "animar";
+            
+        }, false);
+
+        //Hide wrapper div content
+        hideButtonClick.addEventListener("click", function () {
+            content.className = "hidden";
+        }, false);
+    }
+    
+    carregar(1);
+    //carregar(2);
+    //carregar(3);
+    //carregar(4);
+    </script>
+</body>
+</html>
