@@ -1,4 +1,4 @@
 # cronogenética
-Linha do tempo dos principais acontecimentos da genética que permitiram o avanço da Biotecnologia
+Protótipo de linha do tempo dos principais acontecimentos da genética que permitiram o avanço da Biotecnologia
 
-Veja o demo http://gilmarandrade.com/cronogenetica
+Veja o demo https://gilmarandrade.github.io/cronogenetica/
